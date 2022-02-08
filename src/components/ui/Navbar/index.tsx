@@ -2,12 +2,15 @@ import React from 'react';
 
 import { Navbar as BootstrapNavbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 
+import cn from 'classnames';
+import styles from './Navbar.module.sass';
+
 interface INavbar {};
 
 export const Navbar: React.FC<INavbar> = () => {
     return (
         <BootstrapNavbar bg="light" expand="lg">
-            <Container>
+            <Container className={cn(styles.wrapper)}>
                 <BootstrapNavbar.Brand href="#home">React-Bootstrap</BootstrapNavbar.Brand>
                 <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
                 <BootstrapNavbar.Collapse id="basic-navbar-nav">
