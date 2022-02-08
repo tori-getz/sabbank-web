@@ -12,8 +12,6 @@ import type {
     Routes
 } from '@typing';
 
-import { HelloScreen } from '@screens';
-
 interface INavigation {
     routes: Routes
 };
