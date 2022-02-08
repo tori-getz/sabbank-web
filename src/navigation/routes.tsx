@@ -1,11 +1,11 @@
 
 import type { Routes } from '@typing';
 
-import { HelloScreen } from '@screens';
+import { DashboardScreen } from '@screens';
 
 export const routes: Routes = [
     {
         path: '/',
-        component: <HelloScreen />
+        component: <DashboardScreen />
     }
 ];
