@@ -1,20 +1,37 @@
 
 import React from 'react';
 
-import { BrowserRouter } from 'react-router-dom';
-import { Switch } from 'react-router';
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes as Switch
+} from 'react-router-dom';
 
-import { routes } from './routes';
-import type { IRoute } from '@typing';
+import type {
+    IRoute,
+    Routes
+} from '@typing';
 
-interface INavigation {};
+import { HelloScreen } from '@screens';
 
-export const Navigation: React.FC<INavigation> = () => {
+interface INavigation {
+    routes: Routes
+};
+
+export const Navigation: React.FC<INavigation> = ({
+    routes
+}) => {
     return (
-        <BrowserRouter> 
+        <Router> 
             <Switch>
-
+                {routes.map((route: IRoute, key: number) => (
+                    <Route
+                        path={route.path}
+                        element={route.component}
+                        key={key}
+                    />
+                ))}
             </Switch>
-        </BrowserRouter>
+        </Router>
     )
 }

@@ -6,6 +6,6 @@ import { HelloScreen } from '@screens';
 export const routes: Routes = [
     {
         path: '/',
-        component: HelloScreen
+        component: <HelloScreen />
     }
 ];

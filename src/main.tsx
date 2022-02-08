@@ -1,5 +1,5 @@
 
-import '@store/init';
+//import '@store/init';
 
 import { render } from 'react-dom';
 
