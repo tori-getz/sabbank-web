@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Navbar } from '@components/ui'
+import { Navbar, Footer } from '@components/ui'
 import { ScreenContainer } from '@containers';
 import { Button } from 'ui-neumorphism';
 import { Container } from 'react-bootstrap';
@@ -15,6 +15,7 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
                 <Button>кнопка</Button>
             </Container>
             <h1>hello</h1>
+            <Footer /> 
         </ScreenContainer>
     )
 }

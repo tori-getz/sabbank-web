@@ -9,9 +9,11 @@ interface INavbar {};
 
 export const Navbar: React.FC<INavbar> = () => {
     return (
-        <BootstrapNavbar expand="lg" className={cn(styles.customStyle)}>
+        <BootstrapNavbar expand="lg" className={cn(styles.navbar)}>
             <Container>
-                <BootstrapNavbar.Brand href="#home">React-Bootstrap</BootstrapNavbar.Brand>
+                <BootstrapNavbar.Brand href="#home">
+                    <img src="/static/img/logo.svg" alt=""/>
+                </BootstrapNavbar.Brand>
                 <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
                 <BootstrapNavbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
