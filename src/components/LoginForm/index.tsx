@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 
 import { Button, TextField } from 'ui-neumorphism';
+import { Alert } from 'react-bootstrap';
 
-import { useAuth } from '@hooks';
+import { useAuth, useTranslation } from '@hooks';
 
 interface ILoginForm {};
 
@@ -11,22 +12,39 @@ export const LoginForm: React.FC<ILoginForm> = () => {
     const [ phone, setPhone ] = useState<string>(''); 
     const [ password, setPassword ] = useState<string>('');
 
+    const [ error, setError ] = useState<string>('');
+
+    const { t } = useTranslation();
+
     const { login } = useAuth();
+
+    const onSubmit = async () => {
+        try {
+            await login({ phone, password });
+        } catch (e) {
+            setError(t(e.message));
+        }
+    }
 
     return (
         <div>
             <TextField
-                placeholder='телефон'
+                placeholder={t('Phone number')}
                 value={phone}
                 onChange={({ value }) => setPhone(value)}
             />
             <TextField
-                placeholder='пароль'
+                placeholder={t('Password')}
                 value={password}
                 onChange={({ value }) => setPassword(value)}
             />
-            <Button onClick={() => login({ phone, password })}>
-                вход
+            {error && (
+                <Alert variant='danger'>
+                    {error}
+                </Alert>
+            )}
+            <Button onClick={onSubmit}>
+                {t('Sign in')}
             </Button>
         </div>
     )

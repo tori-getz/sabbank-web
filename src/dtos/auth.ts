@@ -6,10 +6,12 @@ export interface IAuthDto {
     password: string
 }
 
+export interface IAuthTokens {
+    access: string
+    refresh: string
+}
+
 export interface IAuthResponse {
-    token: {
-        access: string
-        refresh: string
-    }
+    token: IAuthTokens
     user: IUser
 }

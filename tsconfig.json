@@ -28,7 +28,8 @@
       "@typing": [ "./src/typing/index" ],
       "@store/*": [ "./src/store/*" ],
       "@styles/*": [ "./src/styles/*" ],
-      "@dtos": [ "./src/dtos/index" ]
+      "@dtos": [ "./src/dtos/index" ],
+      "@utils": [ "./src/utils/index" ]
     }
   },
   "include": ["./src"],

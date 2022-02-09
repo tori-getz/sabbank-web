@@ -5,9 +5,17 @@ import { Navbar as BootstrapNavbar, Container, Nav, NavDropdown } from 'react-bo
 import cn from 'classnames';
 import styles from './Navbar.module.sass';
 
+import { locales } from '@locale';
+
+import { useTranslation } from '@hooks';
+
 interface INavbar {};
 
 export const Navbar: React.FC<INavbar> = () => {
+    const { language, setLanguage, t } = useTranslation();
+
+    const languages: Array<string> = Object.keys(locales);
+
     return (
         <BootstrapNavbar expand="lg" className={cn(styles.navbar)}>
             <Container>
@@ -17,14 +25,17 @@ export const Navbar: React.FC<INavbar> = () => {
                 <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
                 <BootstrapNavbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
-                        <Nav.Link href="#home">Главная</Nav.Link>
-                        <Nav.Link href="#link">Вклад</Nav.Link>
-                        <NavDropdown title="RU" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <Nav.Link href="#home">{t('Home')}</Nav.Link>
+                        <Nav.Link href="#link">{t('Deposit')}</Nav.Link>
+                        <NavDropdown title={language.toUpperCase()} id="basic-nav-dropdown">
+                            {languages.map((lang: string, key: number) => (
+                                <NavDropdown.Item
+                                    onClick={() => setLanguage(lang)}
+                                    key={key}
+                                >
+                                    {lang.toUpperCase()}
+                                </NavDropdown.Item>
+                            ))}
                         </NavDropdown>
                     </Nav>
                 </BootstrapNavbar.Collapse>

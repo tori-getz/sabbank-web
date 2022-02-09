@@ -1,0 +1,2 @@
+
+export { getLocale } from './getLocale';

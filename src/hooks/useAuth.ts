@@ -16,6 +16,8 @@ import {
     setUser
 } from '@store/user';
 
+import { HTTPClient } from '@http';
+
 interface IUseAuth {
     isAuth: () => boolean
     login: (credentials: IAuthDto) => any
@@ -29,12 +31,18 @@ export const useAuth = (): IUseAuth => {
     const isAuth = () => accessToken !== '';
 
     const login = async (credentials: IAuthDto) => {
-        const { token, user } = await authService.login(credentials);
+        try {
+            const { token, user } = await authService.login(credentials);
 
-        setUser(user);
+            setUser(user);
+    
+            setRefreshToken(token.refresh);
+            setAccessToken(token.access);
 
-        setRefreshToken(token.refresh);
-        setAccessToken(token.access);
+            HTTPClient.defaults.headers.common['Authorization'] = `Bearer ${token.access}`;
+        } catch (e) {
+            throw new Error(e.response?.data?.detail);
+        }
     }
 
     return {
