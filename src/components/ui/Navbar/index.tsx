@@ -12,7 +12,7 @@ export const Navbar: React.FC<INavbar> = () => {
         <BootstrapNavbar expand="lg" className={cn(styles.navbar)}>
             <Container>
                 <BootstrapNavbar.Brand href="#home">
-                    <img src="/static/img/logo.svg" alt=""/>
+                    <img src="/assets/img/logo.svg" alt=""/>
                 </BootstrapNavbar.Brand>
                 <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
                 <BootstrapNavbar.Collapse id="basic-navbar-nav" className="justify-content-end">
