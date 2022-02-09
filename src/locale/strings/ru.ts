@@ -7,5 +7,6 @@ export const ru: ILocale = {
     'Phone number': 'Номер телефона',
     'Password': 'Пароль',
     'Home': 'Главная',
-    'Deposit': 'Вклад'
+    'Deposit': 'Вклад',
+    'Total balance': 'Баланс'
 };

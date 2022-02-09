@@ -15,6 +15,8 @@ import {
     setRefreshToken
 } from '@store/auth';
 
+import type { IUser } from '@typing';
+
 export class AuthService {
     private http: AxiosInstance;
 
@@ -22,13 +24,19 @@ export class AuthService {
         this.http = HTTPClient;
     }
 
-    async login (credentials: IAuthDto): Promise<IAuthResponse> {
+    public async login (credentials: IAuthDto): Promise<IAuthResponse> {
         const { data } = await this.http.post<IAuthResponse>('/auth/login', credentials);;
         
         return data;
     }
+
+    public async getProfile (): Promise<IUser> {
+        const { data } = await this.http.get<IUser>('/user/profile'); 
+
+        return data;
+    }
     
-    static refreshToken (): Promise<string> {
+    public static refreshToken (): Promise<string> {
         return new Promise(async (resolve, reject) => {
             try {
                 const refreshToken = $refreshToken.getState();

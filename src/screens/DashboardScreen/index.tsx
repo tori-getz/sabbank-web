@@ -1,20 +1,33 @@
 
-import React from 'react';
-import { Navbar, Footer } from '@components/ui'
-import { ScreenContainer } from '@containers';
+import React, { useEffect } from 'react';
+
 import { Button } from 'ui-neumorphism';
 import { Container } from 'react-bootstrap';
+
+import { useSocket, useUser } from '@hooks';
+
+import { ScreenContainer } from '@containers';
+import { Navbar, Footer } from '@components/ui'
+import { Balance } from '@components';
 
 interface IDashboardScreen {};
 
 export const DashboardScreen: React.FC<IDashboardScreen> = () => {
+    useSocket();
+
+    const { getUser } = useUser();
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
     return (
         <ScreenContainer title='DashboardScreen'>
             <Navbar />
             <Container>
+                <Balance />
                 <Button>кнопка</Button>
             </Container>
-            <h1>hello</h1>
             <Footer /> 
         </ScreenContainer>
     )

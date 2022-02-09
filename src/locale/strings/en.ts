@@ -7,5 +7,6 @@ export const en: ILocale = {
     'Phone number': 'Phone number',
     'Password': 'Password',
     'Home': 'Home',
-    'Deposit': 'Deposit'
+    'Deposit': 'Deposit',
+    'Total balance': 'Total balance'
 };

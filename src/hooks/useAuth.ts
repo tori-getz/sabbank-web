@@ -38,8 +38,6 @@ export const useAuth = (): IUseAuth => {
     
             setRefreshToken(token.refresh);
             setAccessToken(token.access);
-
-            HTTPClient.defaults.headers.common['Authorization'] = `Bearer ${token.access}`;
         } catch (e) {
             throw new Error(e.response?.data?.detail);
         }
