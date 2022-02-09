@@ -1,6 +1,10 @@
 
 import axios from 'axios';
 
-const HTTPClient = axios.create();
+import { ConfigService } from '../services/ConfigService';
+
+const HTTPClient = axios.create({
+    baseURL: ConfigService.get('API_URL')
+});
 
 export { HTTPClient };

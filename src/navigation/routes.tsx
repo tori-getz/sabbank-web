@@ -1,9 +1,19 @@
 
 import type { Routes } from '@typing';
 
-import { DashboardScreen } from '@screens';
+import {
+    DashboardScreen,
+    HelloScreen
+} from '@screens';
 
-export const routes: Routes = [
+export const unauthorizedRoutes: Routes = [
+    {
+        path: '/',
+        component: <HelloScreen />
+    }
+]
+
+export const authroizedRoutes: Routes = [
     {
         path: '/',
         component: <DashboardScreen />

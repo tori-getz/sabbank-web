@@ -1,5 +1,5 @@
 
-//import '@store/init';
+import '@store/init';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import 'ui-neumorphism/dist/index.css'
 
