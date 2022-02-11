@@ -17,7 +17,17 @@ export const AppContainer: React.FC<IAppContainer> = () => {
     const { isAuth } = useAuth();
 
     useEffect(() => {
-        overrideThemeVariables({});
+        overrideThemeVariables({
+                '--light-bg': '#F5F5F9',
+                '--light-bg-dark-shadow': '#DEDEE9',
+                '--light-bg-light-shadow': '#FFFFFF',
+                '--dark-bg': '#292E35',
+                '--dark-bg-dark-shadow': '#21252a',
+                '--dark-bg-light-shadow': '#313740',
+                '--primary': '#AB2AFF',
+                '--primary-dark': '#4526f9',
+                '--primary-light': '#c7befd',
+        });
     }, []);
 
     return (

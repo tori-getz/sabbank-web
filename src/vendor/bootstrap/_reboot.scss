@@ -17,6 +17,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: var(--#{$variable-prefix}body-font-family) !important;
 }
 
 
@@ -48,7 +49,7 @@
 // scss-docs-start reboot-body-rules
 body {
   margin: 0; // 1
-  font-family: var(--#{$variable-prefix}body-font-family);
+  font-family: var(--#{$variable-prefix}body-font-family) !important;
   @include font-size(var(--#{$variable-prefix}body-font-size));
   font-weight: var(--#{$variable-prefix}body-font-weight);
   line-height: var(--#{$variable-prefix}body-line-height);
@@ -60,6 +61,9 @@ body {
 }
 // scss-docs-end reboot-body-rules
 
+input, label, textarea, button, select, a{
+  font-family: var(--#{$variable-prefix}body-font-family) !important;
+}
 
 // Content grouping
 //

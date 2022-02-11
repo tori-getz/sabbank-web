@@ -8,5 +8,6 @@ export const en: ILocale = {
     'Password': 'Password',
     'Home': 'Home',
     'Deposit': 'Deposit',
-    'Total balance': 'Total balance'
+    'Total balance': 'Total balance',
+    'Support': 'Support',
 };
