@@ -10,4 +10,5 @@ export const ru: ILocale = {
     'Deposit': 'Вклад',
     'Total balance': 'Баланс',
     'Support': 'Поддержка',
+    'Currencies': 'Курсы валют'
 };
