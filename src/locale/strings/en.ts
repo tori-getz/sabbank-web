@@ -10,5 +10,6 @@ export const en: ILocale = {
     'Deposit': 'Deposit',
     'Total balance': 'Total balance',
     'Support': 'Support',
-    'Currencies': 'Currencies'
+    'Currencies': 'Currencies',
+    'Wallets': 'Wallets'
 };

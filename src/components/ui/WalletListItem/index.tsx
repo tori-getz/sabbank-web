@@ -3,12 +3,13 @@ import React from 'react';
 
 import type { iCurrency } from '@typing';
 
-import styles from './CurrencyListItem.module.sass';
-import { moneyAmountFormatter } from '../../../utils/moneyAmountFormatter';
+import styles from './WalletListItem.module.sass';
+
+import { moneyAmountFormatter } from '@utils';
 
 import { useUser } from '@hooks';
 
-export const CurrencyListItem: React.FC<iCurrency> = currency => {
+export const WalletListItem: React.FC<iCurrency> = currency => {
     const { settings } = useUser();
 
     return (
@@ -19,7 +20,8 @@ export const CurrencyListItem: React.FC<iCurrency> = currency => {
                 <h4>{currency.asset.toUpperCase()}</h4>
             </div>
             <div className={styles.info}>
-                <h4>{settings?.fiat_currency?.symbol}{moneyAmountFormatter(currency.price[settings?.fiat_currency?.iso_code], 4)}</h4>
+                <h4>{moneyAmountFormatter(currency.balance, 4)} {currency.asset.toUpperCase()}</h4>
+                <h5>{settings?.fiat_currency?.symbol}{moneyAmountFormatter(currency.balance * currency.price[settings?.fiat_currency?.iso_code], 2)}</h5>
             </div>
         </div>
     )

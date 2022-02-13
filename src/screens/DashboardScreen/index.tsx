@@ -8,7 +8,7 @@ import { useSocket, useUser, useWallet } from '@hooks';
 
 import { ScreenContainer } from '@containers';
 import { Navbar, Footer } from '@components/ui'
-import { Balance, CurrencyList } from '@components';
+import { Balance, CurrencyList, WalletList } from '@components';
 
 interface IDashboardScreen {};
 
@@ -28,6 +28,7 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
             <Navbar />
             <Container className='d-flex flex-column min-vh-100'>
                 <Balance />
+                <WalletList />
                 <CurrencyList />
                 <Button>кнопка</Button>
             </Container>

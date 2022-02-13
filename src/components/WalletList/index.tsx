@@ -1,28 +1,28 @@
 
 import React from 'react';
 
-import { CurrencyListItem } from '@components/ui';
+import { useTranslation, useWallet } from '@hooks';
 
-import { useWallet, useTranslation } from '@hooks';
+import { WalletListItem } from '@components/ui';
 
 import type { iCurrency } from '@typing';
 
-interface ICurrencyList {};
+interface IWalletList {};
 
-export const CurrencyList: React.FC<ICurrencyList> = () => {
+export const WalletList: React.FC<IWalletList> = () => {
     const { t } = useTranslation();
 
     const { currencies } = useWallet();
 
     return (
         <div>
-            <h1>{t('Currencies')}</h1>
+            <h1>{t('Wallets')}</h1>
             {currencies.map((currency: iCurrency, key: number) => (
-                <CurrencyListItem
+                <WalletListItem
                     {...currency}
                     key={key}
                 />
             ))}
         </div>
-    );
+    )
 }
