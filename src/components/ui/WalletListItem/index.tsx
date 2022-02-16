@@ -16,21 +16,19 @@ export const WalletListItem: React.FC<iCurrency> = currency => {
 
     return (
         <Card>
-            <CardContent>            
-            <div className={styles.wrapper}>
-                <IconButton rounded size='small' text={false} color='grey'>
+            <CardContent className={styles.wrapper}>            
+                <IconButton rounded size='small' text={false} color=''>
                     <Icon name='btc' size={16}></Icon>
                 </IconButton>                
-                <div className={styles.name}>
-                    <h3>{currency.name}</h3>
-                    <h4>{currency.asset.toUpperCase()}</h4>
+                <div className={styles.titleBlock}>
+                    <div className={styles.title}>{currency.name}</div>
+                    <div className={styles.asset}>{currency.asset.toUpperCase()}</div>
                 </div>
-                <div className={styles.info}>
-                    <h4>{moneyAmountFormatter(currency.balance, 4)} {currency.asset.toUpperCase()}</h4>
-                    <h5>{settings?.fiat_currency?.symbol}{moneyAmountFormatter(currency.balance * currency.price[settings?.fiat_currency?.iso_code], 2)}</h5>
+                <div className={styles.amountBlock}>
+                    <div className={styles.amount}>{moneyAmountFormatter(currency.balance, 4)} {currency.asset.toUpperCase()}</div>
+                    <div className={styles.amountUSDT}>{settings?.fiat_currency?.symbol}{moneyAmountFormatter(currency.balance * currency.price[settings?.fiat_currency?.iso_code], 2)}</div>
                 </div>
                 <Icon name='arrow-right' size={16}></Icon>
-            </div>
             </CardContent>
         </Card>
 

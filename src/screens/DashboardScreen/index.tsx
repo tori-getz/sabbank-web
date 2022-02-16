@@ -33,11 +33,11 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
                     <aside className={styles.aside}>
                         <Balance />
                         <WalletList />
-                        <CurrencyList />
-                        <Button>кнопка</Button>
+                        <CurrencyList />                        
                     </aside>
                     <main className={styles.main}>
                         <h1>BODY</h1>
+                        <Button>кнопка</Button>
                     </main>
                 </Container>
                 <Footer /> 
