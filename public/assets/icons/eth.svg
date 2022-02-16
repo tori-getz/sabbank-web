@@ -1,0 +1,18 @@
+<svg width="11px" height="18px" viewBox="0 0 11 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Главная_Обмен" transform="translate(-143.000000, -570.000000)" fill-rule="nonzero">
+            <g id="Group-2-Copy-4" transform="translate(120.000000, 549.000000)">
+                <g id="Ethereum-Classic-(ETH)" transform="translate(12.000000, 14.000000)">
+                    <g id="Group" transform="translate(11.000000, 7.000000)">
+                        <polygon id="Path" fill="#313132" points="5.49842121 0 5.37828232 0.393721902 5.37828232 11.8187634 5.49842121 11.9343507 10.996692 8.79957138"></polygon>
+                        <polygon id="Path" fill="#858588" points="5.49842121 0 0 8.79957138 5.49842121 11.9343507 5.49842121 6.38906169"></polygon>
+                        <polygon id="Path" fill="#313132" points="5.49842121 13.6598933 5.43060815 13.7393687 5.43060815 17.8092883 5.49842121 17.999855 11 10.5265643"></polygon>
+                        <polygon id="Path" fill="#858588" points="5.49842121 18 5.49842121 13.6598933 0 10.5265643"></polygon>
+                        <polygon id="Path" fill="#141414" points="5.49842121 11.9343507 10.996692 8.79957138 5.49842121 6.38906169"></polygon>
+                        <polygon id="Path" fill="#363637" points="0 8.79957138 5.49827084 11.9343507 5.49827084 6.38906169"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

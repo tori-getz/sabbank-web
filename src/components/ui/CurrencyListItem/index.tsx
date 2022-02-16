@@ -17,7 +17,7 @@ export const CurrencyListItem: React.FC<iCurrency> = currency => {
         <>
             <div className={styles.wrapper}>
                 <IconButton rounded size='small' text={false} color=''>
-                    <Icon name='btc' size={16}></Icon>
+                    <Icon name={currency.asset} size={16}></Icon>
                 </IconButton>                
 
                 <div className={styles.titleBlock}>
