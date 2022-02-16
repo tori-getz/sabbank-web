@@ -8,6 +8,8 @@ import {
 } from '@hooks';
 
 import { moneyAmountFormatter } from '@utils';
+import styles from './Balance.module.sass';
+import cn from 'classnames';
 
 interface IBalance {};
 
@@ -20,9 +22,9 @@ export const Balance: React.FC<IBalance> = () => {
     const amount = moneyAmountFormatter(totalBalance[settings?.fiat_currency?.iso_code], 2);
 
     return (
-        <div>
-            <h3>{t('Total balance')}</h3>
-            <h1>{settings?.fiat_currency?.symbol} {amount}</h1>
+        <div className={cn(styles.widget)}>
+            <div className={cn(styles.title)}>{t('Total balance')}</div>
+            <div className={cn(styles.balance)}>{settings?.fiat_currency?.symbol} {amount}</div>
         </div>
     )
 }

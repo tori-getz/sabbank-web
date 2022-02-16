@@ -18,7 +18,7 @@ export const Footer: React.FC<IFooter> = () => {
                         <a className="site-logo d-inline-block mb-4" href="/">
                             <img src="/assets/img/logo.svg" alt="SAB Bank"/>
                         </a> 
-                        <a className={cn(styles.marketBtn, 'apple-btn mr-3 mb-3')} href="#">
+                        <a className={cn(styles.marketBtn, styles['apple-btn'], 'mr-3 mb-3')} href="#">
                             <span className="mb-subtitle">Download on the</span>
                             <span className="mb-title">App Store</span>
                         </a>
@@ -62,7 +62,6 @@ export const Footer: React.FC<IFooter> = () => {
                             <a className="social-btn sb-instagram" href="#"><i className="socicon-instagram"></i></a>
                             <a className="social-btn sb-facebook" href="#"><i className="socicon-facebook"></i></a>
                             <a className="social-btn sb-youtube" href="#"><i className="socicon-youtube"></i></a>
-
                         </div>
                     </div>
                 </div>                
