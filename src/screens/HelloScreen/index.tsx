@@ -14,14 +14,8 @@ interface IHelloScreen {};
 export const HelloScreen: React.FC<IHelloScreen> = () => {
     return (
         <ScreenContainer title='Вход и регистрация'>
-            <div className='d-flex flex-column min-vh-100'>
-                <Navbar />
-                <Container >
-                    <div className={styles.wrapper}>
-                        <LoginForm />
-                    </div>
-                </Container>
-                <Footer /> 
+            <div className={styles.wrapper}>
+                <LoginForm />
             </div>
         </ScreenContainer>
     );

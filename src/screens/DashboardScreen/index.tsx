@@ -26,22 +26,8 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
     }, []);
 
     return (
-        <ScreenContainer title='DashboardScreen'>
-            <div className='d-flex flex-column min-vh-100'>
-                <Navbar />
-                <Container className={cn(styles.containerLayout)}>
-                    <aside className={styles.aside}>
-                        <Balance />
-                        <WalletList />
-                        <CurrencyList />
-                        <Button>кнопка</Button>
-                    </aside>
-                    <main className={styles.main}>
-                        <h1>BODY</h1>
-                    </main>
-                </Container>
-                <Footer /> 
-            </div>
+        <ScreenContainer title='Dashboard'>
+            <h1>BODY</h1>
         </ScreenContainer>
     )
 }
