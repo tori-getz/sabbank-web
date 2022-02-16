@@ -15,8 +15,8 @@ export const WalletList: React.FC<IWalletList> = () => {
     const { currencies } = useWallet();
 
     return (
-        <div>
-            <h1>{t('Wallets')}</h1>
+        <div className="mb-5">
+            <div className="widgetTitle">{t('Wallets')}</div>
             {currencies.map((currency: iCurrency, key: number) => (
                 <WalletListItem
                     {...currency}

@@ -16,7 +16,7 @@ export const CurrencyList: React.FC<ICurrencyList> = () => {
 
     return (
         <div>
-            <h1>{t('Currencies')}</h1>
+            <div className="widgetTitle">{t('Currencies')}</div>
             {currencies.map((currency: iCurrency, key: number) => (
                 <CurrencyListItem
                     {...currency}
