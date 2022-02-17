@@ -15,9 +15,15 @@ export const WalletListItem: React.FC<iCurrency> = currency => {
     const { settings } = useUser();
 
     return (
+        <div onClick={() => alert('lol')}>
         <Card>
             <CardContent className={styles.wrapper}>            
-                <IconButton rounded size='small' text={false} color=''>
+                <IconButton
+                    rounded
+                    size='small'
+                    text={false}
+                    color=''
+                >
                     <Icon name={currency.asset} size={16}></Icon>
                 </IconButton>                
                 <div className={styles.titleBlock}>
@@ -31,6 +37,6 @@ export const WalletListItem: React.FC<iCurrency> = currency => {
                 <Icon name='arrow-right' size={16}></Icon>
             </CardContent>
         </Card>
-
+        </div>
     )
 }

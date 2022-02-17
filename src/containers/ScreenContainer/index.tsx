@@ -27,7 +27,7 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
     return (
         <>
             <Helmet>
-                <title>{title}</title>
+                <title>{title} | Sabbank</title>
             </Helmet>
             <div className='d-flex flex-column min-vh-100'>
                 <Navbar />

@@ -11,5 +11,6 @@ export const ru: ILocale = {
     'Total balance': 'Баланс',
     'Support': 'Поддержка',
     'Currencies': 'Курсы валют',
-    'Wallets': 'Криптокошельки'
+    'Wallets': 'Криптокошельки',
+    "Main": 'Главная'
 };

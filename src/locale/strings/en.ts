@@ -11,5 +11,6 @@ export const en: ILocale = {
     'Total balance': 'Total balance',
     'Support': 'Support',
     'Currencies': 'Currencies',
-    'Wallets': 'Wallets'
+    'Wallets': 'Wallets',
+    "Main": 'Main'
 };

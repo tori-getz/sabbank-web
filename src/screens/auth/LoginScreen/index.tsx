@@ -7,16 +7,14 @@ import { ScreenContainer } from '@containers';
 import { LoginForm } from '@components';
 import { Navbar, Footer } from '@components/ui';
 
-import styles from './HelloScreen.module.sass';
+import styles from './LoginScreen.module.sass';
 
-interface IHelloScreen {};
+interface ILoginScreen {};
 
-export const HelloScreen: React.FC<IHelloScreen> = () => {
+export const LoginScreen: React.FC<IHelloScreen> = () => {
     return (
         <ScreenContainer title='Вход и регистрация'>
-            <div className={styles.wrapper}>
-                <LoginForm />
-            </div>
+            <LoginForm />
         </ScreenContainer>
     );
 }

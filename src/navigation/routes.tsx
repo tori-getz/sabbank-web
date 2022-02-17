@@ -3,19 +3,19 @@ import type { Routes } from '@typing';
 
 import {
     DashboardScreen,
-    HelloScreen
+    LoginScreen
 } from '@screens';
 
 export const unauthorizedRoutes: Routes = [
     {
-        path: '/',
-        component: <HelloScreen />
+        path: '/login',
+        component: <LoginScreen />
     }
 ]
 
 export const authroizedRoutes: Routes = [
     {
-        path: '/',
+        path: '/dashboard',
         component: <DashboardScreen />
     }
 ];

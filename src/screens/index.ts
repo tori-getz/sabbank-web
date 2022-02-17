@@ -1,2 +1,2 @@
-export { DashboardScreen } from './DashboardScreen';
-export { HelloScreen } from './HelloScreen';
+export * from './app';
+export * from './auth';
