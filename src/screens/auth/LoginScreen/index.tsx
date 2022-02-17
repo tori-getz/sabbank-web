@@ -11,7 +11,7 @@ import styles from './LoginScreen.module.sass';
 
 interface ILoginScreen {};
 
-export const LoginScreen: React.FC<IHelloScreen> = () => {
+export const LoginScreen: React.FC<ILoginScreen> = () => {
     return (
         <ScreenContainer title='Вход и регистрация'>
             <LoginForm />
