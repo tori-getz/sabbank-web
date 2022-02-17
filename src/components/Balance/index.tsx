@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
     useTranslation,
@@ -11,6 +11,10 @@ import { moneyAmountFormatter } from '@utils';
 import styles from './Balance.module.sass';
 import cn from 'classnames';
 
+import { isEmpty } from 'lodash';
+
+import { Spinner } from '@components/ui';
+
 interface IBalance {};
 
 export const Balance: React.FC<IBalance> = () => {
@@ -19,7 +23,15 @@ export const Balance: React.FC<IBalance> = () => {
     const { settings } = useUser();
     const { totalBalance } = useWallet();
 
-    const amount = moneyAmountFormatter(totalBalance[settings?.fiat_currency?.iso_code], 2);
+    const amount = moneyAmountFormatter(totalBalance[settings?.fiat_currency?.iso_code], 2)
+
+    if (isEmpty(totalBalance)) {
+        return (
+            <div className={styles.widget}>
+                <Spinner variant='light' />
+            </div>
+        )
+    }
 
     return (
         <div className={cn(styles.widget)}>

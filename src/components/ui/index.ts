@@ -5,3 +5,4 @@ export { WalletListItem } from './WalletListItem';
 export { Icon } from './Icon';
 export { Chart } from './Chart';
 export { LanguageSelect } from './LanguageSelect';
+export { Spinner } from './Spinner';
