@@ -10,6 +10,7 @@ interface IFooter {};
 
 export const Footer: React.FC<IFooter> = () => {
     const { t } = useTranslation(); 
+    
     return (
         <footer className={cn(styles.footer, 'mt-auto')}>
             <Container>
@@ -26,28 +27,28 @@ export const Footer: React.FC<IFooter> = () => {
                                 <img src="/assets/img/Google-Play-badge.svg" alt="SAB Bank"/>
                             </a> 
                         </div>
-                        <p className="text-sm text-muted">&copy; Sabbank, 2022 Все права защищены.</p>
+                        <p className="text-sm text-muted">&copy; Sabbank, 2022 {t('All rights reserved')}</p>
                     </div>
                     <div className="col-lg-7">
                         <div className="row">
                             <div className="col-md-4">
-                                <div className={styles.categoriesTitle}>Product</div>
+                                <div className={styles.categoriesTitle}>{t('Product')}</div>
                                 <ul className={styles.categoriesList}>
-                                    <li><a href="#">How it works</a></li>
-                                    <li><a href="#">Benefits</a></li>
-                                    <li><a href="#">Features</a></li>
+                                    <li><a href="#">{t('How it works')}</a></li>
+                                    <li><a href="#">{t('Benefits')}</a></li>
+                                    <li><a href="#">{t('Features')}</a></li>
                                 </ul>
                             </div>
                             <div className="col-md-4">
                                 <div className={styles.categoriesTitle}>{t('Support')}</div>                            
                                 <ul className={styles.categoriesList}>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Privacy policy</a></li>
+                                    <li><a href="#">{t('Terms & Conditions')}</a></li>
+                                    <li><a href="#">{t('Privacy policy')}</a></li>
                                     <li><a href="#">FAQ</a></li>
                                 </ul>
                             </div>
                             <div className="col-md-4">
-                                <div className={styles.categoriesTitle}>Contact</div>
+                                <div className={styles.categoriesTitle}>{t('Contact')}</div>
                                 <ul className={styles.categoriesList}>
                                     <li><a href="mailto:support@example.com">ihtop@zeoju.org</a></li>
                                     <li><a href="#">11-000-000</a></li>

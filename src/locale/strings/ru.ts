@@ -12,5 +12,15 @@ export const ru: ILocale = {
     'Support': 'Поддержка',
     'Currencies': 'Курсы валют',
     'Wallets': 'Криптокошельки',
-    "Main": 'Главная'
+    "Main": 'Главная',
+    'Card': 'Карта',
+    'Credit': 'Кредит',
+    'All rights reserved': 'Все права защищены',
+    'Product': 'Продукт',
+    'How it works': 'Как это работает',
+    'Benefits': 'Преимущества',
+    'Features': 'Возможности',
+    'Terms & Conditions': 'Условия',
+    'Privacy policy': 'Политика конфиденциальности',
+    'Contact': 'Контакты'
 };

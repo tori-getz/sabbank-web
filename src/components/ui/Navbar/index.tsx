@@ -12,18 +12,30 @@ import { LanguageSelect } from '@components/ui';
 
 interface INavbar {};
 
+interface ILink {
+    to: string
+    title: string
+}
+
 export const Navbar: React.FC<INavbar> = () => {
     const { t } = useTranslation();
+
+    const authorizedLinks: Array<ILink> = [
+        { to: '/dashboard', title: t('Home') },
+        { to: '/deposit', title: t('Deposit') },
+        { to: '/credit', title: t('Credit') },
+        { to: '/card', title: t('Card') }
+    ]
 
     const renderLinks = () => {
         return (
             <>
-                <LinkContainer to='/dashboard'>
-                    <Nav.Link>{t('Home')}</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to='/deposit'>
-                    <Nav.Link>{t('Deposit')}</Nav.Link>
-                </LinkContainer>
+                {authorizedLinks.map((link: ILink, key: number) => (
+                    <LinkContainer to={link.to}>
+                        <Nav.Link>{link.title}</Nav.Link>
+                    </LinkContainer>
+                ))}
+                <LanguageSelect />
             </>
         )
     }
@@ -38,7 +50,6 @@ export const Navbar: React.FC<INavbar> = () => {
                 <BootstrapNavbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav>
                         {renderLinks()}
-                        <LanguageSelect />
                     </Nav>
                 </BootstrapNavbar.Collapse>
             </Container>

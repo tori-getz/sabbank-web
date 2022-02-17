@@ -12,5 +12,15 @@ export const en: ILocale = {
     'Support': 'Support',
     'Currencies': 'Currencies',
     'Wallets': 'Wallets',
-    "Main": 'Main'
+    "Main": 'Main',
+    'Card': 'Card',
+    'Credit': 'Credit',
+    'All rights reserved': 'All rights reserved',
+    'Product': 'Product',
+    'How it works': 'How it works',
+    'Benefits': 'Benefits',
+    'Features': 'Features',
+    'Terms & Conditions': 'Terms & Conditions',
+    'Privacy policy': 'Privacy policy',
+    'Contact': 'Contact'
 };

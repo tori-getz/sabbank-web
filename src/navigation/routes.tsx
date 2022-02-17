@@ -6,7 +6,11 @@ import {
     LoginScreen
 } from '@screens';
 
-import { depositRoutes } from './stacks';
+import {
+    depositRoutes,
+    cardRoutes,
+    creditRoutes
+} from './stacks';
 
 export const unauthorizedRoutes: Routes = [
     {
@@ -20,5 +24,7 @@ export const authroizedRoutes: Routes = [
         path: '/dashboard',
         component: <DashboardScreen />
     },
-    ...depositRoutes
+    ...depositRoutes,
+    ...cardRoutes,
+    ...creditRoutes
 ];
