@@ -30,19 +30,23 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
                 <title>{title} | Sabbank</title>
             </Helmet>
             <div className='d-flex flex-column min-vh-100'>
-                <Navbar />
-                <Container className={cn(styles.containerLayout)}>
-                    {isAuth() && (
+                <Navbar />                
+                {isAuth() ? (
+                    <Container className={cn(styles.containerLayout)}>
                         <aside className={styles.aside}>
                             <Balance />
                             <WalletList />
                             <CurrencyList />
                         </aside>
-                    )}
-                    <main className={styles.main}>
+                        <main className={styles.main}>
+                            {children} 
+                        </main>
+                    </Container>
+                ) : (
+                    <Container className={cn(styles.container)}>
                         {children} 
-                    </main>
-                </Container>
+                    </Container>
+                )}
                 <Footer />
             </div>
         </>
