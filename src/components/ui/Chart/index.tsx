@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import random from 'random';
 
 import styles from './Chart.module.sass';
 

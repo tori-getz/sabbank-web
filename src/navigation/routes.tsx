@@ -6,6 +6,8 @@ import {
     LoginScreen
 } from '@screens';
 
+import { depositRoutes } from './stacks';
+
 export const unauthorizedRoutes: Routes = [
     {
         path: '/login',
@@ -17,5 +19,6 @@ export const authroizedRoutes: Routes = [
     {
         path: '/dashboard',
         component: <DashboardScreen />
-    }
+    },
+    ...depositRoutes
 ];
