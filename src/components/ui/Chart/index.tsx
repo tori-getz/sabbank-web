@@ -40,7 +40,14 @@ export const Chart: React.FC<IChart> = ({ data }) => {
         <ul className={styles.chartWrapper}> 
             {percents.map((percent: number, key: number) => (
                  <li key={key}>                     
-                    <span className={styles.candle}></span>
+                    <span
+                        className={styles.candle}
+                        style={{
+                            position: 'absolute',
+                            bottom: percent,
+                            height: heights[key]
+                        }}
+                    />
                 </li>
             ))}
             {/* {data.map((number) => (           
