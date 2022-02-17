@@ -22,5 +22,8 @@ export const en: ILocale = {
     'Features': 'Features',
     'Terms & Conditions': 'Terms & Conditions',
     'Privacy policy': 'Privacy policy',
-    'Contact': 'Contact'
+    'Contact': 'Contact',
+    'Logout': 'Logout',
+    'User': 'User',
+    'About': 'About'
 };

@@ -22,5 +22,8 @@ export const ru: ILocale = {
     'Features': 'Возможности',
     'Terms & Conditions': 'Условия',
     'Privacy policy': 'Политика конфиденциальности',
-    'Contact': 'Контакты'
+    'Contact': 'Контакты',
+    'Logout': 'Выйти',
+    'User': 'Пользователь',
+    'About': 'О нас'
 };

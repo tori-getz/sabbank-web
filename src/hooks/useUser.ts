@@ -11,6 +11,7 @@ export const useUser = () => {
 
     return {
         settings,
+        user,
         getUser
     };
 }

@@ -6,3 +6,4 @@ export { Icon } from './Icon';
 export { Chart } from './Chart';
 export { LanguageSelect } from './LanguageSelect';
 export { Spinner } from './Spinner';
+export { UserActions } from './UserActions';

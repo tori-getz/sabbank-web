@@ -9,7 +9,9 @@ import {
     $accessToken,
 
     setAccessToken,
-    setRefreshToken
+    setRefreshToken,
+
+    logout as logoutEvent
 } from '@store/auth';
 
 import {
@@ -20,7 +22,8 @@ import { HTTPClient } from '@http';
 
 interface IUseAuth {
     isAuth: () => boolean
-    login: (credentials: IAuthDto) => any
+    login: (credentials: IAuthDto) => any,
+    logout: () => void
 }
 
 export const useAuth = (): IUseAuth => {
@@ -38,13 +41,20 @@ export const useAuth = (): IUseAuth => {
     
             setRefreshToken(token.refresh);
             setAccessToken(token.access);
+
+            HTTPClient.defaults.headers['Authorization'] = `Bearer ${token.access}`;
         } catch (e) {
             throw new Error(e.response?.data?.detail);
         }
     }
 
+    const logout = () => {
+        logoutEvent();
+    }
+
     return {
         isAuth,
-        login
+        login,
+        logout
     }
 }

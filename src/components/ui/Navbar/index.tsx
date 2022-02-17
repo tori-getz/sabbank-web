@@ -6,9 +6,9 @@ import styles from './Navbar.module.sass';
 
 import { LinkContainer } from 'react-router-bootstrap';
 
-import { useTranslation } from '@hooks';
+import { useTranslation, useAuth } from '@hooks';
 
-import { LanguageSelect } from '@components/ui';
+import { LanguageSelect, UserActions } from '@components/ui';
 
 interface INavbar {};
 
@@ -19,6 +19,7 @@ interface ILink {
 
 export const Navbar: React.FC<INavbar> = () => {
     const { t } = useTranslation();
+    const { isAuth } = useAuth();
 
     const authorizedLinks: Array<ILink> = [
         { to: '/dashboard', title: t('Home') },
@@ -27,15 +28,43 @@ export const Navbar: React.FC<INavbar> = () => {
         { to: '/card', title: t('Card') }
     ]
 
+    const unauthorizedLinks: Array<ILink> = [
+        { to: '/', title: t('About') },
+        { to: '/', title: t('Features') },
+        { to: '/', title: t('Benefits') },
+        { to: '/', title: 'FAQS' },
+        { to: '/', title: t('Contact') }
+    ];
+
     const renderLinks = () => {
+        if (!isAuth()) {
+            return (
+                <>
+                    {unauthorizedLinks.map((link: ILink, key: number) => (
+                        <LinkContainer
+                            to={link.to}
+                            key={key}
+                        >
+                            <Nav.Link>{link.title}</Nav.Link>
+                        </LinkContainer>
+                    ))}
+                    <LanguageSelect />
+                </>
+            )
+        }
+
         return (
             <>
                 {authorizedLinks.map((link: ILink, key: number) => (
-                    <LinkContainer to={link.to}>
+                    <LinkContainer
+                        to={link.to}
+                        key={key}
+                    >
                         <Nav.Link>{link.title}</Nav.Link>
                     </LinkContainer>
                 ))}
                 <LanguageSelect />
+                <UserActions />
             </>
         )
     }
