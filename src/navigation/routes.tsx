@@ -3,7 +3,8 @@ import type { Routes } from '@typing';
 
 import {
     DashboardScreen,
-    LoginScreen
+    LoginScreen,
+    RegisterScreen
 } from '@screens';
 
 import {
@@ -16,6 +17,10 @@ export const unauthorizedRoutes: Routes = [
     {
         path: '/login',
         component: <LoginScreen />
+    },
+    {
+        path: '/register',
+        component: <RegisterScreen />
     }
 ]
 

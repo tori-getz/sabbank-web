@@ -4,6 +4,7 @@ import type { ILocale } from '@typing';
 export const en: ILocale = {
     'Wrong credentials': 'Wrong credentials',
     'Sign in': 'Sign in',
+    'Sign up': 'Sign up',
     'Phone number': 'Phone number',
     'Password': 'Password',
     'Home': 'Home',
@@ -25,5 +26,5 @@ export const en: ILocale = {
     'Contact': 'Contact',
     'Logout': 'Logout',
     'User': 'User',
-    'About': 'About'
+    'About': 'About',
 };
