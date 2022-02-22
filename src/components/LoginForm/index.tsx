@@ -5,6 +5,8 @@ import { Card, CardContent} from 'ui-neumorphism';
 import { Alert } from 'react-bootstrap';
 import { TextInput, Button, Divider, Label } from '@components/ui'
 
+import { Link } from 'react-router-dom';
+
 import { useAuth, useTranslation } from '@hooks';
 
 interface ILoginForm {};
@@ -32,23 +34,22 @@ export const LoginForm: React.FC<ILoginForm> = () => {
             <div className="col-md-5 pb-5 pt-5 mx-auto">
                 <Card className='d-flex align-center flex-column'>
                     <CardContent className="p-4">
-                        <h3 className="h4 pt-3 pb-2">Войти</h3>
+                        <h3 className="h4 pt-3 pb-2">{t('Sign in')}</h3>
                         <Divider />
                         <div className="mt-3">
-                            <Label>Номер телефона</Label>
+                            <Label>{t('Phone number')}</Label>
                         </div>
                         <TextInput
-                            placeholder={t('Phone number')}
                             value={phone}
                             onChange={({ target: {value} }) => setPhone(value)}
                             id="phone"
+                            maxLength={12}
                         />
                         <div className="d-flex flex-wrap justify-content-between mt-3">
-                            <Label>Пароль</Label>
-                            <a href="#" className="">Забыли пароль?</a>
+                            <Label>{t('Password')}</Label>
+                            <Link to='/forgot'>{t('Forgot password?')}</Link>
                         </div>
                         <TextInput
-                            placeholder={t('Password')}
                             value={password}
                             onChange={({ target: {value} }) => setPassword(value)}
                         />
@@ -59,6 +60,10 @@ export const LoginForm: React.FC<ILoginForm> = () => {
                                 </Alert>
                             )}
                             <Button onClick={onSubmit} label={t('Sign in')} className="mt-2"/>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center mt-4'>
+                            <Label>Нет аккаунта?</Label>
+                            <Link to='/register'>{t('Sign up')}</Link>
                         </div>
                     </CardContent>
                 </Card>

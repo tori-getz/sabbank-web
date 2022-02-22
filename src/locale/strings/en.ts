@@ -27,4 +27,15 @@ export const en: ILocale = {
     'Logout': 'Logout',
     'User': 'User',
     'About': 'About',
+    'Forgot password?': 'Forgot password?',
+    'Enter your registration phone number below for instructions on how to reset your password.': 'Enter your registration phone number below for instructions on how to reset your password.',
+    'Send': 'Send',
+    'Password recovery': 'Password recovery',
+    'Confirmation code': 'Confirmation code',
+    'Enter the one-time verification code sent to your phone': 'Enter the one-time verification code sent to your phone',
+    'Next': 'Next',
+    'Creating a new password': 'Creating a new password',
+    'Create a strong password consisting of letters, numbers and symbols': 'Create a strong password consisting of letters, numbers and symbols',
+    'Confirm password': 'Confirm password',
+    'Save': 'Save'
 };

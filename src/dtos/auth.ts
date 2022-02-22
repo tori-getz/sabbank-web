@@ -15,3 +15,22 @@ export interface IAuthResponse {
     token: IAuthTokens
     user: IUser
 }
+
+export interface IAuthRestoreDto {
+    phone: string
+}
+
+export interface IAuthRestoreVerifyDto {
+    phone: string
+    verify_code: string
+}
+
+export interface IAuthRestoreVerifyResponse {
+    detail: string
+}
+
+export interface IAuthRestoreCompleteDto {
+    phone: string
+    new_password: string
+    verify_code: string
+}

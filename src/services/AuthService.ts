@@ -4,7 +4,11 @@ import { HTTPClient } from "@http";
 import type {
     IAuthDto,
     IAuthResponse,
-    IAuthTokens
+    IAuthTokens,
+    IAuthRestoreDto,
+    IAuthRestoreVerifyDto,
+    IAuthRestoreVerifyResponse,
+    IAuthRestoreCompleteDto
 } from "@dtos";
 
 import {
@@ -34,6 +38,20 @@ export class AuthService {
         const { data } = await this.http.get<IUser>('/user/profile'); 
 
         return data;
+    }
+
+    public async restore (dto: IAuthRestoreDto): Promise<void> {
+        await this.http.post('/auth/restore', dto);
+    }
+
+    public async restoreVerify (dto: IAuthRestoreVerifyDto): Promise<IAuthRestoreVerifyResponse> {
+        const { data } = await this.http.post<IAuthRestoreVerifyResponse>('/auth/restoreVerify', dto);
+
+        return data;
+    }
+
+    public async restoreComplete (dto: IAuthRestoreCompleteDto): Promise<void> {
+        const { data } = await this.http.post('/auth/restoreComplete', dto);
     }
     
     public static refreshToken (): Promise<string> {

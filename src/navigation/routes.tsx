@@ -4,7 +4,10 @@ import type { Routes } from '@typing';
 import {
     DashboardScreen,
     LoginScreen,
-    RegisterScreen
+    RegisterScreen,
+    ForgotPasswordScreen,
+    ForgotVerifyScreen,
+    ForgotChangePasswordScreen
 } from '@screens';
 
 import {
@@ -21,6 +24,18 @@ export const unauthorizedRoutes: Routes = [
     {
         path: '/register',
         component: <RegisterScreen />
+    },
+    {
+        path: '/forgot',
+        component: <ForgotPasswordScreen />
+    },
+    {
+        path: '/forgot/verify',
+        component: <ForgotVerifyScreen />
+    },
+    {
+        path: '/forgot/changepassword',
+        component: <ForgotChangePasswordScreen />
     }
 ]
 

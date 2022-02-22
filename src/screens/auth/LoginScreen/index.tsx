@@ -1,19 +1,18 @@
 
 import React from 'react';
 
-import { Container } from 'react-bootstrap';
-
 import { ScreenContainer } from '@containers';
 import { LoginForm } from '@components';
-import { Navbar, Footer } from '@components/ui';
 
-import styles from './LoginScreen.module.sass';
+import { useTranslation } from '@hooks';
 
 interface ILoginScreen {};
 
 export const LoginScreen: React.FC<ILoginScreen> = () => {
+    const { t } = useTranslation();
+
     return (
-        <ScreenContainer title='Вход и регистрация'>
+        <ScreenContainer title={t('Sign in')}>
             <LoginForm />
         </ScreenContainer>
     );

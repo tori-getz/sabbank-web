@@ -26,5 +26,15 @@ export const ru: ILocale = {
     'Contact': 'Контакты',
     'Logout': 'Выйти',
     'User': 'Пользователь',
-    'About': 'О нас'
+    'About': 'О нас',
+    'Forgot password?': 'Забыли пароль?',
+    'Enter your registration phone number below for instructions on how to reset your password.': 'Введите ниже свой регистрационный номер телефона, чтобы получить инструкцию по сбросу пароля.',
+    'Send': 'Отправить',
+    'Password recovery': 'Восстановление пароля',
+    'Confirmation code': 'Код подтверждения',
+    'Enter the one-time verification code sent to your phone': 'Введите одноразовый код подтверждения отправленный на ваш телефон',
+    'Next': 'Продолжить',
+    'Creating a new password': 'Создание нового пароля',
+    'Confirm password': 'Повторите пароль',
+    'Save': 'Сохранить'
 };

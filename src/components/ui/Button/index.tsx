@@ -17,13 +17,14 @@ export const Button: React.FC<IButton> = ({
     label, 
     loading,
     className,
+    disabled = false,
     ...props
 }) => {
     const renderLabel = () => {
         if (loading) {
             return (
                 <Spinner
-                    variant='dark'
+                    variant='light'
                 />
 
             )
@@ -32,6 +33,16 @@ export const Button: React.FC<IButton> = ({
         return label;
     }
     return (
-        <button className={cn(styles.button, className)} {...props}>{renderLabel()}</button>
+        <button
+            className={cn(
+                styles.button,
+                { [styles.buttonDisabled]: disabled },
+                className
+            )}
+            disabled={disabled}
+            {...props}
+        >
+            {renderLabel()}
+        </button>
     )
 }

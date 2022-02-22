@@ -5,6 +5,8 @@ import { ScreenContainer } from '@containers';
 
 import { useTranslation } from '@hooks';
 
+import { RegisterForm } from '@components';
+
 interface IRegisterScreen {};
 
 export const RegisterScreen: React.FC<IRegisterScreen> = () => {
@@ -12,7 +14,7 @@ export const RegisterScreen: React.FC<IRegisterScreen> = () => {
 
     return (
         <ScreenContainer title={t('Sign up')}>
-            <h1>{t('Sign up')}</h1>
+            <RegisterForm />
         </ScreenContainer>
     )
 }
