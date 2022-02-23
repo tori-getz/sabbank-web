@@ -11,3 +11,4 @@ export { UserActions } from './UserActions';
 export { Button } from './Button';
 export { Divider } from './Divider';
 export { Label } from './Label';
+export { ButtonWalletAction } from './ButtonWalletAction';

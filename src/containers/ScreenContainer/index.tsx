@@ -46,14 +46,16 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
                 <Navbar />                
                 {isAuth() ? (
                     <Container className={cn(styles.containerLayout)}>
-                        <aside className={styles.aside}>
-                            <Balance />
-                            <WalletList />
-                            <CurrencyList />
-                        </aside>
-                        <main className={styles.main}>
-                            {children} 
-                        </main>
+                        <div className="row">
+                            <aside className={cn(styles.aside, "col-md-4")}>
+                                <Balance />
+                                <WalletList />
+                                <CurrencyList />
+                            </aside>
+                            <main className={cn(styles.main, "col-md-8")}>
+                                {children} 
+                            </main>
+                        </div>
                     </Container>
                 ) : (
                     <Container className={cn(styles.container)}>
