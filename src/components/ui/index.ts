@@ -12,3 +12,4 @@ export { Button } from './Button';
 export { Divider } from './Divider';
 export { Label } from './Label';
 export { DepositListItem } from './DepositListItem';
+export { GoBack } from './GoBack';

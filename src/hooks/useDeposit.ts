@@ -15,10 +15,13 @@ import {
 
 import { DepositService } from '@services';
 
+import { isEmpty } from 'lodash';
+
 interface IUseDeposit {
     totalAmount: number
     depositList: Array<IDepositGroup>
-    getDeposits: () => Promise<void>
+    getDeposits: () => Promise<void>,
+    getGroupByDepositId: (id: string) => IDepositGroup | null
 }
 
 export const useDeposit = (): IUseDeposit => {
@@ -38,9 +41,22 @@ export const useDeposit = (): IUseDeposit => {
         }
     }
 
+    const getGroupByDepositId = (id: string): IDepositGroup | null => {
+        if (isEmpty(depositList)) return null;
+
+        for (let group of depositList) {
+            for (let deposit of group.data) {
+                if (deposit.id === id) return group;
+            }
+        }
+
+        return null;
+    }
+
     return {
         totalAmount,
         depositList,
-        getDeposits
+        getDeposits,
+        getGroupByDepositId
     }
 }
