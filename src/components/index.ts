@@ -4,3 +4,5 @@ export { CurrencyList } from './CurrencyList';
 export { WalletList } from './WalletList';
 export { FiatSelect } from './FiatSelect';
 export { RegisterForm } from './RegisterForm';
+export { TotalEarnings } from './TotalEarnings'
+export { DepositGroup } from './DepositGroup';

@@ -56,7 +56,7 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
                         </main>
                     </Container>
                 ) : (
-                    <Container className={cn(styles.container)}>
+                    <Container className={cn(styles.containerLayout)}>
                         {children} 
                     </Container>
                 )}

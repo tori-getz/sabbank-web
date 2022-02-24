@@ -3,6 +3,8 @@ import React, { InputHTMLAttributes } from 'react';
 import styles from './TextInput.module.sass';
 
 interface ITextInput extends InputHTMLAttributes<HTMLInputElement> {
+    icon?: string
+    iconAction?: () => any
 }
 
 export const TextInput: React.FC<ITextInput> = ({ 

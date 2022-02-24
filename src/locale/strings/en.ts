@@ -37,5 +37,7 @@ export const en: ILocale = {
     'Creating a new password': 'Creating a new password',
     'Create a strong password consisting of letters, numbers and symbols': 'Create a strong password consisting of letters, numbers and symbols',
     'Confirm password': 'Confirm password',
-    'Save': 'Save'
+    'Save': 'Save',
+    'Total earnings': 'Total earnings',
+    'Open deposit': 'Open deposit'
 };
