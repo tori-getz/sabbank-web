@@ -6,3 +6,5 @@ export { FiatSelect } from './FiatSelect';
 export { RegisterForm } from './RegisterForm';
 export { TotalEarnings } from './TotalEarnings'
 export { DepositGroup } from './DepositGroup';
+export { WalletActions } from './WalletActions';
+export { TransactionsHistory } from './TransactionsHistory';
