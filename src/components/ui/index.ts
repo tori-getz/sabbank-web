@@ -14,3 +14,4 @@ export { Label } from './Label';
 export { DepositListItem } from './DepositListItem';
 export { GoBack } from './GoBack';
 export { ButtonWalletAction } from './ButtonWalletAction';
+export { Details } from './Details';

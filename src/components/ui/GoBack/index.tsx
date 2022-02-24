@@ -18,13 +18,15 @@ export const GoBack: React.FC<IGoBack> = ({
     className,
     onClick
 }) => {
+    const { t } = useTranslation();
+
     return (
         <div
             className={cn(styles.wrapper, 'd-flex', className)}
             onClick={onClick}
         >
             <Icon name='back' size={14} />
-            <p className={styles.text}>Назад</p>
+            <p className={styles.text}>{t('Back')}</p>
         </div>
     )
 }

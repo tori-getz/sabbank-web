@@ -13,3 +13,28 @@ export interface IDepositGroup {
     percentage: number
     data: Array<IDeposit>
 }
+
+export interface IDepositPeriod {
+    id: string
+    period: any
+    name_ru: string
+    name_en: string
+    description_ru: string
+    description_en: string
+}
+
+export interface IDepositHistoryItem {
+    amount: string
+    created: string
+    history_type: string
+    title: string
+    asset: string
+}
+
+export interface IDepositCurrency {
+    id: string
+    asset: string
+    name: string
+    amount: string
+    percentage: number
+}

@@ -38,5 +38,7 @@ export const ru: ILocale = {
     'Confirm password': 'Повторите пароль',
     'Save': 'Сохранить',
     'Total earnings': 'Общий заработок',
-    'Open deposit': 'Отерыть вклад'
+    'Open deposit': 'Отерыть вклад',
+    'Back': 'Назад',
+    'Opening a deposit': 'Открытие вклада'
 };

@@ -39,5 +39,7 @@ export const en: ILocale = {
     'Confirm password': 'Confirm password',
     'Save': 'Save',
     'Total earnings': 'Total earnings',
-    'Open deposit': 'Open deposit'
+    'Open deposit': 'Open deposit',
+    'Back': 'Back',
+    'Opening a deposit': 'Opening a deposit'
 };

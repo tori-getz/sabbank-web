@@ -1,7 +1,9 @@
 
 import type { AxiosInstance } from "axios";
 import type {
-    IDepositListResult
+    IDepositListResult,
+    IDepositHistoryResult,
+    IDepositHistoryDto
 } from '@dtos';
 
 import { HTTPClient } from '@http';
@@ -15,6 +17,12 @@ export class DepositService {
 
     public async getMyDeposits (): Promise<IDepositListResult> {
         const { data } = await this.http.get<IDepositListResult>('/depositList');
+
+        return data;
+    }
+
+    public async getHistory (dto: IDepositHistoryDto): Promise<IDepositHistoryResult> {
+        const { data } = await this.http.get<IDepositHistoryResult>(`/depositHistory/${dto.id}`);
 
         return data;
     }

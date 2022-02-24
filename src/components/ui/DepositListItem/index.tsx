@@ -16,13 +16,15 @@ import { useUser } from '@hooks';
 import { moneyAmountFormatter } from '@utils';
 
 interface IDepositListItem extends IDeposit {
-    onClick: () => any
+    onClick?: () => any
+    disabled?: boolean
 }
 
 export const DepositListItem: React.FC<IDepositListItem> = ({
     asset,
     name,
     amount,
+    disabled,
     onClick
 }) => {
     const { settings } = useUser();
@@ -30,7 +32,13 @@ export const DepositListItem: React.FC<IDepositListItem> = ({
     return (
         <Card>
             <CardContent>
-                <div className={cn(styles.wrapper, 'd-flex p-2')} onClick={onClick}>
+                <div
+                    className={cn(
+                        { [styles.wrapper]: !disabled },
+                        'd-flex p-2'
+                    )}
+                    onClick={onClick}
+                >
                     <IconButton
                         rounded
                         size='small'
@@ -49,7 +57,9 @@ export const DepositListItem: React.FC<IDepositListItem> = ({
                         <div className={styles.amount}>{moneyAmountFormatter(amount, 4)} {asset.toUpperCase()}</div>
                         {/* <div className={styles.amountUSDT}>{settings?.fiat_currency?.symbol}{moneyAmountFormatter(amount * currency.price[settings?.fiat_currency?.iso_code], 2)}</div> */}
                     </div>
-                    <Icon name='arrow-right' size={16} />
+                    {!disabled && (
+                        <Icon name='arrow-right' size={16} />
+                    )}
                 </div>
             </CardContent>
         </Card>
