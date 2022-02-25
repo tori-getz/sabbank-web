@@ -1,7 +1,7 @@
 
 import type {
     IDepositGroup,
-    IDepositCurrency,
+    IDepositSettingCurrency,
     IDepositPeriod
 } from '@typing';
 
@@ -25,7 +25,7 @@ import { isEmpty } from 'lodash';
 
 interface IUseDeposit {
     totalAmount: number
-    currencies: Array<IDepositCurrency>
+    currencies: Array<IDepositSettingCurrency>
     depositPeriods: Array<IDepositPeriod>
     getInfo: () => void
     depositList: Array<IDepositGroup>
@@ -74,6 +74,7 @@ export const useDeposit = (): IUseDeposit => {
         depositList,
         getDeposits,
         getGroupByDepositId,
+        // @ts-ignore
         currencies,
         depositPeriods,
         getInfo

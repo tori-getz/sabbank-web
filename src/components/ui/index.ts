@@ -17,3 +17,5 @@ export { ButtonWalletAction } from './ButtonWalletAction';
 export { Details } from './Details';
 export { RadioButton } from './RadioButton';
 export { DepositPeriodItem } from './DepositPeriodItem';
+export { Modal } from './Modal';
+export { Checkbox } from './Checkbox';

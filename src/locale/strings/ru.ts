@@ -38,10 +38,13 @@ export const ru: ILocale = {
     'Confirm password': 'Повторите пароль',
     'Save': 'Сохранить',
     'Total earnings': 'Общий заработок',
-    'Open deposit': 'Отерыть вклад',
+    'Open deposit': 'Открыть вклад',
     'Back': 'Назад',
     'Opening a deposit': 'Открытие вклада',
     'Cryptocurrency': 'Криптовалюта',
     'Choose a cryptocurrency to invest to earn money': 'Выберите криптовалюту для вложения, чтобы получить заработок',
-    'Term': 'Срок'
+    'Term': 'Срок',
+    'Select the period for investment after which the principal amount and profit will be in the currency of your choice': 'Выберите срок для вложения по истечении которого, основная сумма и прибыль будут в выбранной вами валюте',
+    'Terms': 'Условия и соглашения',
+    'Agree': 'Принимаю'
 };

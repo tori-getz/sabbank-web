@@ -45,5 +45,7 @@ export const en: ILocale = {
     'Cryptocurrency': 'Cryptocurrency',
     'Choose a cryptocurrency to invest to earn money': 'Choose a cryptocurrency to invest to earn money',
     'Term': 'Term',
-    'Select the period for investment after which the principal amount and profit will be in the currency of your choice': 'Select the period for investment after which the principal amount and profit will be in the currency of your choice'
+    'Select the period for investment after which the principal amount and profit will be in the currency of your choice': 'Select the period for investment after which the principal amount and profit will be in the currency of your choice',
+    'Terms': 'Terms',
+    'Agree': 'Agree'
 };

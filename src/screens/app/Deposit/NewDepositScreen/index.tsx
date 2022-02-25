@@ -18,7 +18,10 @@ import {
     Button
 } from '@components/ui';
 
-import { CurrencyRadio } from '@components';
+import {
+    CurrencyRadio,
+    DepositAgreement
+ } from '@components';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -42,6 +45,8 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
     const [ currency, setCurrency ] = useState<IDepositSettingCurrency>(null);
     const [ period, setPeriod ] = useState<IDepositSettingCurrencyPeriod>(null);
 
+    const [ agreementVisible, setAgreementVisible ] = useState<boolean>(false);
+
     const currencyAssets: Array<string> = currencies.map(c => c.asset);
     const filteredCryptos = cryptos.filter(c => currencyAssets.includes(c.asset));
 
@@ -51,6 +56,7 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
 
     useEffect(() => {
         if (!isEmpty(currencies)) {
+            // @ts-ignore
             setCurrency(currencies[0]);
         }
     }, [currencies]);
@@ -70,11 +76,14 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
                                     styles.currencies,
                                     'd-flex'
                                 )}>
-                                    {currencies.map((crypto) => (
+                                    {currencies.map((crypto, key: number) => (
                                         <CurrencyRadio 
+                                            // @ts-ignore
                                             item={crypto}
+                                            key={key}
                                             percentageKey={percentageKey}
                                             active={crypto.id === currency?.id} 
+                                            // @ts-ignore
                                             onClick={() => setCurrency(crypto)}
                                         />
                                     ))}
@@ -89,6 +98,7 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
                                 {currency.data.map((d, key: number) => (
                                     <DepositPeriodItem
                                         item={d}
+                                        key={key}
                                         active={d.depositPeriod.id === period?.depositPeriod?.id}
                                         onClick={() => {
                                             setPeriod(d);
@@ -100,6 +110,7 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
                         )}
                         <Button
                             disabled={!period}
+                            onClick={() => setAgreementVisible(true)}
                             className={cn(
                                 styles.next,
                                 'mt-4'
@@ -109,6 +120,11 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
                     </div>
                 </CardContent>
             </Card>
+            <DepositAgreement
+                visible={agreementVisible}
+                onClose={() => setAgreementVisible(false)}
+                onAgree={() => alert('done')}
+            />
         </ScreenContainer>
     )
 }

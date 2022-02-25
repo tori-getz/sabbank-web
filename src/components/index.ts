@@ -9,3 +9,4 @@ export { DepositGroup } from './DepositGroup';
 export { WalletActions } from './WalletActions';
 export { TransactionsHistory } from './TransactionsHistory';
 export { CurrencyRadio } from './CurrencyRadio';
+export { DepositAgreement } from './DepositAgreement';

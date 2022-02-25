@@ -57,3 +57,14 @@ export interface IDepositSettings {
     currencies: Array<IDepositSettingCurrency>,
     depositPeriods: Array<IDepositPeriod>
 }
+
+export interface IDepositAgreementContent {
+    id: number
+    key: string
+    category: string
+    ts: string
+    title_en: string
+    title_ru: string
+    body_en: string
+    body_ru: string
+}

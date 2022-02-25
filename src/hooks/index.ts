@@ -4,3 +4,4 @@ export { useSocket } from './useSocket';
 export { useUser } from './useUser';
 export { useWallet } from './useWallet';
 export { useDeposit } from './useDeposit';
+export { useContent } from './useContent';
