@@ -1,6 +1,8 @@
 
 import type {
-    IDepositGroup
+    IDepositGroup,
+    IDepositCurrency,
+    IDepositPeriod
 } from '@typing';
 
 import { useStore } from 'effector-react';
@@ -8,9 +10,13 @@ import { useStore } from 'effector-react';
 import {
     $depositList,
     $totalAmount,
+    $currencies,
+    $depositPeriods,
 
     setDepositList,
-    setTotalAmount
+    setTotalAmount,
+
+    getDepositPeriodsFx
 } from '@store/deposit';
 
 import { DepositService } from '@services';
@@ -19,6 +25,9 @@ import { isEmpty } from 'lodash';
 
 interface IUseDeposit {
     totalAmount: number
+    currencies: Array<IDepositCurrency>
+    depositPeriods: Array<IDepositPeriod>
+    getInfo: () => void
     depositList: Array<IDepositGroup>
     getDeposits: () => Promise<void>,
     getGroupByDepositId: (id: string) => IDepositGroup | null
@@ -27,10 +36,13 @@ interface IUseDeposit {
 export const useDeposit = (): IUseDeposit => {
     const depositService = new DepositService();
 
+    const currencies = useStore($currencies);
+    const depositPeriods = useStore($depositPeriods);
+
     const totalAmount = useStore($totalAmount);
     const depositList = useStore($depositList);
 
-    const getDeposits = async () => {
+    const getDeposits = async (): Promise<void> => {
         try {
             const { total_amount, result } = await depositService.getMyDeposits();
 
@@ -53,10 +65,17 @@ export const useDeposit = (): IUseDeposit => {
         return null;
     }
 
+    const getInfo = async (): Promise<void> => {
+        getDepositPeriodsFx();
+    }
+
     return {
         totalAmount,
         depositList,
         getDeposits,
-        getGroupByDepositId
+        getGroupByDepositId,
+        currencies,
+        depositPeriods,
+        getInfo
     }
 }

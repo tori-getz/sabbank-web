@@ -40,5 +40,8 @@ export const ru: ILocale = {
     'Total earnings': 'Общий заработок',
     'Open deposit': 'Отерыть вклад',
     'Back': 'Назад',
-    'Opening a deposit': 'Открытие вклада'
+    'Opening a deposit': 'Открытие вклада',
+    'Cryptocurrency': 'Криптовалюта',
+    'Choose a cryptocurrency to invest to earn money': 'Выберите криптовалюту для вложения, чтобы получить заработок',
+    'Term': 'Срок'
 };

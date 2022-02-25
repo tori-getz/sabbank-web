@@ -13,10 +13,6 @@ export const Chart: React.FC<IChart> = ({ data }) => {
     const heights = [ 25, 15, 24, 16, 23, 17, 22, 18 ];
 
     useEffect(() => {
-        console.log(percents);
-    }, [percents]);
-
-    useEffect(() => {
         const mins = Math.min.apply(Math, data);
         const largest = Math.max.apply(Math, data);
     

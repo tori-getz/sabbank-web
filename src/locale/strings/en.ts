@@ -41,5 +41,9 @@ export const en: ILocale = {
     'Total earnings': 'Total earnings',
     'Open deposit': 'Open deposit',
     'Back': 'Back',
-    'Opening a deposit': 'Opening a deposit'
+    'Opening a deposit': 'Opening a deposit',
+    'Cryptocurrency': 'Cryptocurrency',
+    'Choose a cryptocurrency to invest to earn money': 'Choose a cryptocurrency to invest to earn money',
+    'Term': 'Term',
+    'Select the period for investment after which the principal amount and profit will be in the currency of your choice': 'Select the period for investment after which the principal amount and profit will be in the currency of your choice'
 };

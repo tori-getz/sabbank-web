@@ -27,3 +27,19 @@ export interface IDepositHistoryResult {
         history: Array<IDepositHistoryItem>
     }
 }
+
+export interface IDepositSettingResult {
+    id: string
+    deposit_periods: IDepositPeriod
+    currency: string
+    asset: {
+        ticker: string
+        name: string
+        enabled: boolean
+    }
+    deposit_limit: string
+    description_ru: string
+    description_en: string
+    percentage: string
+}
+

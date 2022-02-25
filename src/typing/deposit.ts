@@ -19,8 +19,10 @@ export interface IDepositPeriod {
     period: any
     name_ru: string
     name_en: string
-    description_ru: string
-    description_en: string
+    description_ru?: string
+    description_en?: string
+    settingId?: string
+    deposit_limit?: string
 }
 
 export interface IDepositHistoryItem {
@@ -37,4 +39,21 @@ export interface IDepositCurrency {
     name: string
     amount: string
     percentage: number
+}
+
+export interface IDepositSettingCurrencyPeriod {
+    depositPeriod: IDepositPeriod
+    percentage: string
+}
+
+export interface IDepositSettingCurrency {
+    asset: string
+    id: string
+    name: string
+    data: Array<IDepositSettingCurrencyPeriod>
+}
+
+export interface IDepositSettings {
+    currencies: Array<IDepositSettingCurrency>,
+    depositPeriods: Array<IDepositPeriod>
 }
