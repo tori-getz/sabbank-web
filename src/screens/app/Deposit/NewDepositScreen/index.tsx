@@ -50,6 +50,16 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
     const currencyAssets: Array<string> = currencies.map(c => c.asset);
     const filteredCryptos = cryptos.filter(c => currencyAssets.includes(c.asset));
 
+    const onAgree = () => {
+        navigate('/deposit/calculate', {
+            state: {
+                currency,
+                period,
+                percentageKey
+            }
+        });
+    }
+
     useEffect(() => {
         getInfo();
     }, []);
@@ -123,7 +133,7 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
             <DepositAgreement
                 visible={agreementVisible}
                 onClose={() => setAgreementVisible(false)}
-                onAgree={() => alert('done')}
+                onAgree={onAgree}
             />
         </ScreenContainer>
     )

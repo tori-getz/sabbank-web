@@ -4,7 +4,8 @@ import { Routes } from '@typing';
 import {
     DepositScreen,
     DepositInfoScreen,
-    NewDepositScreen
+    NewDepositScreen,
+    CalculateDepositScreen
 } from '@screens';
 
 export const depositRoutes: Routes = [
@@ -13,11 +14,15 @@ export const depositRoutes: Routes = [
         component: <DepositScreen />
     },
     {
+        path: '/deposit/:id',
+        component: <DepositInfoScreen />
+    },
+    {
         path: '/deposit/new',
         component: <NewDepositScreen />
     },
     {
-        path: '/deposit/:id',
-        component: <DepositInfoScreen />
+        path: '/deposit/calculate',
+        component: <CalculateDepositScreen />
     }
 ];

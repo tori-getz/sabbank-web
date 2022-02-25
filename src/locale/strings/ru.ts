@@ -46,5 +46,6 @@ export const ru: ILocale = {
     'Term': 'Срок',
     'Select the period for investment after which the principal amount and profit will be in the currency of your choice': 'Выберите срок для вложения по истечении которого, основная сумма и прибыль будут в выбранной вами валюте',
     'Terms': 'Условия и соглашения',
-    'Agree': 'Принимаю'
+    'Agree': 'Принимаю',
+    'Kошелёк из которого будут зачислены средства для вклада': 'Kошелёк из которого будут зачислены средства для вклада'
 };

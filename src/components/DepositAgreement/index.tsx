@@ -60,7 +60,10 @@ export const DepositAgreement: React.FC<IDepositAgreement> = ({
     return (
         <Modal
             visible={visible}
-            onClose={onClose}
+            onClose={() => {
+                setCheckboxes([]);
+                onClose();
+            }}
         >
             <div className='p-4'>
                 <div className='d-flex align-items-center justify-content-between mb-3'>
@@ -92,6 +95,7 @@ export const DepositAgreement: React.FC<IDepositAgreement> = ({
                 <Button
                     className={styles.agree}
                     onClick={() => {
+                        setCheckboxes([]);
                         onClose();
                         onAgree();
                     }}
