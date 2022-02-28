@@ -10,13 +10,23 @@ import {
 
 import { useTranslation } from '@hooks';
 
+import type {
+    iCurrency,
+    IDepositSettingCurrency,
+    IDepositSettingCurrencyPeriod
+} from '@typing';
+
 import styles from './DepositCreateConfirm.module.sass';
 
 interface IDepositCreateConfirm {
+    currency: IDepositSettingCurrency
+    period: IDepositSettingCurrencyPeriod
+    amount: string
+    selectedWallet: iCurrency
     visible: boolean
     onClose: () => any
     loading: boolean
-    // onConfirm: () => any
+    onConfirm: () => any
 }
 
 interface ITable {
@@ -27,26 +37,31 @@ interface ITable {
 export const DepositCreateConfirm: React.FC<IDepositCreateConfirm> = ({
     visible,
     onClose,
+    currency,
+    period,
+    selectedWallet,
+    amount,
+    onConfirm,
     loading
 }) => {
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
 
     const info: Array<ITable> = [
         {
             name: t('Cryptocurrency'),
-            value: 'adjjda'
+            value: currency.name
         },
         {
             name: t('Term'),
-            value: 'adjjda'
+            value: period.depositPeriod[`name_${language}`]
         },
         {
             name: t('Percent'),
-            value: 'adjjda'
+            value: `${period.percentage}%`
         },
         {
-            name: 'aklal',
-            value: 'adjjda'
+            name: t('Deposit amount'),
+            value: `${amount} ${selectedWallet.asset.toUpperCase()}`
         },
     ];
 
@@ -83,6 +98,7 @@ export const DepositCreateConfirm: React.FC<IDepositCreateConfirm> = ({
                     <Button
                         label={t('Confirm')}
                         loading={loading}
+                        onClick={onConfirm}
                     />
                     <button
                         className={styles.cancel}

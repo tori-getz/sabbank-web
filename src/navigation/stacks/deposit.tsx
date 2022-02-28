@@ -5,7 +5,8 @@ import {
     DepositScreen,
     DepositInfoScreen,
     NewDepositScreen,
-    CalculateDepositScreen
+    CalculateDepositScreen,
+    DepositSuccessScreen
 } from '@screens';
 
 export const depositRoutes: Routes = [
@@ -24,5 +25,9 @@ export const depositRoutes: Routes = [
     {
         path: '/deposit/calculate',
         component: <CalculateDepositScreen />
+    },
+    {
+        path: '/deposit/success/:id',
+        component: <DepositSuccessScreen />
     }
 ];

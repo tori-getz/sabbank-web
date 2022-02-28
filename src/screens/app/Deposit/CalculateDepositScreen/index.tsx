@@ -3,7 +3,11 @@ import React, { useCallback, useState } from 'react';
 
 import { ScreenContainer } from '@containers';
 
-import { useTranslation, useWallet } from '@hooks';
+import {
+    useTranslation,
+    useWallet,
+    useDeposit
+} from '@hooks';
 
 import {
     Divider, 
@@ -47,8 +51,10 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
     const { currency, period } = location.state as ILocationState;
 
     const { currencies } = useWallet();
+    const { createDeposit } = useDeposit();
 
     const [ confirmVisible, setConfirmVisible ] = useState<boolean>(false);
+    const [ confirmLoading, setConfirmLoading ] = useState<boolean>(false);
 
     const [ selectedCurrency, setSelectedCurrency ] = useState<iCurrency>(currencies.find(c => c.asset === currency.asset));
 
@@ -75,6 +81,24 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
 
         return `${t('Deposit')} ${formattedValue} ${selectedCurrency.asset.toUpperCase()}`.toUpperCase();
     }, [selectedCurrency, amount]);
+
+    const onConfirm = async () => {
+        try {
+            setConfirmLoading(true);
+
+            const { id } = await createDeposit({
+                deposit_settings: period.depositPeriod.settingsId,
+                amount: amount
+            });
+
+            navigate(`/deposit/success/${id}`);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setConfirmVisible(false);
+            setConfirmLoading(false);
+        }
+    }
 
     return (
         <ScreenContainer title={t('Deposit')}>
@@ -118,8 +142,14 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
                 </CardContent>
             </Card>
             <DepositCreateConfirm
+                currency={currency as IDepositSettingCurrency}
+                period={period}
+                selectedWallet={selectedCurrency}
+                amount={amount}
                 visible={confirmVisible}
                 onClose={() => setConfirmVisible(false)}
+                loading={confirmLoading}
+                onConfirm={onConfirm}
             />
         </ScreenContainer>
     )

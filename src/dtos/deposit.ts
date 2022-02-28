@@ -43,3 +43,12 @@ export interface IDepositSettingResult {
     percentage: string
 }
 
+export interface IDepositCreateDto {
+    deposit_settings: string
+    amount: string
+}
+
+export interface IDepositCreateResult {
+    detail: string
+    id: string
+}

@@ -5,6 +5,11 @@ import type {
     IDepositPeriod
 } from '@typing';
 
+import type {
+    IDepositCreateDto,
+    IDepositCreateResult
+} from '@dtos';
+
 import { useStore } from 'effector-react';
 
 import {
@@ -29,7 +34,8 @@ interface IUseDeposit {
     depositPeriods: Array<IDepositPeriod>
     getInfo: () => void
     depositList: Array<IDepositGroup>
-    getDeposits: () => Promise<void>,
+    getDeposits: () => Promise<void>
+    createDeposit: (dto: IDepositCreateDto) => Promise<IDepositCreateResult>
     getGroupByDepositId: (id: string) => IDepositGroup | null
 }
 
@@ -41,6 +47,16 @@ export const useDeposit = (): IUseDeposit => {
 
     const totalAmount = useStore($totalAmount);
     const depositList = useStore($depositList);
+
+    const createDeposit = async (dto: IDepositCreateDto): Promise<IDepositCreateResult> => {
+        try {
+            const result = await depositService.createDeposit(dto);
+
+            return result;
+        } catch (e) {
+            console.error(e);
+        }
+    } 
 
     const getDeposits = async (): Promise<void> => {
         try {
@@ -74,6 +90,7 @@ export const useDeposit = (): IUseDeposit => {
         depositList,
         getDeposits,
         getGroupByDepositId,
+        createDeposit,
         // @ts-ignore
         currencies,
         depositPeriods,

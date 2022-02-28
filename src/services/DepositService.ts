@@ -4,7 +4,9 @@ import type {
     IDepositListResult,
     IDepositHistoryResult,
     IDepositHistoryDto,
-    IDepositSettingResult
+    IDepositSettingResult,
+    IDepositCreateDto,
+    IDepositCreateResult
 } from '@dtos';
 
 import type {
@@ -85,6 +87,12 @@ export class DepositService {
         }
         
         return result;
+    }
+
+    public async createDeposit (dto: IDepositCreateDto): Promise<IDepositCreateResult> {
+        const { data } = await this.http.post<IDepositCreateResult>('/deposit/create', dto);
+
+        return data;
     }
 
     public async getMyDeposits (): Promise<IDepositListResult> {

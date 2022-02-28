@@ -21,7 +21,7 @@ export interface IDepositPeriod {
     name_en: string
     description_ru?: string
     description_en?: string
-    settingId?: string
+    settingsId?: string
     deposit_limit?: string
 }
 
