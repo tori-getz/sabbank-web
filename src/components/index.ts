@@ -11,3 +11,4 @@ export { TransactionsHistory } from './TransactionsHistory';
 export { CurrencyRadio } from './CurrencyRadio';
 export { DepositAgreement } from './DepositAgreement';
 export { CalculateDepositHeader } from './CalculateDepositHeader';
+export { DepositCreateConfirm } from './DepositCreateConfirm';

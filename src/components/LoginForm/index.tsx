@@ -51,6 +51,7 @@ export const LoginForm: React.FC<ILoginForm> = () => {
                         </div>
                         <TextInput
                             value={password}
+                            type='password'
                             onChange={({ target: {value} }) => setPassword(value)}
                         />
                         <div className="mt-4">

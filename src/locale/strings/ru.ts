@@ -49,5 +49,10 @@ export const ru: ILocale = {
     'Agree': 'Принимаю',
     'Kошелёк из которого будут зачислены средства для вклада': 'Kошелёк из которого будут зачислены средства для вклада',
     'Deposit amount': 'Сумма вклада',
-    'Enter the deposit amount': 'Введите сумму зачисления вклада'
+    'Enter the deposit amount': 'Введите сумму зачисления вклада',
+    'Insufficient balance': 'Недостаточный баланс',
+    'Below min. deposit': 'Ниже мин. вклада',
+    'Confirm': 'Подтвердить',
+    'Cancel': 'Отмена',
+    'Percent': 'Процент'
 };

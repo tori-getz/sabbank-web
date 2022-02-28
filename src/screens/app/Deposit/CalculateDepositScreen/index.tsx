@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { ScreenContainer } from '@containers';
 
@@ -14,11 +14,13 @@ import {
     Button
 } from '@components/ui';
 
-import { CalculateDepositHeader } from '@components';
+import { CalculateDepositHeader, DepositCreateConfirm } from '@components';
 
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { Card, CardContent } from 'ui-neumorphism';
+
+import { moneyAmountFormatter } from '@utils';
 
 import {
     iCurrency,
@@ -46,9 +48,33 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
 
     const { currencies } = useWallet();
 
+    const [ confirmVisible, setConfirmVisible ] = useState<boolean>(false);
+
     const [ selectedCurrency, setSelectedCurrency ] = useState<iCurrency>(currencies.find(c => c.asset === currency.asset));
 
     const [ amount, setAmount ] = useState<string>('');
+
+    const getButtonDisabledState = useCallback((): boolean => {
+        const formattedValue = Number(amount);
+        const formattedBalance = Number(selectedCurrency.balance);
+        const depositLimit = period?.depositPeriod?.deposit_limit || 0; 
+
+        if (formattedValue < depositLimit) return true;
+
+        return formattedValue > formattedBalance || formattedValue === 0;
+    }, [amount]);
+
+    const getButtonText = useCallback((): string => {
+        const formattedValue = Number(amount);
+        const depositLimit = period?.depositPeriod?.deposit_limit || 0;
+        const formattedBalance = Number(selectedCurrency.balance);
+
+        if (formattedValue > formattedBalance) return t('Insufficient balance').toUpperCase();
+        
+        if (formattedValue < depositLimit) return `${t('Below min. deposit')} ${moneyAmountFormatter(depositLimit, 8)} ${currency.asset.toUpperCase()}`.toUpperCase();
+
+        return `${t('Deposit')} ${formattedValue} ${selectedCurrency.asset.toUpperCase()}`.toUpperCase();
+    }, [selectedCurrency, amount]);
 
     return (
         <ScreenContainer title={t('Deposit')}>
@@ -80,7 +106,9 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
                             // value={amount}
                         />
                         <Button
-                            label={t('Next')}
+                            label={getButtonText()}
+                            disabled={getButtonDisabledState()}
+                            onClick={() => setConfirmVisible(true)}
                             className={cn(
                                 styles.nextButton,
                                 'mt-4'
@@ -89,6 +117,10 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
                     </div>
                 </CardContent>
             </Card>
+            <DepositCreateConfirm
+                visible={confirmVisible}
+                onClose={() => setConfirmVisible(false)}
+            />
         </ScreenContainer>
     )
 }

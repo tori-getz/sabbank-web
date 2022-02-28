@@ -50,5 +50,10 @@ export const en: ILocale = {
     'Agree': 'Agree',
     'Wallet from which funds for the deposit will be credited': 'Wallet from which funds for the deposit will be credited',
     'Deposit amount': 'Deposit amount',
-    'Enter the deposit amount': 'Enter the deposit amount'
+    'Enter the deposit amount': 'Enter the deposit amount',
+    'Insufficient balance': 'Insufficient balance',
+    'Below min. deposit': 'Below min. deposit',
+    'Confirm': 'Confirm',
+    'Cancel': 'Cancel',
+    'Percent': 'Percent'
 };
