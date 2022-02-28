@@ -54,5 +54,7 @@ export const ru: ILocale = {
     'Below min. deposit': 'Ниже мин. вклада',
     'Confirm': 'Подтвердить',
     'Cancel': 'Отмена',
-    'Percent': 'Процент'
+    'Percent': 'Процент',
+    'Success': 'Успешно',
+    'Done': 'Готово'
 };

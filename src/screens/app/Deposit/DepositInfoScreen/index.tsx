@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-import { useTranslation } from '@hooks';
+import { useTranslation, useDeposit  } from '@hooks';
 
 import { ScreenContainer } from '@containers';
 
@@ -18,17 +18,15 @@ import type {
 
 import { moneyAmountFormatter } from '@utils';
 
-import { DepositService } from '@services';
-
 import { format as formatDate } from 'date-fns';
 
 interface IDepositInfoScreen {};
 
 export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
-    const depositService = new DepositService();
-
     const navigate = useNavigate();
     const { id } = useParams();
+
+    const { getDepositHistory } = useDeposit();
 
     const { t, language } = useTranslation();
 
@@ -41,7 +39,7 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
 
     const getHistory = async () => {
         try {
-            const { total_income, created_deposit, data: { currency, deposit_period } } = await depositService.getHistory({ id });
+            const { total_income, created_deposit, data: { currency, deposit_period } } = await getDepositHistory({ id });
 
             setTotalIncome(total_income);
             setDepositPeriod(deposit_period);

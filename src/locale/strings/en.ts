@@ -55,5 +55,7 @@ export const en: ILocale = {
     'Below min. deposit': 'Below min. deposit',
     'Confirm': 'Confirm',
     'Cancel': 'Cancel',
-    'Percent': 'Percent'
+    'Percent': 'Percent',
+    'Success': 'Success',
+    'Done': 'Done'
 };
