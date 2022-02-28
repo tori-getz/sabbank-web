@@ -41,45 +41,40 @@ export const TokenSelect: React.FC<ITokenSelect> = ({
     }
 
     return (
-        <Card
-            inset
+        <div
             className={cn(
                 className,
                 styles.wrapper
             )}
         >
-            <CardContent>
-                <div className='p-2'>
-                    <div
-                        className={styles.defaultValue}
-                        onClick={() => setOpen(!isOpen)}
-                    >
-                        <TokenSelectItem {...defaultCurrency} />
-                        <div
-                            className={cn(
-                                styles.expand,
-                                { [styles.expandOpen]: isOpen }
-                            )}
-                        >
-                            <Icon name='arrow-down' />
-                        </div>
-                    </div>
-                    <div
-                        className={cn(
-                            styles.items,
-                            { [styles.itemsOpen]: isOpen }
-                        )}
-                    >
-                        {list.map((item: iCurrency, key: number) => (
-                            <TokenSelectItem
-                                {...item}
-                                key={key}
-                                onClick={() => onSelect(item)}
-                            />
-                        ))}
-                    </div>
+            <div
+                className={styles.defaultValue}
+                onClick={() => setOpen(!isOpen)}
+            >
+                <TokenSelectItem {...defaultCurrency} />
+                <div
+                    className={cn(
+                        styles.expand,
+                        { [styles.expandOpen]: isOpen }
+                    )}
+                >
+                    <Icon name='arrow-down' />
                 </div>
-            </CardContent>
-        </Card>
+            </div>
+            <div
+                className={cn(
+                    styles.items,
+                    { [styles.itemsOpen]: isOpen }
+                )}
+            >
+                {list.map((item: iCurrency, key: number) => (
+                    <TokenSelectItem
+                        {...item}
+                        key={key}
+                        onClick={() => onSelect(item)}
+                    />
+                ))}
+            </div>
+        </div>
     )
 }

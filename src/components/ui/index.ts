@@ -21,3 +21,4 @@ export { Modal } from './Modal';
 export { Checkbox } from './Checkbox';
 export { TokenSelect } from './TokenSelect';
 export { TokenSelectItem } from './TokenSelectItem';
+export { CurrencyInput } from './CurrencyInput';

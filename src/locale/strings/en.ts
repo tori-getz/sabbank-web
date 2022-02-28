@@ -48,5 +48,7 @@ export const en: ILocale = {
     'Select the period for investment after which the principal amount and profit will be in the currency of your choice': 'Select the period for investment after which the principal amount and profit will be in the currency of your choice',
     'Terms': 'Terms',
     'Agree': 'Agree',
-    'Wallet from which funds for the deposit will be credited': 'Wallet from which funds for the deposit will be credited'
+    'Wallet from which funds for the deposit will be credited': 'Wallet from which funds for the deposit will be credited',
+    'Deposit amount': 'Deposit amount',
+    'Enter the deposit amount': 'Enter the deposit amount'
 };
