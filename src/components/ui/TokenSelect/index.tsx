@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 
 import { Card, CardContent } from 'ui-neumorphism';
 
-import { Icon } from '@components/ui';
+import {
+    Icon,
+    TokenSelectItem
+} from '@components/ui';
 
 import type {
     iCurrency
@@ -12,7 +15,8 @@ import type {
 interface ITokenSelect {
     items: Array<iCurrency>
     defaultValue: iCurrency
-    onChange: (token) => any
+    onChange: (token: iCurrency) => any
+    className?: string
 }
 
 import styles from './TokenSelect.module.sass';
@@ -21,22 +25,41 @@ import cn from 'classnames';
 export const TokenSelect: React.FC<ITokenSelect> = ({
     items,
     defaultValue,
-    onChange
+    onChange,
+    className
 }) => {
     const [ isOpen, setOpen ] = useState<boolean>(false);
 
+    const [ defaultCurrency, setDefaultCurrency ] = useState<iCurrency>(defaultValue);
+    const [ list, setList ] = useState<iCurrency[]>(items.filter(item => item.asset !== defaultValue.asset));
+
+    const onSelect = (item: iCurrency) => {
+        setDefaultCurrency(item);
+        setList(items.filter(c => c.asset !== item.asset));
+        setOpen(false);
+        onChange(item);
+    }
+
     return (
-        <Card inset>
+        <Card
+            inset
+            className={cn(
+                className,
+                styles.wrapper
+            )}
+        >
             <CardContent>
                 <div className='p-2'>
-                    <div className={styles.defaultValue}>
-                        <div>token</div>
+                    <div
+                        className={styles.defaultValue}
+                        onClick={() => setOpen(!isOpen)}
+                    >
+                        <TokenSelectItem {...defaultCurrency} />
                         <div
                             className={cn(
                                 styles.expand,
                                 { [styles.expandOpen]: isOpen }
                             )}
-                            onClick={() => setOpen(!isOpen)}
                         >
                             <Icon name='arrow-down' />
                         </div>
@@ -47,12 +70,13 @@ export const TokenSelect: React.FC<ITokenSelect> = ({
                             { [styles.itemsOpen]: isOpen }
                         )}
                     >
-                        <div>token</div>
-                        <div>token</div>
-                        <div>token</div>
-                        <div>token</div>
-                        <div>token</div>
-                        <div>token</div>
+                        {list.map((item: iCurrency, key: number) => (
+                            <TokenSelectItem
+                                {...item}
+                                key={key}
+                                onClick={() => onSelect(item)}
+                            />
+                        ))}
                     </div>
                 </div>
             </CardContent>
