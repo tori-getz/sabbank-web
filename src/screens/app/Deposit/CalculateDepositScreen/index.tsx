@@ -48,7 +48,7 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
                         <h4>{t('Cryptocurrency')}</h4>
                         <Label>{t('Wallet from which funds for the deposit will be credited')}</Label>
                     </div>
-                    <TokenSelect />
+                    {/* <TokenSelect /> */}
                 </CardContent>
             </Card>
         </ScreenContainer>
