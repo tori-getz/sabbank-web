@@ -76,5 +76,6 @@ export const ru: ILocale = {
     'Increase the deposit': 'Увеличить залог',
     'Remaining amount': 'Оставшаяся сумма',
     'Low': 'Низ',
-    'High': 'Выс'
+    'High': 'Выс',
+    'Settings': 'Настройки'
 };

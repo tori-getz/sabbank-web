@@ -13,7 +13,8 @@ import {
 import {
     depositRoutes,
     cardRoutes,
-    creditRoutes
+    creditRoutes,
+    settingsRoutes
 } from './stacks';
 
 export const unauthorizedRoutes: Routes = [
@@ -46,5 +47,6 @@ export const authroizedRoutes: Routes = [
     },
     ...depositRoutes,
     ...cardRoutes,
-    ...creditRoutes
+    ...creditRoutes,
+    ...settingsRoutes
 ];

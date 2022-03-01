@@ -77,5 +77,6 @@ export const en: ILocale = {
     'Increase the deposit': 'Increase the deposit',
     'Remaining amount': 'Remaining amount',
     'Low': 'Low',
-    'High': 'High'
+    'High': 'High',
+    'Settings': 'Settings'
 };

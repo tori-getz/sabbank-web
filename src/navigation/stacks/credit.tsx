@@ -1,5 +1,5 @@
 
-import { Routes } from '@typing';
+import type { Routes } from '@typing';
 
 import {
     CreditScreen,
