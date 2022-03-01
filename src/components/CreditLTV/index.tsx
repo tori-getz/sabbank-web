@@ -44,7 +44,7 @@ export const CreditLTV: React.FC<ICreditLTV> = ({
             <ProgressBar
                 now={ltv}
                 className={styles.progress}
-                variant={ltvStatus === 'warning' ? 'danger' : 'success'}
+                variant={ltvStatus === 'warning' ? 'danger' : 'info'}
             />
             <div className={styles.progressBottom}>
                 <div className={styles.low}>{t('Low')}</div>
