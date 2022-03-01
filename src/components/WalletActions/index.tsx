@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+import { Row } from 'react-bootstrap';
 import { ButtonWalletAction } from '@components/ui';
 import styles from './WalletActions.module.sass'
 import cn from 'classnames';
@@ -38,10 +39,10 @@ export const WalletActions: React.FC<IWalletActions> = () => {
     ];
 
     return (
-        <div className={cn(styles.walletActionsWrapper, "row")}>
+        <Row className={cn(styles.walletActionsWrapper)}>
             {walletActions.map((button: IWalletAction, key: number) => (
                 <ButtonWalletAction label={button.label} icon={button.icon} onClick={() => button.action() } className="col-sm-6 col-md-3" />
             ))}
-        </div>
+        </Row>
     )
 }

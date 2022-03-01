@@ -6,6 +6,7 @@ import { Alert } from 'react-bootstrap';
 import { TextInput, Button, Divider, Label } from '@components/ui'
 
 import { Link } from 'react-router-dom';
+import styles from './LoginForm.module.sass';
 
 import { useAuth, useTranslation } from '@hooks';
 
@@ -47,24 +48,24 @@ export const LoginForm: React.FC<ILoginForm> = () => {
                         />
                         <div className="d-flex flex-wrap justify-content-between mt-3">
                             <Label>{t('Password')}</Label>
-                            <Link to='/forgot'>{t('Forgot password?')}</Link>
+                            <Link to='/forgot' className={styles.forgotLink}>{t('Forgot password?')}</Link>
                         </div>
                         <TextInput
                             value={password}
                             type='password'
                             onChange={({ target: {value} }) => setPassword(value)}
                         />
-                        <div className="mt-4">
+                        <div className="mt-4 flex-column">
                             {error && (
                                 <Alert variant='danger'>
                                     {error}
                                 </Alert>
                             )}
-                            <Button onClick={onSubmit} label={t('Sign in')} className="mt-2"/>
+                            <Button onClick={onSubmit} label={t('Sign in')} className={styles.button}/>
                         </div>
                         <div className='d-flex justify-content-center align-items-center mt-4'>
-                            <Label>Нет аккаунта?</Label>
-                            <Link to='/register'>{t('Sign up')}</Link>
+                            <Label className={styles.signUpLabel}>Нет аккаунта?</Label>
+                            <Link to='/register' className={styles.signUpLink}>{t('Sign up')}</Link>
                         </div>
                     </CardContent>
                 </Card>
