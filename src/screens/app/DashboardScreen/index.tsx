@@ -15,9 +15,9 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
 
     return (
         <ScreenContainer title={t('Main')}>
-            <div className="widgetTitle pt-3">{t('Действия')}</div>
+            <div className="widgetTitle pt-3">{t('Wallet actions')}</div>
             <WalletActions />
-            <div className="widgetTitle pt-4">{t('История транзакций')}</div>
+            <div className="widgetTitle pt-4">{t('Transaction history')}</div>
             <TransactionsHistory />
         </ScreenContainer>
     )
