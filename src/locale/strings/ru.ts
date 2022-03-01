@@ -72,5 +72,9 @@ export const ru: ILocale = {
     'Date of issue': 'Дата выдачи',
     'Maturity date': 'Дата погашения',
     'Loan/collateral ratio (LTV)': 'Коэффициент «кредит/залог» (LTV)',
-    'Commission payment method': 'Способ оплаты комиссии'
+    'Commission payment method': 'Способ оплаты комиссии',
+    'Increase the deposit': 'Увеличить залог',
+    'Remaining amount': 'Оставшаяся сумма',
+    'Low': 'Низ',
+    'High': 'Выс'
 };

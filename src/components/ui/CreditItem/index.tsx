@@ -27,6 +27,8 @@ export const CreditItem: React.FC<ICreditItem> = ({
 }) => {
     const { t } = useTranslation();
 
+    const isClosed = () => item.status === 'closed' || item.status === 'finished';
+
     return (
         <Card>
             <CardContent>
@@ -49,18 +51,25 @@ export const CreditItem: React.FC<ICreditItem> = ({
                     </div>
                     <div className={styles.body}>
                         <div className={styles.depositAmount}>{moneyAmountFormatter(item.deposit, 8)} {item.deposit_currency.toUpperCase()}</div>
-                        <Card className={styles.ltv}>
-                            <CardContent>
-                                <div>
-                                    LTV {item.ltv}%
-                                </div>
-                            </CardContent>
-                        </Card>
-                        <div className={styles.icon}>
-                            <Icon
-                                name='arrow-right'
-                                size={20}
-                            />
+                        <div className={styles.bodyRight}>
+                            {!isClosed() && (
+                                <Card>
+                                    <CardContent>
+                                        <div className={cn(
+                                            styles.ltvValue,
+                                            { [styles.ltvWarning]: item.ltv_status === 'warning' }
+                                        )}>
+                                            LTV {item.ltv}%
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            )}
+                            <div className={styles.icon}>
+                                <Icon
+                                    name='arrow-right'
+                                    size={20}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

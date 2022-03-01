@@ -73,5 +73,9 @@ export const en: ILocale = {
     'Date of issue': 'Date of issue',
     'Maturity date': 'Maturity date',
     'Loan/collateral ratio (LTV)': 'Loan/collateral ratio (LTV)',
-    'Commission payment method': 'Commission payment method'
+    'Commission payment method': 'Commission payment method',
+    'Increase the deposit': 'Increase the deposit',
+    'Remaining amount': 'Remaining amount',
+    'Low': 'Low',
+    'High': 'High'
 };
