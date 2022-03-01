@@ -26,7 +26,7 @@ export const GoBack: React.FC<IGoBack> = ({
             onClick={onClick}
         >
             <Icon name='back' size={14} />
-            <p className={styles.text}>{t('Back')}</p>
+            <span className={styles.text}>{t('Back')}</span>
         </div>
     )
 }
