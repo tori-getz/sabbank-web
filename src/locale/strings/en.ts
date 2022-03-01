@@ -64,5 +64,14 @@ export const en: ILocale = {
     'creditStatus__active': 'Active',
     'creditStatus__finished': 'Finished',
     'creditStatus__closed': 'Closed',
-    'creditStatus__liquidated': 'Liquidated'
+    'creditStatus__liquidated': 'Liquidated',
+    'Loading': 'Loading',
+    'Loan amount': 'Loan amount',
+    'DepositAmount': 'Deposit amount',
+    'Comission': 'Comission',
+    'Interest rate': 'Interest rate',
+    'Date of issue': 'Date of issue',
+    'Maturity date': 'Maturity date',
+    'Loan/collateral ratio (LTV)': 'Loan/collateral ratio (LTV)',
+    'Commission payment method': 'Commission payment method'
 };

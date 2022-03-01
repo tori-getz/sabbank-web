@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { ScreenContainer } from '@containers';
 
 import styles from './CreditScreen.module.sass';
-import cn from 'classnames';
 
 import { useTranslation, useCredit } from '@hooks';
+import { useNavigate } from 'react-router-dom';
 
 import {
     Button,
@@ -22,6 +22,7 @@ interface ICreditScreen {};
 
 export const CreditScreen: React.FC<ICreditScreen> = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
@@ -65,7 +66,7 @@ export const CreditScreen: React.FC<ICreditScreen> = () => {
                             <CreditItem
                                 item={credit}
                                 key={key}
-                                onClick={() => console.log('ok')}
+                                onClick={() => navigate(`/credit/${credit.id}`)}
                             />
                         ))}
                     </div>

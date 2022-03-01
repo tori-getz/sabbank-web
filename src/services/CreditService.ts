@@ -5,6 +5,10 @@ import type {
     ICredit
 } from '@typing';
 
+import type {
+    ICreditGetDto
+} from '@dtos';
+
 import { HTTPClient } from '@http';
 
 export class CreditService {
@@ -16,6 +20,12 @@ export class CreditService {
 
     public async getCredits (): Promise<ICredit[]> {
         const { data } = await this.http.get<ICredit[]>('/loan/list');
+
+        return data;
+    }
+
+    public async getCredit (dto: ICreditGetDto): Promise<ICredit> {
+        const { data } = await this.http.get<ICredit>(`/loan/${dto.id}`);
 
         return data;
     }

@@ -12,9 +12,14 @@ import type {
     ICredit
 } from '@typing';
 
+import type {
+    ICreditGetDto
+} from '@dtos';
+
 interface IUseCredit {
     creditsList: Array<ICredit>
     getCredits: () => Promise<void>
+    getCredit: (dto: ICreditGetDto) => Promise<ICredit>
 }
 
 export const useCredit = (): IUseCredit => {
@@ -32,8 +37,15 @@ export const useCredit = (): IUseCredit => {
         }
     }
 
+    const getCredit = async (dto: ICreditGetDto): Promise<ICredit> => {
+        const credit = await creditService.getCredit(dto);
+
+        return credit;
+    }
+
     return {
         creditsList,
-        getCredits
+        getCredits,
+        getCredit
     }
 }

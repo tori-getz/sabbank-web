@@ -15,7 +15,7 @@ export const WalletListItem: React.FC<iCurrency> = currency => {
     const { settings } = useUser();
 
     return (
-        <div onClick={() => alert('lol')}>
+        <div>
             <Card>
                 <CardContent className={styles.wrapper}>            
                     <IconButton

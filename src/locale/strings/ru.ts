@@ -62,6 +62,15 @@ export const ru: ILocale = {
     'Next payment': 'Следующий платеж',
     'creditStatus__active': 'Активный',
     'creditStatus__finished': 'Погашенный',
-    'creditStatus__closed': 'Закрыт',
-    'creditStatus__liquidated': 'Ликвидированный'
+    'creditStatus__closed': 'Закрытый',
+    'creditStatus__liquidated': 'Ликвидированный',
+    'Loading': 'Загрузка',
+    'Loan amount': 'Сумма кредита',
+    'DepositAmount': 'Сумма залога',
+    'Comission': 'Комиссия',
+    'Interest rate': 'Процентная ставка',
+    'Date of issue': 'Дата выдачи',
+    'Maturity date': 'Дата погашения',
+    'Loan/collateral ratio (LTV)': 'Коэффициент «кредит/залог» (LTV)',
+    'Commission payment method': 'Способ оплаты комиссии'
 };
