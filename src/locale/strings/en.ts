@@ -57,5 +57,12 @@ export const en: ILocale = {
     'Cancel': 'Cancel',
     'Percent': 'Percent',
     'Success': 'Success',
-    'Done': 'Done'
+    'Done': 'Done',
+    'Apply new credit': 'Apply new credit',
+    'Executed loans': 'Executed loans',
+    'Next payment': 'Next payment',
+    'creditStatus__active': 'Active',
+    'creditStatus__finished': 'Finished',
+    'creditStatus__closed': 'Closed',
+    'creditStatus__liquidated': 'Liquidated'
 };

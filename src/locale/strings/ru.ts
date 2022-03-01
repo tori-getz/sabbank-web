@@ -56,5 +56,12 @@ export const ru: ILocale = {
     'Cancel': 'Отмена',
     'Percent': 'Процент',
     'Success': 'Успешно',
-    'Done': 'Готово'
+    'Done': 'Готово',
+    'Apply new credit': 'Оформить кредит',
+    'Executed loans': 'Оформленные кредиты',
+    'Next payment': 'Следующий платеж',
+    'creditStatus__active': 'Активный',
+    'creditStatus__finished': 'Погашенный',
+    'creditStatus__closed': 'Закрыт',
+    'creditStatus__liquidated': 'Ликвидированный'
 };
