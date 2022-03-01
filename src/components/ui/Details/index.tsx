@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Label } from '@components/ui';
+import styles from './Details.module.sass';
 
 interface IDetail {
     name: string
@@ -22,11 +22,11 @@ export const Details: React.FC<IDetails> = ({
         <div className={className}>
             {items.map(({ name, value }: IDetail, key: number) => (
                 <div
-                    className='d-flex justify-content-between'
+                    className={styles.row}
                     key={key}
                 >
-                    <Label>{name}</Label>
-                    <p>{value}</p>
+                    <div className={styles.name}>{name}</div>
+                    <div className={styles.value}>{value}</div>
                 </div>
             ))}
         </div>

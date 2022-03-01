@@ -57,5 +57,21 @@ export const en: ILocale = {
     'Cancel': 'Cancel',
     'Percent': 'Percent',
     'Success': 'Success',
-    'Done': 'Done'
+    'Done': 'Done',
+    'Apply new credit': 'Apply new credit',
+    'Executed loans': 'Executed loans',
+    'Next payment': 'Next payment',
+    'creditStatus__active': 'Active',
+    'creditStatus__finished': 'Finished',
+    'creditStatus__closed': 'Closed',
+    'creditStatus__liquidated': 'Liquidated',
+    'Loading': 'Loading',
+    'Loan amount': 'Loan amount',
+    'DepositAmount': 'Deposit amount',
+    'Comission': 'Comission',
+    'Interest rate': 'Interest rate',
+    'Date of issue': 'Date of issue',
+    'Maturity date': 'Maturity date',
+    'Loan/collateral ratio (LTV)': 'Loan/collateral ratio (LTV)',
+    'Commission payment method': 'Commission payment method'
 };

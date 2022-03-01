@@ -7,7 +7,8 @@ import { ScreenContainer } from '@containers';
 
 import {
     TotalEarnings,
-    DepositGroup
+    DepositGroup,
+    DepositBanner
 } from '@components';
 
 import { Button, Spinner } from '@components/ui';
@@ -19,6 +20,8 @@ import type {
 } from '@typing';
 
 import { useNavigate } from 'react-router-dom';
+
+import { isEmpty } from 'lodash';
 
 interface IDepositScreen {};
 
@@ -48,6 +51,14 @@ export const DepositScreen: React.FC<IDepositScreen> = () => {
         return (
             <ScreenContainer title={t('Deposit')}>
                 <Spinner />
+            </ScreenContainer>
+        )
+    }
+
+    if (isEmpty(depositList)) {
+        return (
+            <ScreenContainer title={t('Deposit')}>
+                <DepositBanner />
             </ScreenContainer>
         )
     }
