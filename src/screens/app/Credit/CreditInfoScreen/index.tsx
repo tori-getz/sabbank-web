@@ -10,8 +10,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {
     GoBack,
     Spinner,
-    Details
+    Details,
+    CurrencyAmount,
+    Button
 } from '@components/ui';
+
+import {
+    CreditLTV
+} from '@components';
 
 import { moneyAmountFormatter } from '@utils';
 import { format as formatDate } from 'date-fns';
@@ -19,7 +25,10 @@ import { format as formatDate } from 'date-fns';
 import type {
     ICredit
 } from '@typing';
+
 import { Card, CardContent } from 'ui-neumorphism';
+
+import styles from './CreditinfoScreen.module.sass';
 
 interface ICreditInfoScreen {};
 
@@ -96,6 +105,8 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
         ]);
     }, [credit]);
 
+    const isClosed = () => credit?.status === 'closed' || credit?.status === 'finished';
+
     if (loading) {
         return (
             <ScreenContainer title={t('Loading')}>
@@ -111,7 +122,32 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
             <Card>
                 <CardContent>
                     <div className='p-4'>
-                        <h4>{t('Credit')} №{credit.number}</h4>
+                        <div className='d-flex justify-content-between'>
+                            <h4>{t('Credit')} №{credit.number}</h4>
+                            {!isClosed() && (
+                                <CreditLTV
+                                    ltv={credit.ltv}
+                                    ltvStatus={credit.ltv_status}
+                                    ltvOriginal={credit.ltv_original}
+                                />
+                            )}
+                        </div>
+                        {!isClosed() && (
+                            <>
+                                <h5 className='pt-3'>{t('Loan amount')}</h5>
+                                <CurrencyAmount
+                                    amount={moneyAmountFormatter(credit.amount, 8)}
+                                    asset='usdt'
+                                >
+                                    <Button label={t('Increase the deposit')} />
+                                </CurrencyAmount>
+                                <h5 className='pt-3'>{t('Remaining amount')}</h5>
+                                <CurrencyAmount
+                                    amount={moneyAmountFormatter(credit.close_price, 8)}
+                                    asset='usdt'
+                                />
+                            </>
+                        )}
                         <Details
                             items={table}
                         />

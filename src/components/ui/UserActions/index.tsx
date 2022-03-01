@@ -3,6 +3,8 @@ import React from 'react';
 
 import { NavDropdown } from 'react-bootstrap';
 
+import { useNavigate } from 'react-router-dom';
+
 import {
     useUser,
     useTranslation,
@@ -16,6 +18,8 @@ export const UserActions: React.FC<IUserActions> = () => {
     const { user } = useUser();
     const { logout } = useAuth();
 
+    const navigate = useNavigate();
+
     const getUsername = () => {
         const name: string = `${user?.first_name} ${user?.last_name}`;
 
@@ -26,6 +30,9 @@ export const UserActions: React.FC<IUserActions> = () => {
 
     return (
         <NavDropdown title={getUsername()}>
+            <NavDropdown.Item onClick={() => navigate('/settings')}>
+                {t('Settings')}
+            </NavDropdown.Item>
             <NavDropdown.Item onClick={logout}>
                 {t('Logout')}
             </NavDropdown.Item>

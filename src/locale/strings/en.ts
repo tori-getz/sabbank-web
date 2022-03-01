@@ -76,4 +76,9 @@ export const en: ILocale = {
     'Commission payment method': 'Commission payment method',
     'Wallet actions': 'Wallet action',
     'Transaction history': 'Transaction history',
+    'Increase the deposit': 'Increase the deposit',
+    'Remaining amount': 'Remaining amount',
+    'Low': 'Low',
+    'High': 'High',
+    'Settings': 'Settings'
 };

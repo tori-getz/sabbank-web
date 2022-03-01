@@ -75,4 +75,9 @@ export const ru: ILocale = {
     'Commission payment method': 'Способ оплаты комиссии',
     'Wallet actions': 'Действия',
     'Transaction history': 'История транзакций',
+    'Increase the deposit': 'Увеличить залог',
+    'Remaining amount': 'Оставшаяся сумма',
+    'Low': 'Низ',
+    'High': 'Выс',
+    'Settings': 'Настройки'
 };
