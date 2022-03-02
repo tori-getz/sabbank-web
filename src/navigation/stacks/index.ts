@@ -1,5 +1,6 @@
 
-export * from './deposit';
-export * from './card';
-export * from './credit';
-export * from './settings';
+export { dashboardRoutes } from './dashboard';
+export { depositRoutes } from './deposit';
+export { cardRoutes } from './card';
+export { creditRoutes } from './credit';
+export { settingsRoutes } from './settings'

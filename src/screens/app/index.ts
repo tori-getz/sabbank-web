@@ -1,6 +1,5 @@
 
-export { DashboardScreen } from './DashboardScreen';
-
+export * from './Dashboard';
 export * from './Deposit';
 export * from './Card';
 export * from './Credit';

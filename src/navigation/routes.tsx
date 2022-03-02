@@ -11,6 +11,7 @@ import {
 } from '@screens';
 
 import {
+    dashboardRoutes,
     depositRoutes,
     cardRoutes,
     creditRoutes,
@@ -41,10 +42,7 @@ export const unauthorizedRoutes: Routes = [
 ]
 
 export const authroizedRoutes: Routes = [
-    {
-        path: '/dashboard',
-        component: <DashboardScreen />
-    },
+    ...dashboardRoutes,
     ...depositRoutes,
     ...cardRoutes,
     ...creditRoutes,

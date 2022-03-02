@@ -6,6 +6,8 @@ import { ButtonWalletAction } from '@components/ui';
 import styles from './WalletActions.module.sass'
 import cn from 'classnames';
 
+import { useNavigate } from 'react-router-dom';
+
 interface IWalletActions {};
 
 interface IWalletAction {
@@ -15,26 +17,28 @@ interface IWalletAction {
 };
 
 export const WalletActions: React.FC<IWalletActions> = () => {
+    const navigate = useNavigate();
+
     const walletActions: Array<IWalletAction> = [
         {
             label: 'Receive', 
             icon: 'receive',
-            action: () => alert("receive")
+            action: () => navigate("/receive")
         },
         {
             label: 'Transfer', 
             icon: 'transfer',
-            action: () => alert("transfer")
+            action: () => navigate("/transfer")
         },
         {
             label: 'Exchange', 
             icon: 'exchange',
-            action: () => alert("exchange")
+            action: () => navigate("/exchange")
         },
         {
             label: 'Cashout', 
             icon: 'cashout',
-            action: () => alert("cashout")
+            action: () => navigate("/cashout")
         },                 
     ];
 
