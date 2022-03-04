@@ -82,5 +82,9 @@ export const en: ILocale = {
     'High': 'High',
     'Settings': 'Settings',
     'Choose a cryptocurrency for collateral': 'Choose a cryptocurrency for collateral',
-    'Enter the depositamount': 'Enter the deposit amount'
+    'Enter the depositamount': 'Enter the deposit amount',
+    'Year': 'Year',
+    'from the sum': 'frum the sum',
+    'Liquidation threshold': 'Liquidation threshold',
+    'Apply for a loan': 'Apply for a loan',
 };

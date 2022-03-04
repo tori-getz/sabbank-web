@@ -34,7 +34,7 @@ export interface ICreditSetting {
     rate: number
     currency: string
     comission: string
-    close_data: string
+    close_date: string
     amount_limit: number
     limit: number
     limit_warning: number

@@ -1,5 +1,5 @@
 
-import {  useStore } from 'effector-react';
+import { useStore } from 'effector-react';
 
 import { $locale, setLocale } from '@store/app';
 import { locales } from '@locale';

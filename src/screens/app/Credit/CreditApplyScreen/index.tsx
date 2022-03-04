@@ -20,8 +20,17 @@ import {
     Label,
     CurrencyInput,
     CurrencyAmount,
-    Spinner
+    Spinner,
+    ToggleButton,
+    Checkbox,
+    Button,
+    Details
 } from '@components/ui';
+
+import {
+    PaymentMethod,
+    CreditAgreement
+} from '@components';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -29,17 +38,26 @@ import { Card, CardContent } from 'ui-neumorphism';
 
 import { moneyAmountFormatter } from '@utils';
 import { debounce, head, isEmpty } from 'lodash';
+import { format as formatDate } from 'date-fns';
+
+import styles from './CreditApplyScreen.module.sass';
 
 interface ICreditApplyScreen {};
 
+interface IDetailsTable {
+    name: string
+    value: string
+}
+
 export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
     const navigate = useNavigate();
 
     const { currencies } = useWallet();
     const {
         getCreditAmount,
-        getSettings
+        getSettings,
+        settings
     } = useCredit();
 
     const [ token, setToken ] = useState<iCurrency>(head(currencies));
@@ -48,8 +66,46 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
     const [ loanAmount, setLoanAmount ] = useState<string>('0');
     const [ loanAmountLoading, setLoanAmountLoading ] = useState<boolean>(false);
 
-    const [ settingsObject, setSettingsObject ] = useState<ICreditSetting[]>([]);
-    const [ filteredSettingsObject, setFilteredSettingsObject ] = useState<ICreditSetting[]>([]);
+    const [ comessionCurrency, setComissionCurrency ] = useState<string>('');
+
+    const [ detailsTable, setDetailsTable ] = useState<IDetailsTable[]>([]);
+    const [ agree, setAgree ] = useState<boolean>(false);
+
+    const [ settingsObject, setSettingsObject ] = useState<ICreditSetting>(null);
+    const [ filteredSettings, setFilteredSettings ] = useState<ICreditSetting[]>([]);
+
+    const [ creditAgreement, setCreditAgreement ] = useState<boolean>(false);
+
+    const paymentMethods = currencies.filter(c => [ 'tether' ].includes(c.id));
+
+    useEffect(() => {
+        setDepositAmount('');
+        setLoanAmount('0');
+
+        if (settings?.length > 0) {
+            setFilteredSettings(settings.filter(s => s.currency === token.asset));
+            setSettingsObject(settings.find(s => s.currency === token.asset));
+        }
+    }, [token, settings]);
+
+    useEffect(() => {
+        if (settingsObject) {
+            setDetailsTable([
+                {
+                    name: t('Interest rate'),
+                    value: `${settingsObject.rate}%`
+                },
+                {
+                    name: t('Maturity date'),
+                    value: formatDate(new Date(settingsObject?.close_date), 'dd.MM.yyyy')
+                },
+                {
+                    name: t('Liquidation threshold'),
+                    value: `${settingsObject.limit_warning}%`
+                }
+            ]);
+        }
+    }, [settingsObject, language]);
 
     const handleCreditAmount = useCallback(
         debounce(async () => {
@@ -70,6 +126,12 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
         [depositAmount]
     );
 
+    const getPaymentComission = (): string => {
+        const comission = (Number(settingsObject?.comission) * 100) || 0;
+
+        return comission.toString();
+    }
+
     useEffect(() => {
         getSettings();
     }, []);
@@ -77,6 +139,16 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
     useEffect(() => {
         handleCreditAmount();
     }, [depositAmount]);
+
+    const getBtnDisabledState = (): boolean => {
+        if (!settingsObject) return true
+        if (!depositAmount) return true
+        if (loanAmount === '0') return true
+        if (!comessionCurrency) return true;
+        if (!agree) return true;
+
+        return false;
+    }
 
     return (
         <ScreenContainer title={t('Credit')}>
@@ -99,6 +171,21 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                             onChange={setDepositAmount}
                             assetFrom={token?.asset}
                         />
+                        {!isEmpty(filteredSettings) && (
+                            <>
+                                <h4 className='mt-5'>{t('Loan/collateral ratio (LTV)')}</h4>
+                                <div className={styles.ltvSelect}>
+                                    {filteredSettings?.map((s: ICreditSetting, key: number) => (
+                                        <ToggleButton
+                                            active={s.id === settingsObject?.id}
+                                            label={`${s.ltv}%`}
+                                            onClick={() => setSettingsObject(s)}
+                                            key={key}
+                                        />
+                                    ))}
+                                </div>
+                            </>
+                        )}
                         <h4 className='mt-5'>{t('Loan amount')}</h4>
                         <CurrencyAmount
                             amount={loanAmount}
@@ -106,9 +193,52 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                         >
                             {loanAmountLoading && <Spinner />}
                         </CurrencyAmount>
+                        <h4 className='mt-5'>{t('Commission payment method')}</h4>
+                        {paymentMethods.map((pm: iCurrency, key: number) => (
+                            <PaymentMethod
+                                active={pm.asset === comessionCurrency}
+                                onClick={() => setComissionCurrency(pm.asset)}
+                                comission={getPaymentComission()}
+                                currency={pm}
+                                key={key}
+                            />
+                        ))}
+                        <h4 className='mt-5'>{t('Term')}</h4>
+                        <Card>
+                            <CardContent>
+                                <div className={styles.term}>
+                                    1 {t('Year').toLowerCase()}
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Details
+                            items={detailsTable}
+                        />
+                        <div className='d-flex mt-5'>
+                            <div className={styles.agree}>
+                                <Checkbox
+                                    value={agree}
+                                    onChange={() => setAgree(!agree)}
+                                />
+                                <div className={styles.agreeLabel}>
+                                    {t('By submitting the form you agree to the loan agreement')}
+                                </div>
+                            </div>
+                            <Button
+                                label={t('Apply for a loan')}
+                                disabled={getBtnDisabledState()}
+                                onClick={() => {
+                                    setCreditAgreement(true);
+                                }}
+                            />
+                        </div>
                     </div>
                 </CardContent>
             </Card>
+            <CreditAgreement
+                visible={creditAgreement}
+                onClose={() => setCreditAgreement(false)}
+            />
         </ScreenContainer>
     );
 }
