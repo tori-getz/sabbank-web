@@ -75,6 +75,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
     const [ filteredSettings, setFilteredSettings ] = useState<ICreditSetting[]>([]);
 
     const [ creditAgreement, setCreditAgreement ] = useState<boolean>(false);
+    const [ prepareLoading, setPrepareLoading ] = useState<boolean>(false);
 
     const paymentMethods = currencies.filter(c => [ 'tether' ].includes(c.id));
 
@@ -132,6 +133,12 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
         return comission.toString();
     }
 
+    const getComissionAmount = (): string => {
+        const comission = Number(settingsObject?.comission) * Number(loanAmount);
+
+        return comission.toString();
+    }
+
     useEffect(() => {
         getSettings();
     }, []);
@@ -148,6 +155,16 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
         if (!agree) return true;
 
         return false;
+    }
+
+    const onAgree = async () => {
+        try {
+            setPrepareLoading(true);
+        } catch (e) {
+            console.error(e)
+        } finally {
+
+        }
     }
 
     return (
@@ -236,8 +253,15 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                 </CardContent>
             </Card>
             <CreditAgreement
+                loanAmount={`${loanAmount} USDT`}
+                maturityDate={settingsObject?.close_date && formatDate(new Date(settingsObject?.close_date), 'dd.MM.yyyy')}
+                comission={`${getComissionAmount()} USDT`}
+                interestRate={`${settingsObject?.rate}%`}
+                liquidationThreshold={`${settingsObject?.limit_warning}%`}
                 visible={creditAgreement}
+                loading={prepareLoading}
                 onClose={() => setCreditAgreement(false)}
+                onAgree={onAgree}
             />
         </ScreenContainer>
     );
