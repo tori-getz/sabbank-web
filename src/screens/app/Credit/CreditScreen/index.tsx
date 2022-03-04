@@ -56,6 +56,7 @@ export const CreditScreen: React.FC<ICreditScreen> = () => {
                 <h2>{t('Credit')}</h2>
                 <Button
                     label={t('Apply new credit')}
+                    onClick={() => navigate('/credit/apply')}
                 />
             </div>
             <Card>

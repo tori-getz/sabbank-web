@@ -2,11 +2,13 @@
 import type { AxiosInstance } from 'axios';
 
 import type {
-    ICredit
+    ICredit,
+    ICreditSetting
 } from '@typing';
 
 import type {
-    ICreditGetDto
+    ICreditGetDto,
+    ICreditPrepareDto
 } from '@dtos';
 
 import { HTTPClient } from '@http';
@@ -26,6 +28,18 @@ export class CreditService {
 
     public async getCredit (dto: ICreditGetDto): Promise<ICredit> {
         const { data } = await this.http.get<ICredit>(`/loan/${dto.id}`);
+
+        return data;
+    }
+
+    public async getSettings (): Promise<ICreditSetting[]> {
+        const { data } = await this.http.get<ICreditSetting[]>('/loan/settings');
+
+        return data;
+    }
+
+    public async prepare (dto: ICreditPrepareDto): Promise<ICredit> {
+        const { data } = await this.http.post<ICredit>('/loan/prepare', dto);
 
         return data;
     }

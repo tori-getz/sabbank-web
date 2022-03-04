@@ -113,6 +113,7 @@ export const CurrencyInput: React.FC<ICurrencyInput> = ({
         <div className={styles.wrapper}>
             <div className={cn(styles.field, className)}>
                 <input
+                    type='number'
                     value={value}
                     onChange={e => handleFromChange(e.target.value)}
                     className={styles.input}
@@ -129,6 +130,7 @@ export const CurrencyInput: React.FC<ICurrencyInput> = ({
                     <Icon name='equals' />
                     <div className={cn(styles.field, className)}>
                         <input
+                            type='number'
                             value={toValue}
                             onChange={e => handleToChange(e.target.value)}
                             className={styles.input}

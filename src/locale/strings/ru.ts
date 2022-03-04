@@ -79,5 +79,7 @@ export const ru: ILocale = {
     'Remaining amount': 'Оставшаяся сумма',
     'Low': 'Низ',
     'High': 'Выс',
-    'Settings': 'Настройки'
+    'Settings': 'Настройки',
+    'Choose a cryptocurrency for collateral': 'Выберите криптовалюту для залога',
+    'Enter the depositamount': 'Введите сумму залога'
 };

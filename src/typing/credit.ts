@@ -27,3 +27,15 @@ export interface ICredit {
     update_ts: string
     created_ts: string
 }
+
+export interface ICreditSetting {
+    id: string
+    ltv: number
+    rate: number
+    currency: string
+    comission: string
+    close_data: string
+    amount_limit: number
+    limit: number
+    limit_warning: number
+}

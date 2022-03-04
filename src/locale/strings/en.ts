@@ -80,5 +80,7 @@ export const en: ILocale = {
     'Remaining amount': 'Remaining amount',
     'Low': 'Low',
     'High': 'High',
-    'Settings': 'Settings'
+    'Settings': 'Settings',
+    'Choose a cryptocurrency for collateral': 'Choose a cryptocurrency for collateral',
+    'Enter the depositamount': 'Enter the deposit amount'
 };

@@ -1,15 +1,21 @@
 
-import { CreditService } from '@services';
+import {
+    CreditService,
+    CryptoCurrencyService
+} from '@services';
 
 import { useStore } from 'effector-react';
 
 import {
     $creditsList,
-    setCreditsList
+    $creditSettings,
+    setCreditsList,
+    getCreditInfoFx
 } from '@store/credit';
 
 import type {
-    ICredit
+    ICredit,
+    ICreditSetting
 } from '@typing';
 
 import type {
@@ -20,12 +26,17 @@ interface IUseCredit {
     creditsList: Array<ICredit>
     getCredits: () => Promise<void>
     getCredit: (dto: ICreditGetDto) => Promise<ICredit>
+    getCreditAmount: (amount: string, asset: string) => Promise<string>
+    settings: Array<ICreditSetting>
+    getSettings: () => Promise<void>
 }
 
 export const useCredit = (): IUseCredit => {
     const creditService = new CreditService();
+    const cryptoCurrencyService = new CryptoCurrencyService();
 
     const creditsList = useStore($creditsList);
+    const settings = useStore($creditSettings);
 
     const getCredits = async (): Promise<void> => {
         try {
@@ -43,9 +54,34 @@ export const useCredit = (): IUseCredit => {
         return credit;
     }
 
+    const getCreditAmount = async (amount: string, asset: string): Promise<string> => {
+        try {
+            const { result } = await cryptoCurrencyService.aetExchangeRate({
+                asset_from: asset,
+                asset_to: 'usdt',
+                amount: Number(amount)
+            });
+
+            return result;
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    const getSettings = async (): Promise<void> => {
+        try {
+            getCreditInfoFx()
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     return {
         creditsList,
+        settings,
         getCredits,
-        getCredit
+        getCredit,
+        getCreditAmount,
+        getSettings
     }
 }
