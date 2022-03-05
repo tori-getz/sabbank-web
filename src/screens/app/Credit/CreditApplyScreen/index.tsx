@@ -57,7 +57,8 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
     const {
         getCreditAmount,
         getSettings,
-        settings
+        settings,
+        prepareCredit
     } = useCredit();
 
     const [ token, setToken ] = useState<iCurrency>(head(currencies));
@@ -160,10 +161,18 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
     const onAgree = async () => {
         try {
             setPrepareLoading(true);
+
+            const { id } = await prepareCredit({
+                deposit: depositAmount,
+                settings: settingsObject.id,
+                comission_currency: comessionCurrency
+            });
+
+            navigate(`/credit/success/${id}`);
         } catch (e) {
             console.error(e)
         } finally {
-
+            setPrepareLoading(false);
         }
     }
 
@@ -255,7 +264,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
             <CreditAgreement
                 loanAmount={`${loanAmount} USDT`}
                 maturityDate={settingsObject?.close_date && formatDate(new Date(settingsObject?.close_date), 'dd.MM.yyyy')}
-                comission={`${getComissionAmount()} USDT`}
+                comission={`${getComissionAmount()} ${comessionCurrency.toUpperCase()}`}
                 interestRate={`${settingsObject?.rate}%`}
                 liquidationThreshold={`${settingsObject?.limit_warning}%`}
                 visible={creditAgreement}

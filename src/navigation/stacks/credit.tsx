@@ -4,7 +4,8 @@ import type { Routes } from '@typing';
 import {
     CreditScreen,
     CreditinfoScreen,
-    CreditApplyScreen
+    CreditApplyScreen,
+    CreditSuccessScreen
 } from '@screens';
 
 export const creditRoutes: Routes = [
@@ -19,5 +20,9 @@ export const creditRoutes: Routes = [
     {
         path: '/credit/apply',
         component: <CreditApplyScreen />
+    },
+    {
+        path: '/credit/success/:id',
+        component: <CreditSuccessScreen />
     }
 ];

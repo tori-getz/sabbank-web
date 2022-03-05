@@ -19,7 +19,8 @@ import type {
 } from '@typing';
 
 import type {
-    ICreditGetDto
+    ICreditGetDto,
+    ICreditPrepareDto
 } from '@dtos';
 
 interface IUseCredit {
@@ -29,6 +30,7 @@ interface IUseCredit {
     getCreditAmount: (amount: string, asset: string) => Promise<string>
     settings: Array<ICreditSetting>
     getSettings: () => Promise<void>
+    prepareCredit: (dto: ICreditPrepareDto) => Promise<ICredit>
 }
 
 export const useCredit = (): IUseCredit => {
@@ -76,12 +78,19 @@ export const useCredit = (): IUseCredit => {
         }
     }
 
+    const prepareCredit = async (dto: ICreditPrepareDto): Promise<ICredit> => {
+        const newCredit = await creditService.prepare(dto);
+
+        return newCredit;
+    }
+
     return {
         creditsList,
         settings,
         getCredits,
         getCredit,
         getCreditAmount,
-        getSettings
+        getSettings,
+        prepareCredit
     }
 }
