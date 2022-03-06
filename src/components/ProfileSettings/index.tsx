@@ -45,9 +45,11 @@ export const ProfileSettings: React.FC<IProfileSettings> = () => {
         const firstName = user?.first_name || '';
         const lastName = user?.last_name || '';
 
-        if (firstName === '' || lastName === '') return;
-
-        setName(`${user?.first_name} ${user?.last_name}`);
+        if (lastName === '') {
+            setName(`${firstName}`);
+        } else {
+            setName(`${firstName} ${lastName}`)
+        }
     }
 
     useEffect(() => {

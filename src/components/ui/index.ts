@@ -26,3 +26,4 @@ export { CreditItem } from './CreditItem';
 export { CurrencyAmount } from './CurrencyAmount'
 export { ToggleButton } from './ToggleButton';
 export { ErrorLabel } from './ErrorLabel';
+export { SettingsButton } from './SettingsButton';

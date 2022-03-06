@@ -8,3 +8,4 @@ export { DepositService } from './DepositService';
 export { ContentService } from './ContentServkce';
 export { CreditService } from './CreditService';
 export { ProfileService } from './ProfileService';
+export { SupportService } from './SupportService';

@@ -87,5 +87,7 @@ export const ru: ILocale = {
     'Liquidation threshold': 'Порог ликвидации',
     'Apply for a loan': 'Оформить кредит',
     'Enter phone number': 'Введите номер телефона',
-    'Enter Email': 'Введите Email'
+    'Enter Email': 'Введите Email',
+    'FAQ and support': 'Помощь и поддержка',
+    'Frequently asked questions': 'Часто задаваемые вопросы'
 };

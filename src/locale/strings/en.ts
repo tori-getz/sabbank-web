@@ -88,5 +88,7 @@ export const en: ILocale = {
     'Liquidation threshold': 'Liquidation threshold',
     'Apply for a loan': 'Apply for a loan',
     'Enter phone number': 'Enter phone number',
-    'Enter Email': 'Enter Email'
+    'Enter Email': 'Enter Email',
+    'FAQ and support': 'FAQ and support',
+    'Frequently asked questions': 'Frequently asked questions'
 };
