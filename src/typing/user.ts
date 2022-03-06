@@ -11,7 +11,7 @@ export interface IUserFiatCurrency {
 export interface IUserSettings {
     face_recognition: boolean
     finger_print: boolean
-    language: 'ru' | 'en'
+    language: string
     password: boolean
     two_factor: boolean
     verified: string

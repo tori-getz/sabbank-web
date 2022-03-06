@@ -16,9 +16,7 @@ import {
 
 import {
     setUser
-} from '@store/user';
-
-import { HTTPClient } from '@http';
+} from '@store/profile';
 
 interface IUseAuth {
     isAuth: () => boolean

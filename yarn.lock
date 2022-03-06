@@ -899,6 +899,11 @@ is-core-module@^2.8.1:
   dependencies:
     has "^1.0.3"
 
+is-email@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-email/-/is-email-1.0.2.tgz#51a618e2ddc895988ceb550df9f587b3607560e5"
+  integrity sha512-UojUgD2EhDTBQ2SGKwrK9edce5phRzgLsP+V5+Uu2Swi+uvjVXgH3zduM3HhT9iaC/9Kq19/TYUbP0jPoi6ioA==
+
 is-extglob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
@@ -1016,6 +1021,11 @@ path-parse@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
+
+phone@^3.1.12:
+  version "3.1.12"
+  resolved "https://registry.yarnpkg.com/phone/-/phone-3.1.12.tgz#e97666b0502a12c1c273ca8f09329247288317aa"
+  integrity sha512-bp89VGx/fFIERQawe0MoOSMPR8YUsnGpJF813KhmyitQXNtctD26FM0/UA1cKVmiYfWYnfadiCgUJnhK4e+xvA==
 
 picocolors@^1.0.0:
   version "1.0.0"

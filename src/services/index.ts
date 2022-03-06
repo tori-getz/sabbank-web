@@ -7,3 +7,4 @@ export { LoggerService } from './LoggerService';
 export { DepositService } from './DepositService';
 export { ContentService } from './ContentServkce';
 export { CreditService } from './CreditService';
+export { ProfileService } from './ProfileService';

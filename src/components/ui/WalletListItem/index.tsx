@@ -9,10 +9,10 @@ import { Icon } from '@components/ui'
 
 import { moneyAmountFormatter } from '@utils';
 
-import { useUser } from '@hooks';
+import { useProfile } from '@hooks';
 
 export const WalletListItem: React.FC<iCurrency> = currency => {
-    const { settings } = useUser();
+    const { settings } = useProfile();
 
     return (
         <div>

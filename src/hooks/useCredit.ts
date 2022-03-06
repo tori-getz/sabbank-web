@@ -27,7 +27,7 @@ interface IUseCredit {
     creditsList: Array<ICredit>
     getCredits: () => Promise<void>
     getCredit: (dto: ICreditGetDto) => Promise<ICredit>
-    getCreditAmount: (amount: string, asset: string) => Promise<string>
+    getCreditAmount: (amount: string, asset: string, ltv: number) => Promise<string>
     settings: Array<ICreditSetting>
     getSettings: () => Promise<void>
     prepareCredit: (dto: ICreditPrepareDto) => Promise<ICredit>
@@ -56,7 +56,7 @@ export const useCredit = (): IUseCredit => {
         return credit;
     }
 
-    const getCreditAmount = async (amount: string, asset: string): Promise<string> => {
+    const getCreditAmount = async (amount: string, asset: string, ltv: number): Promise<string> => {
         try {
             const { result } = await cryptoCurrencyService.aetExchangeRate({
                 asset_from: asset,
@@ -64,7 +64,9 @@ export const useCredit = (): IUseCredit => {
                 amount: Number(amount)
             });
 
-            return result;
+            const loanAmount = Number(result) * (ltv / 100);
+
+            return loanAmount.toString();
         } catch (e) {
             console.error(e);
         }

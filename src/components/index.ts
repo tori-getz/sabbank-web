@@ -16,3 +16,4 @@ export { DepositBanner } from './DepositBanner';
 export { CreditLTV } from './CreditLTV';
 export { PaymentMethod } from './PaymentMethod';
 export { CreditAgreement } from './CreditAgreement';
+export { ProfileSettings } from './ProfileSettings';

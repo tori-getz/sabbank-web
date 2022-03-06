@@ -6,7 +6,7 @@ import { NavDropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 import {
-    useUser,
+    useProfile,
     useTranslation,
     useAuth
 } from '@hooks';
@@ -15,7 +15,7 @@ interface IUserActions {};
 
 export const UserActions: React.FC<IUserActions> = () => {
     const { t } = useTranslation();
-    const { user } = useUser();
+    const { user } = useProfile();
     const { logout } = useAuth();
 
     const navigate = useNavigate();

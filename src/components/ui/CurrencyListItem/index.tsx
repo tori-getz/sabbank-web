@@ -8,10 +8,10 @@ import { moneyAmountFormatter } from '../../../utils/moneyAmountFormatter';
 import { IconButton } from 'ui-neumorphism';
 import { Chart, Icon } from '@components/ui'
 
-import { useUser } from '@hooks';
+import { useProfile } from '@hooks';
 
 export const CurrencyListItem: React.FC<iCurrency> = currency => {
-    const { settings } = useUser();
+    const { settings } = useProfile();
 
     return (
         <>

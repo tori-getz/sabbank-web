@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import cn from 'classnames';
 import styles from './ScreenContainer.module.sass';
 
-import { useAuth, useUser, useSocket, useWallet } from '@hooks';
+import { useAuth, useProfile, useSocket, useWallet } from '@hooks';
 
 import { Container } from 'react-bootstrap';
 
@@ -26,7 +26,7 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
 
     if (isAuth()) useSocket();
 
-    const { getUser } = useUser();
+    const { getUser } = useProfile();
     const { getCurrencies } = useWallet();
 
     useEffect(() => {

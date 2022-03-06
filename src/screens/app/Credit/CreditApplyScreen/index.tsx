@@ -67,7 +67,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
     const [ loanAmount, setLoanAmount ] = useState<string>('0');
     const [ loanAmountLoading, setLoanAmountLoading ] = useState<boolean>(false);
 
-    const [ comessionCurrency, setComissionCurrency ] = useState<string>('');
+    const [ comissionCurrency, setComissionCurrency ] = useState<string>('');
 
     const [ detailsTable, setDetailsTable ] = useState<IDetailsTable[]>([]);
     const [ agree, setAgree ] = useState<boolean>(false);
@@ -116,7 +116,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
             try {
                 setLoanAmountLoading(true);
     
-                const amount = await getCreditAmount(depositAmount, token.asset);
+                const amount = await getCreditAmount(depositAmount, token.asset, settingsObject?.ltv);
     
                 setLoanAmount(moneyAmountFormatter(amount, 8));
             } catch (e) {
@@ -125,7 +125,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                 setLoanAmountLoading(false);
             }
         }, 500),
-        [depositAmount]
+        [token, depositAmount, settingsObject]
     );
 
     const getPaymentComission = (): string => {
@@ -146,35 +146,38 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
 
     useEffect(() => {
         handleCreditAmount();
-    }, [depositAmount]);
+    }, [depositAmount, settingsObject]);
 
     const getBtnDisabledState = (): boolean => {
         if (!settingsObject) return true
         if (!depositAmount) return true
         if (loanAmount === '0') return true
-        if (!comessionCurrency) return true;
+        if (!comissionCurrency) return true;
         if (!agree) return true;
 
         return false;
     }
 
-    const onAgree = async () => {
-        try {
-            setPrepareLoading(true);
-
-            const { id } = await prepareCredit({
-                deposit: depositAmount,
-                settings: settingsObject.id,
-                comission_currency: comessionCurrency
-            });
-
-            navigate(`/credit/success/${id}`);
-        } catch (e) {
-            console.error(e)
-        } finally {
-            setPrepareLoading(false);
-        }
-    }
+    const onAgree = useCallback(
+        async () => {
+            try {
+                setPrepareLoading(true);
+    
+                const { id } = await prepareCredit({
+                    deposit: depositAmount,
+                    settings: settingsObject?.id,
+                    comission_currency: comissionCurrency
+                });
+    
+                navigate(`/credit/success/${id}`);
+            } catch (e) {
+                console.error(e)
+            } finally {
+                setPrepareLoading(false);
+            }
+        },
+        [depositAmount, settingsObject, comissionCurrency]    
+    );
 
     return (
         <ScreenContainer title={t('Credit')}>
@@ -222,7 +225,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                         <h4 className='mt-5'>{t('Commission payment method')}</h4>
                         {paymentMethods.map((pm: iCurrency, key: number) => (
                             <PaymentMethod
-                                active={pm.asset === comessionCurrency}
+                                active={pm.asset === comissionCurrency}
                                 onClick={() => setComissionCurrency(pm.asset)}
                                 comission={getPaymentComission()}
                                 currency={pm}
@@ -264,7 +267,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
             <CreditAgreement
                 loanAmount={`${loanAmount} USDT`}
                 maturityDate={settingsObject?.close_date && formatDate(new Date(settingsObject?.close_date), 'dd.MM.yyyy')}
-                comission={`${getComissionAmount()} ${comessionCurrency.toUpperCase()}`}
+                comission={`${getComissionAmount()} ${comissionCurrency.toUpperCase()}`}
                 interestRate={`${settingsObject?.rate}%`}
                 liquidationThreshold={`${settingsObject?.limit_warning}%`}
                 visible={creditAgreement}

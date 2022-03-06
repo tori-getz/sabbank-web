@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Icon } from '@components/ui';
 
-import { useUser } from '@hooks';
+import { useProfile } from '@hooks';
 
 import { IconButton } from 'ui-neumorphism';
 
@@ -25,7 +25,7 @@ export const TokenSelectItem: React.FC<ITokenSelectItem> = ({
     price,
     onClick
 }) => {
-    const { settings } = useUser();
+    const { settings } = useProfile();
 
     return (
         <div

@@ -87,4 +87,6 @@ export const en: ILocale = {
     'from the sum': 'frum the sum',
     'Liquidation threshold': 'Liquidation threshold',
     'Apply for a loan': 'Apply for a loan',
+    'Enter phone number': 'Enter phone number',
+    'Enter Email': 'Enter Email'
 };

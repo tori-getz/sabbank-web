@@ -11,7 +11,7 @@ import styles from './DepositListItem.module.sass';
 
 import cn from 'classnames';
 
-import { useUser } from '@hooks';
+import { useProfile } from '@hooks';
 
 import { moneyAmountFormatter } from '@utils';
 
@@ -27,7 +27,7 @@ export const DepositListItem: React.FC<IDepositListItem> = ({
     disabled,
     onClick
 }) => {
-    const { settings } = useUser();
+    const { settings } = useProfile();
 
     return (
         <Card>

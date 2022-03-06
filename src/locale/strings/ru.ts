@@ -85,5 +85,7 @@ export const ru: ILocale = {
     'Year': 'Год',
     'from the sum': 'от суммы',
     'Liquidation threshold': 'Порог ликвидации',
-    'Apply for a loan': 'Оформить кредит'
+    'Apply for a loan': 'Оформить кредит',
+    'Enter phone number': 'Введите номер телефона',
+    'Enter Email': 'Введите Email'
 };
