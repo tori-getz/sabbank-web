@@ -4,6 +4,9 @@ import React from 'react';
 import { NavDropdown } from 'react-bootstrap';
 
 import { useTranslation } from '@hooks';
+import { Icon } from '@components/ui';
+
+import styles from './LanguageSelect.module.sass';
 
 import { locales } from '@locale';
 
@@ -21,7 +24,10 @@ export const LanguageSelect: React.FC<ILanguageSelect> = () => {
                     onClick={() => setLanguage(lang)}
                     key={key}
                 >
-                    {lang.toUpperCase()}
+                    <span className={styles.languageItem}>
+                        <Icon name="flag-en"/>
+                        {lang.toUpperCase()}
+                    </span>
                 </NavDropdown.Item>
             ))}
         </NavDropdown>

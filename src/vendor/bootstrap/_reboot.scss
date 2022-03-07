@@ -64,6 +64,14 @@ body {
 input, label, textarea, button, select, a{
   font-family: var(--#{$variable-prefix}body-font-family) !important;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    box-shadow: 0 0 0 30px transparent inset !important;
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
 
 // Content grouping
 //
