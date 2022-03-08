@@ -10,7 +10,13 @@
   white-space: nowrap;
 
   // Generate the caret automatically
-  @include caret();
+  // @include caret();
+
+  &::after {
+    display: inline-block;
+    content: url('/assets/icons/arrow-down-menu.svg');
+    margin-left: 10px;
+  }
 }
 
 // The dropdown menu
@@ -27,12 +33,13 @@
   list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
-  border: $dropdown-border-width solid $dropdown-border-color;
+  // border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
-  @include box-shadow($dropdown-box-shadow);
+  // @include box-shadow($dropdown-box-shadow);
+  box-shadow: 2px 2px 25px 0 #C6C6D7;
 
   &[data-bs-popper] {
-    top: 100%;
+    top: 80%;
     left: 0;
     margin-top: $dropdown-spacer;
   }
@@ -131,7 +138,7 @@
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
-  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  // padding: $dropdown-item-padding-y $dropdown-item-padding-x;
   clear: both;
   font-weight: $font-weight-normal;
   color: $dropdown-link-color;
@@ -157,7 +164,7 @@
   &:focus {
     color: $dropdown-link-hover-color;
     text-decoration: if($link-hover-decoration == underline, none, null);
-    @include gradient-bg($dropdown-link-hover-bg);
+    // @include gradient-bg($dropdown-link-hover-bg);
   }
 
   &.active,

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="9px" viewBox="0 0 10 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon-arrow down</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1440" height="80"></rect>
+        <filter x="-2.5%" y="-43.8%" width="105.6%" height="200.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="4" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="12.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.635294118   0 0 0 0 0.647058824   0 0 0 0 0.701960784  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Header" transform="translate(-1307.000000, -36.000000)">
+            <g>
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#F5F5FA" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <g id="Group" transform="translate(1304.000000, 32.000000)">
+                <rect id="Rectangle" x="0" y="0" width="16" height="16"></rect>
+                <path d="M4.7618273,5.73039746 L8.10740977,8.76093721 L11.3125799,5.74346066 C11.4847643,5.58132607 11.7424184,5.56460755 11.9321809,5.69100057 L12.0089039,5.75392421 L12.48515,6.23017034 C12.4886917,6.233712 12.4921799,6.23730668 12.4956136,6.24095316 C12.6849205,6.44199417 12.6754082,6.75843372 12.4743672,6.94774068 L12.4743672,6.94774068 L8.48352373,10.7056528 C8.45720983,10.7304309 8.42889978,10.7518127 8.39914096,10.7698066 L8.13028488,11.0382744 L3.61470583,6.94718465 C3.41006191,6.76177839 3.39446671,6.44558025 3.57987297,6.24093634 C3.58538792,6.23484916 3.59105204,6.2288988 3.59686016,6.22309068 L4.07256619,5.74738465 C4.26105825,5.55889259 4.56427876,5.55141957 4.7618273,5.73039746 Z" id="Combined-Shape" fill="#17171A"></path>
+            </g>
+        </g>
+    </g>
+</svg>
