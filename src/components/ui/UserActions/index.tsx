@@ -16,14 +16,14 @@ interface IUserActions {};
 
 export const UserActions: React.FC<IUserActions> = () => {
     const { t } = useTranslation();
-    const { user } = useProfile();
+    const { getFullname, getInitials } = useProfile();
     const { logout } = useAuth();
 
     const navigate = useNavigate();
 
     const getUsername = () => {
-        const name: string = `${user?.first_name} ${user?.last_name}`;
-        const initials: string = `${user?.first_name[0]}${user?.last_name[0]}`;
+        const name: string = getFullname();
+        const initials: string = getInitials(name);
 
         if (name === ' ') return (<div>{t('User')}</div>);
 
@@ -34,7 +34,7 @@ export const UserActions: React.FC<IUserActions> = () => {
             </span>
         );
     }
-
+    
     return (
         <NavDropdown title={getUsername()}>
             <NavDropdown.Item onClick={() => navigate('/settings')}>

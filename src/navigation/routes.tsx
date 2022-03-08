@@ -50,3 +50,4 @@ export const authroizedRoutes: Routes = [
     ...settingsRoutes,
     ...supportRoutes
 ];
+``

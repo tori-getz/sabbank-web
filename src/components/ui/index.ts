@@ -27,3 +27,6 @@ export { CurrencyAmount } from './CurrencyAmount'
 export { ToggleButton } from './ToggleButton';
 export { ErrorLabel } from './ErrorLabel';
 export { SettingsButton } from './SettingsButton';
+export { NavDrawer } from './NavDrawer';
+export { NavDrawerHeader } from './NavDrawerHeader';
+export { NavDrawerLink } from './NavDrawerLink';

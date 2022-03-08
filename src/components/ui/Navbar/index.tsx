@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Navbar as BootstrapNavbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import cn from 'classnames';
@@ -8,9 +8,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useTranslation, useAuth } from '@hooks';
 import { useNavigate } from 'react-router-dom';
 
-import { LanguageSelect, UserActions, Button } from '@components/ui';
+import { LanguageSelect, UserActions, Button, Icon } from '@components/ui';
+
 import styles from './Navbar.module.sass';
 
+import {
+    NavDrawer
+} from '@components/ui';
 
 interface INavbar {};
 
@@ -23,6 +27,8 @@ export const Navbar: React.FC<INavbar> = () => {
     const { t } = useTranslation();
     const { isAuth } = useAuth();
     const navigate = useNavigate();
+
+    const [ drawerOpen, setDrawerOpen ] = useState<boolean>(false);
 
     const authorizedLinks: Array<ILink> = [
         { to: '/dashboard', title: t('Home') },
@@ -79,21 +85,38 @@ export const Navbar: React.FC<INavbar> = () => {
             </>
         )
     }
-
     return (
-        <BootstrapNavbar expand="lg" className={cn(styles.navbar)}>
-            <Container>
-                <BootstrapNavbar.Brand href="/">
-                    <img src="/assets/img/logo.svg" alt="SabBank"/>
-                </BootstrapNavbar.Brand>
-                <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
-                <BootstrapNavbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-                    <Nav>
-                        {renderLinks()}
-                    </Nav>
-                </BootstrapNavbar.Collapse>
-            </Container>
-        </BootstrapNavbar>            
-
+        <>
+            <BootstrapNavbar
+                expand="lg"
+                className={cn(styles.navbar)}
+                collapseOnSelect
+                expanded={false}
+                onToggle={() => setDrawerOpen(true)}
+            >
+                <Container>
+                    <BootstrapNavbar.Brand href="/">
+                        <img src="/assets/img/logo.svg" alt="SabBank"/>
+                    </BootstrapNavbar.Brand>
+                    <BootstrapNavbar.Toggle className={styles.toggle}>
+                        <Icon
+                            name='menu'
+                        />
+                    </BootstrapNavbar.Toggle>
+                    <BootstrapNavbar.Collapse
+                        className="justify-content-end"    
+                    >
+                        <Nav>
+                            {renderLinks()}
+                        </Nav>
+                    </BootstrapNavbar.Collapse>
+                </Container>
+            </BootstrapNavbar>
+            <NavDrawer
+                expanded={drawerOpen}
+                links={isAuth() ? authorizedLinks : unauthorizedLinks}
+                onClose={() => setDrawerOpen(false)}
+            />      
+        </>
     )
 };
