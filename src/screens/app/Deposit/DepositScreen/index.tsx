@@ -14,6 +14,7 @@ import {
 import { Button, Spinner } from '@components/ui';
 
 import { Card, CardContent } from 'ui-neumorphism';
+import { Row, Col } from 'react-bootstrap'
 
 import type {
     IDepositGroup
@@ -65,15 +66,19 @@ export const DepositScreen: React.FC<IDepositScreen> = () => {
 
     return (
         <ScreenContainer title={t('Deposit')}>
-            <h2>{t('Deposit')}</h2>
-            <div className='d-flex mb-5'>
-                <TotalEarnings />
-                <Button
-                    className='m-5'
-                    label={t('Open deposit')}
-                    onClick={() => navigate('/deposit/new')}
-                />
-            </div>
+            <div className="widgetTitleL">{t('Deposit')}</div>
+            <Row className="align-items-baseline mb-1">
+                <Col xs md={8}>
+                    <TotalEarnings />
+                </Col> 
+                <Col xs={12} md={4}>
+                    <Button    
+                        className="w-100"
+                        label={t('Open deposit')}
+                        onClick={() => navigate('/deposit/new')}
+                    />
+                </Col>
+            </Row>
             <Card>
                 <CardContent>
                     <div className='p-4'>

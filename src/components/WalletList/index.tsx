@@ -34,7 +34,7 @@ export const WalletList: React.FC<IWalletList> = () => {
     }
 
     return (
-        <div className="mb-5">
+        <div className="d-none d-md-block mb-5">
             <div className="widgetTitle">{t('Wallets')}</div>
             {renderWallets()}
         </div>

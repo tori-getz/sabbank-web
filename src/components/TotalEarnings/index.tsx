@@ -19,8 +19,8 @@ export const TotalEarnings: React.FC<ITotalEarnings> = () => {
         <Card>
             <CardContent>
                 <div className={cn(styles.wrapper, 'd-flex flex-wrap justify-content-between p-4')}>
-                    <h4>{t('Total earnings')}</h4>
-                    <h4 className={styles.amount}>{totalAmount} USDT</h4>
+                    <div className="widgetTitle">{t('Total earnings')}</div>
+                    <div className={styles.amount}>{totalAmount} USDT</div>
                 </div>
             </CardContent>
         </Card>

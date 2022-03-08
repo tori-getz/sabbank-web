@@ -34,7 +34,7 @@ export const CurrencyList: React.FC<ICurrencyList> = () => {
     }
 
     return (
-        <div>
+        <div className="d-none d-md-block">
             <div className="widgetTitle">{t('Currencies')}</div>
             {renderCurrencies()}
         </div>

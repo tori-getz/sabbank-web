@@ -28,7 +28,7 @@ export const DepositGroup: React.FC<IDepositGroup> = ({
 
     return (
         <>
-            <h2>{group[`name_${language}`]} ({group.percentage}%)</h2>
+            <div className="widgetTitle">{group[`name_${language}`]} ({group.percentage}%)</div>
             {group.data.map((deposit: IDeposit, key: number) => (
                 <DepositListItem
                     {...deposit}
