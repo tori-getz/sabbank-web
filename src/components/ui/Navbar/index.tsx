@@ -8,7 +8,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useTranslation, useAuth } from '@hooks';
 import { useNavigate } from 'react-router-dom';
 
-import { LanguageSelect, UserActions, Button } from '@components/ui';
+import { LanguageSelect, UserActions, Button, Icon } from '@components/ui';
+
 import styles from './Navbar.module.sass';
 
 import {
@@ -97,7 +98,11 @@ export const Navbar: React.FC<INavbar> = () => {
                     <BootstrapNavbar.Brand href="/">
                         <img src="/assets/img/logo.svg" alt="SabBank"/>
                     </BootstrapNavbar.Brand>
-                    <BootstrapNavbar.Toggle />
+                    <BootstrapNavbar.Toggle className={styles.toggle}>
+                        <Icon
+                            name='menu'
+                        />
+                    </BootstrapNavbar.Toggle>
                     <BootstrapNavbar.Collapse
                         className="justify-content-end"    
                     >
