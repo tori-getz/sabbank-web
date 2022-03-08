@@ -15,21 +15,13 @@ interface IUserActions {};
 
 export const UserActions: React.FC<IUserActions> = () => {
     const { t } = useTranslation();
-    const { user } = useProfile();
+    const { getFullname } = useProfile();
     const { logout } = useAuth();
 
     const navigate = useNavigate();
 
-    const getUsername = () => {
-        const name: string = `${user?.first_name} ${user?.last_name}`;
-
-        if (name === ' ') return t('User');
-
-        return name;
-    }
-
     return (
-        <NavDropdown title={getUsername()}>
+        <NavDropdown title={getFullname()}>
             <NavDropdown.Item onClick={() => navigate('/settings')}>
                 {t('Settings')}
             </NavDropdown.Item>

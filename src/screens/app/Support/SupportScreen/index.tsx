@@ -24,7 +24,7 @@ export const SupportScreen: React.FC<ISupportScreen> = () => {
             <SettingsButton
                 title='FAQ'
                 description={t('Frequently asked questions')}
-                onClick={() => navigate('/support/faq')}
+                onClick={() => navigate('/support/faqthi')}
             />
         </ScreenContainer>
     )

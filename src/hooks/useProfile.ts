@@ -30,6 +30,8 @@ interface IUseProfile {
     updatePhone: (dto: IProfileUpdatePhoneDto) => Promise<IUser>;
     updateSettings: (settings: IUserSettings) => void,
     getFiatList: () => void
+    getFullname: () => string
+    getInitials: (fullName: string) => string
 }
 
 export const useProfile = (): IUseProfile => {
@@ -80,6 +82,26 @@ export const useProfile = (): IUseProfile => {
         getFiatListFx();
     }
 
+    const getFullname = (): string => {
+        const name: string = `${user?.first_name || ''} ${user?.last_name || ''}`;
+
+        if (name === ' ') return 'user';
+
+        return name;
+    }
+
+    const getInitials = (fullName: string): string => {
+        let initials: Array<string> = [];
+        
+        for (let word of fullName.split(' ')) {
+            const firstSymbol = word.split('')[0];
+
+            initials.push(firstSymbol.toUpperCase());
+        }
+
+        return initials.join('');
+    }
+
     return {
         fiatList,
         settings,
@@ -88,6 +110,8 @@ export const useProfile = (): IUseProfile => {
         updateProfile,
         updatePhone,
         updateSettings,
-        getFiatList
+        getFiatList,
+        getFullname,
+        getInitials
     };
 }

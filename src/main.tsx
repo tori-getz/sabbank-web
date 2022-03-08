@@ -5,6 +5,7 @@ import '@store/init';
 import './vendor/bootstrap/bootstrap.scss';
 import './styles/app.sass';
 import 'ui-neumorphism/dist/index.css'
+import 'react-modern-drawer/dist/index.css'
 
 import { render } from 'react-dom';
 
