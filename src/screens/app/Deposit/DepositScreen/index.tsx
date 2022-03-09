@@ -81,7 +81,7 @@ export const DepositScreen: React.FC<IDepositScreen> = () => {
             </Row>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4'>
                         {depositList.map((depositGroup: IDepositGroup, key: number) => (
                             <DepositGroup
                                 group={depositGroup}

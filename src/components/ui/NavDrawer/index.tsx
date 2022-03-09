@@ -60,6 +60,7 @@ export const NavDrawer: React.FC<INavDrawer> = ({
                         ))}
                     </div>
                 </div>
+                <div className="p-5">Settings</div>
             </div>
         </Drawer>
     )

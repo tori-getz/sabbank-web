@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { ScreenContainer } from '@containers';
 
 import styles from './CreditScreen.module.sass';
+import { Row, Col } from 'react-bootstrap'
 
 import { useTranslation, useCredit } from '@hooks';
 import { useNavigate } from 'react-router-dom';
@@ -52,17 +53,25 @@ export const CreditScreen: React.FC<ICreditScreen> = () => {
 
     return (
         <ScreenContainer title={t('Credit')}>
-            <div className={styles.header}>
-                <h2>{t('Credit')}</h2>
-                <Button
-                    label={t('Apply new credit')}
-                    onClick={() => navigate('/credit/apply')}
-                />
-            </div>
+            <Row className="align-items-baseline mb-1">
+                <Col xs md={8}>
+                    <div className="widgetTitleL">{t('Credit')}</div>
+                </Col> 
+                <Col xs={12} md={4}>
+                    <Button    
+                        className="w-100"
+                        label={t('Apply new credit')}
+                        onClick={() => navigate('/credit/apply')}
+                    />
+                </Col>
+            </Row>
+            {/* <div className={styles.header}>
+                <div className="widgetTitleL">{t('Credit')}</div>
+            </div> */}
             <Card>
                 <CardContent>
-                    <div className='p-4 mt-4'>
-                        <h3>{t('Executed loans')}</h3>
+                    <div className='pt-3 p-md-4 mt-4'>
+                        <div className="widgetTitle">{t('Executed loans')}</div>
                         {creditsList.map((credit: ICredit, key: number) => (
                             <CreditItem
                                 item={credit}
