@@ -15,14 +15,16 @@ import {
 
 import type {
     ICredit,
-    ICreditSetting
+    ICreditSetting,
+    ICreditRepaymentSchedule
 } from '@typing';
 
 import type {
     ICreditGetDto,
     ICreditCreateDto,
     ICreditPrepareDto,
-    ICreditIncreaseCollateralDto
+    ICreditIncreaseCollateralDto,
+    ICreditGetRepaymentScheduleDto
 } from '@dtos';
 
 interface IUseCredit {
@@ -35,6 +37,7 @@ interface IUseCredit {
     prepareCredit: (dto: ICreditPrepareDto) => Promise<ICredit>
     createCredit: (dto: ICreditCreateDto) => Promise<ICredit>,
     increaseCollateral: (dto: ICreditIncreaseCollateralDto) => Promise<ICredit>
+    getSchedule: (dto: ICreditGetRepaymentScheduleDto) => Promise<ICreditRepaymentSchedule[]>
 }
 
 export const useCredit = (): IUseCredit => {
@@ -96,6 +99,10 @@ export const useCredit = (): IUseCredit => {
         return await creditService.increaseCollateral(dto);
     }
 
+    const getSchedule = async (dto: ICreditGetRepaymentScheduleDto): Promise<ICreditRepaymentSchedule[]> => {
+        return await creditService.getRepaymentSchedule(dto);
+    }
+
     return {
         creditsList,
         settings,
@@ -105,6 +112,7 @@ export const useCredit = (): IUseCredit => {
         getSettings,
         prepareCredit,
         createCredit,
-        increaseCollateral
+        increaseCollateral,
+        getSchedule
     }
 }

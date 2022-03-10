@@ -39,3 +39,17 @@ export interface ICreditSetting {
     limit: number
     limit_warning: number
 }
+
+export interface ICreditRepaymentSchedule {
+    amount: string
+    due_ts: string
+    id: string
+    loan: string
+    paid_amount: string
+    paid_currency: string
+    paid_ts: string
+    status: number
+    status_verbose: string
+    type: number
+    type_verbose: string
+}

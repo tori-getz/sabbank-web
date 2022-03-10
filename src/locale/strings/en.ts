@@ -95,5 +95,9 @@ export const en: ILocale = {
     'Wallet': 'Wallet',
     'Wallet address': 'Wallet address',
     'Copy wallet address to fund your account': 'Copy wallet address to fund your account',
-    'Increase in collateral': 'Increase in collateral'
+    'Increase in collateral': 'Increase in collateral',
+    'See repayment schedule': 'See repayment schedule',
+    'Loan repayment': 'Loan repayment',
+    'Repayment schedule': 'Repayment schedule',
+    'Pay': 'Pay'
 };

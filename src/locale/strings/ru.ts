@@ -94,5 +94,9 @@ export const ru: ILocale = {
     'Wallet': 'Криптокошелёк',
     'Wallet address': 'Адрес кошелька',
     'Copy wallet address to fund your account': 'Копировать адрес кошелька для пополнения счета',
-    'Increase in collateral': 'Увеличение залога'
+    'Increase in collateral': 'Увеличение залога',
+    'See repayment schedule': 'См. график погашения',
+    'Loan repayment': 'Погашение кредита',
+    'Repayment schedule': 'График погашений',
+    'Pay': 'Оплатить'
 };

@@ -21,3 +21,4 @@ export { QuestionAccordion } from './QuestionAccordion';
 export { WalletButton } from './WalletButton';
 export { WalletInfo } from './WalletInfo';
 export { IncreaseCollateral } from './IncreaseCollateral';
+export { CreditScheduleItem } from './CreditScheduleItem';

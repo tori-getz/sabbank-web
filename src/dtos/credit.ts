@@ -15,3 +15,7 @@ export interface ICreditIncreaseCollateralDto {
     id: string
     amount: number
 }
+
+export interface ICreditGetRepaymentSchedule {
+    id: string
+}

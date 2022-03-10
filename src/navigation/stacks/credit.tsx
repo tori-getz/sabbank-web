@@ -5,7 +5,8 @@ import {
     CreditScreen,
     CreditinfoScreen,
     CreditApplyScreen,
-    CreditSuccessScreen
+    CreditSuccessScreen,
+    CreditScheduleScreen
 } from '@screens';
 
 export const creditRoutes: Routes = [
@@ -24,5 +25,9 @@ export const creditRoutes: Routes = [
     {
         path: '/credit/success/:id',
         component: <CreditSuccessScreen />
+    },
+    {
+        path: '/credit/schedule',
+        component: <CreditScheduleScreen />
     }
 ];

@@ -3,14 +3,16 @@ import type { AxiosInstance } from 'axios';
 
 import type {
     ICredit,
-    ICreditSetting
+    ICreditSetting,
+    ICreditRepaymentSchedule
 } from '@typing';
 
 import type {
     ICreditGetDto,
     ICreditPrepareDto,
     ICreditCreateDto,
-    ICreditIncreaseCollateralDto
+    ICreditIncreaseCollateralDto,
+    ICreditGetRepaymentScheduleDto
 } from '@dtos';
 
 import { HTTPClient } from '@http';
@@ -54,6 +56,12 @@ export class CreditService {
 
     public async increaseCollateral ({ id, ...dto }: ICreditIncreaseCollateralDto): Promise<ICredit> {
         const { data } = await this.http.post<ICredit>(`/loan/${id}/replenish`, dto);
+
+        return data;
+    }
+
+    public async getRepaymentSchedule ({ id }: ICreditGetRepaymentScheduleDto): Promise<ICreditRepaymentSchedule[]> {
+        const { data } = await this.http.get<ICreditRepaymentSchedule[]>(`/loan/${id}/payment`);
 
         return data;
     }
