@@ -3,6 +3,10 @@
     display: flex
     padding: 1em
     align-items: center
+    
+    @media (max-width: 780px) 
+        flex-wrap: wrap
+        justify-content: center
 
 .amount
     font-size: 20px
@@ -14,3 +18,8 @@
 
 .right
     margin-left: auto
+
+    @media (max-width: 780px) 
+        padding-top: 15px
+        display: flex        
+        width: 100%

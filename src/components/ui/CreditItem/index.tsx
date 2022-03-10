@@ -37,17 +37,21 @@ export const CreditItem: React.FC<ICreditItem> = ({
                     onClick={onClick}
                 >
                     <div className={styles.header}>
-                        <div className={styles.label}>{t('Credit')} №{item.number}</div>
-                        <div
-                            className={cn(
-                                styles.creditStatus,
-                                styles[`creditStatus__${item.status}`]
-                            )}
-                        >
-                            {t(`creditStatus__${item.status}`)}
+                        <div>
+                            <div className={styles.label}>{t('Credit')} №{item.number}</div>
+                            <div
+                                className={cn(
+                                    styles.creditStatus,
+                                    styles[`creditStatus__${item.status}`]
+                                )}
+                            >
+                                {t(`creditStatus__${item.status}`)}
+                            </div>
                         </div>
-                        <div className={cn(styles.label, styles.nextPayment)}> {t('Next payment')} </div>
-                        <div className={styles.date}>{formatDate(new Date(item.next_payment), 'dd.MM.yyyy')}</div>
+                        <div>
+                            <div className={cn(styles.label, styles.nextPayment)}> {t('Next payment')} </div>
+                            <div className={styles.date}>{formatDate(new Date(item.next_payment), 'dd.MM.yyyy')}</div>
+                        </div>
                     </div>
                     <div className={styles.body}>
                         <div className={styles.depositAmount}>{moneyAmountFormatter(item.deposit, 8)} {item.deposit_currency.toUpperCase()}</div>

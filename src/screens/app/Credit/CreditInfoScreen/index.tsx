@@ -118,10 +118,10 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
     return (
         <ScreenContainer title={`${t('Credit')} №${credit.number}`}>
             <GoBack onClick={() => navigate('/credit')}/>
-            <h2>{t(`creditStatus__${credit.status}`)} {t('Credit').toLowerCase()}</h2>  
+            <div className="widgetTitleL">{t(`creditStatus__${credit.status}`)} {t('Credit').toLowerCase()}</div>  
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4 pt-4'>
                         <div className='d-flex justify-content-between'>
                             <h4>{t('Credit')} №{credit.number}</h4>
                             {!isClosed() && (
@@ -134,14 +134,14 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
                         </div>
                         {!isClosed() && (
                             <>
-                                <h5 className='pt-3'>{t('Loan amount')}</h5>
+                                <div className="widgetTitle pt-3">{t('Loan amount')}</div>
                                 <CurrencyAmount
                                     amount={moneyAmountFormatter(credit.amount, 8)}
                                     asset='usdt'
                                 >
                                     <Button label={t('Increase the deposit')} />
                                 </CurrencyAmount>
-                                <h5 className='pt-3'>{t('Remaining amount')}</h5>
+                                <div className="widgetTitle pt-3">{t('Remaining amount')}</div>
                                 <CurrencyAmount
                                     amount={moneyAmountFormatter(credit.close_price, 8)}
                                     asset='usdt'
