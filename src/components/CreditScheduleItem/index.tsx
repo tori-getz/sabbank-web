@@ -28,7 +28,7 @@ export const CreditScheduleItem: React.FC<ICreditScheduleItem> = ({
     const { t } = useTranslation();
 
     return (
-        <div className='d-flex justify-content-between my-4'>
+        <div className='d-flex justify-content-between mb-4'>
             <div>
                 <div className='d-flex'>
                     <div className={styles.amount}>{moneyAmountFormatter(item.amount, 8)}</div>
