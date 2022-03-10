@@ -90,5 +90,6 @@ export const en: ILocale = {
     'Enter phone number': 'Enter phone number',
     'Enter Email': 'Enter Email',
     'FAQ and support': 'FAQ and support',
-    'Frequently asked questions': 'Frequently asked questions'
+    'Frequently asked questions': 'Frequently asked questions',
+    'See all': 'See all'
 };

@@ -18,3 +18,4 @@ export { PaymentMethod } from './PaymentMethod';
 export { CreditAgreement } from './CreditAgreement';
 export { ProfileSettings } from './ProfileSettings';
 export { QuestionAccordion } from './QuestionAccordion';
+export { WalletButton } from './WalletButton';

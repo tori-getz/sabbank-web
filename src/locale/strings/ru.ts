@@ -89,5 +89,6 @@ export const ru: ILocale = {
     'Enter phone number': 'Введите номер телефона',
     'Enter Email': 'Введите Email',
     'FAQ and support': 'Помощь и поддержка',
-    'Frequently asked questions': 'Часто задаваемые вопросы'
+    'Frequently asked questions': 'Часто задаваемые вопросы',
+    'See all': 'Смотреть все'
 };
