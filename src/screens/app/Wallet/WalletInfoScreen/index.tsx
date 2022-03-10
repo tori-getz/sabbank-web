@@ -58,7 +58,7 @@ export const WalletInfoScreen: React.FC<IWalletInfoScreen> = () => {
 
     return (
         <ScreenContainer title={`${crypto.asset.toUpperCase()} ${t('Wallet')}`}>
-            <GoBack onClick={() => navigate(-1)} />
+            <GoBack onClick={() => navigate('/wallet')} />
             <h2>{crypto.asset.toUpperCase()} {t('Wallet')}</h2>
             <Card>
                 <CardContent>
