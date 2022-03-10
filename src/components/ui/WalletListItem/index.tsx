@@ -11,11 +11,18 @@ import { moneyAmountFormatter } from '@utils';
 
 import { useProfile } from '@hooks';
 
-export const WalletListItem: React.FC<iCurrency> = currency => {
+interface IWalletListItem extends iCurrency {
+    onClick?: () => any
+}
+
+export const WalletListItem: React.FC<IWalletListItem> = ({
+    onClick,
+    ...currency
+}) => {
     const { settings } = useProfile();
 
     return (
-        <div>
+        <div onClick={onClick}>
             <Card>
                 <CardContent className={styles.wrapper}>            
                     <IconButton

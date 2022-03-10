@@ -33,6 +33,7 @@ export const WalletList: React.FC<IWalletList> = () => {
             <WalletListItem
                 {...currency}
                 key={key}
+                onClick={() => navigate(`/wallet/${currency.id}`)}
             />
         ));
     }

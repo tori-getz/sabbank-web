@@ -46,7 +46,7 @@ export const WalletInfoScreen: React.FC<IWalletInfoScreen> = () => {
 
         setCrypto(loadedCrypto);
         setLoading(false);
-    }, [currencies]);
+    }, [currencies, params]);
 
     if (loading) {
         return (
