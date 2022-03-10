@@ -41,59 +41,49 @@ export const CreditAgreement: React.FC<ICreditAgreement> = ({
         <Modal
             visible={visible}
             onClose={onClose}
+            title={t('Apply for a loan')}
         >
-            <div className='p-4 mx-2'>
-                <div className='d-flex align-items-center justify-content-between'>
-                    <h3>{t('Apply for a loan')}</h3>
-                    <div
-                        className={styles.close}
-                        onClick={onClose}
-                    >
-                        <Icon name='close' />
-                    </div>
-                </div>
-                <Details
-                    className='mt-4 mb-4'
-                    items={[
-                        {
-                            name: t('Loan amount'),
-                            value: loanAmount
-                        },
-                        {
-                            name: t('Maturity date'),
-                            value: maturityDate
-                        },
-                        {
-                            name: t('Comission'),
-                            value: comission
-                        },
-                        {
-                            name: t('Interest rate'),
-                            value: interestRate
-                        },
-                        {
-                            name: t('Liquidation threshold'),
-                            value: liquidationThreshold
-                        },
-                        {
-                            name: t('Commission payment method'),
-                            value: 'Tether (USDT)'
-                        }
-                    ]}
+            <Details
+                className='mt-4 mb-4'
+                items={[
+                    {
+                        name: t('Loan amount'),
+                        value: loanAmount
+                    },
+                    {
+                        name: t('Maturity date'),
+                        value: maturityDate
+                    },
+                    {
+                        name: t('Comission'),
+                        value: comission
+                    },
+                    {
+                        name: t('Interest rate'),
+                        value: interestRate
+                    },
+                    {
+                        name: t('Liquidation threshold'),
+                        value: liquidationThreshold
+                    },
+                    {
+                        name: t('Commission payment method'),
+                        value: 'Tether (USDT)'
+                    }
+                ]}
+            />
+            <div className={styles.btns}>
+                <Button
+                    label={t('Apply')}
+                    className={styles.apply}
+                    onClick={onAgree}
+                    loading={loading}
                 />
-                <div className={styles.btns}>
-                    <Button
-                        label={t('Apply')}
-                        className={styles.apply}
-                        onClick={onAgree}
-                        loading={loading}
-                    />
-                    <div
-                        className={styles.cancel}
-                        onClick={onClose}
-                    >
-                        {t('Cancel')}
-                    </div>
+                <div
+                    className={styles.cancel}
+                    onClick={onClose}
+                >
+                    {t('Cancel')}
                 </div>
             </div>
         </Modal>

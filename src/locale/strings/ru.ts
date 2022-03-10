@@ -93,5 +93,6 @@ export const ru: ILocale = {
     'See all': 'Смотреть все',
     'Wallet': 'Криптокошелёк',
     'Wallet address': 'Адрес кошелька',
-    'Copy wallet address to fund your account': 'Копировать адрес кошелька для пополнения счета'
+    'Copy wallet address to fund your account': 'Копировать адрес кошелька для пополнения счета',
+    'Increase in collateral': 'Увеличение залога'
 };

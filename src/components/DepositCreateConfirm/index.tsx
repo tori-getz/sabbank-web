@@ -69,44 +69,32 @@ export const DepositCreateConfirm: React.FC<IDepositCreateConfirm> = ({
         <Modal
             visible={visible}
             onClose={onClose}
+            title={t('Deposit')}
         >
-            <div className='p-4'>
-                <div className={styles.header}>
-                    <h4>{t('Deposit')}</h4>
+            <div className='pt-3'>
+                {info.map(({ name, value }: ITable, key: number) => (
                     <div
-                        className={styles.close}
-                        onClick={onClose}
+                        key={key}
+                        className={styles.row}
                     >
-                        <Icon
-                            name='close'
-                        />
+                        <div className={styles.rowLabel}>{name}</div>
+                        <div className={styles.rowValue}>{value}</div>
                     </div>
-                </div>
-                <div className='pt-3'>
-                    {info.map(({ name, value }: ITable, key: number) => (
-                        <div
-                            key={key}
-                            className={styles.row}
-                        >
-                            <div className={styles.rowLabel}>{name}</div>
-                            <div className={styles.rowValue}>{value}</div>
-                        </div>
-                    ))}
-                </div>
-                <Divider className='mt-3 mb-3' />
-                <div className={styles.actions}>
-                    <Button
-                        label={t('Confirm')}
-                        loading={loading}
-                        onClick={onConfirm}
-                    />
-                    <button
-                        className={styles.cancel}
-                        onClick={onClose}
-                    >
-                        {t('Cancel')}
-                    </button>
-                </div>
+                ))}
+            </div>
+            <Divider className='mt-3 mb-3' />
+            <div className={styles.actions}>
+                <Button
+                    label={t('Confirm')}
+                    loading={loading}
+                    onClick={onConfirm}
+                />
+                <button
+                    className={styles.cancel}
+                    onClick={onClose}
+                >
+                    {t('Cancel')}
+                </button>
             </div>
         </Modal>
     )

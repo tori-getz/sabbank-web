@@ -9,7 +9,8 @@ import type {
 import type {
     ICreditGetDto,
     ICreditPrepareDto,
-    ICreditCreateDto
+    ICreditCreateDto,
+    ICreditIncreaseCollateralDto
 } from '@dtos';
 
 import { HTTPClient } from '@http';
@@ -47,6 +48,12 @@ export class CreditService {
 
     public async create (dto: ICreditCreateDto): Promise<ICredit> {
         const { data } = await this.http.post<ICredit>('/loan/create', dto);
+
+        return data;
+    }
+
+    public async increaseCollateral ({ id, ...dto }: ICreditIncreaseCollateralDto): Promise<ICredit> {
+        const { data } = await this.http.post<ICredit>(`/loan/${id}/replenish`, dto);
 
         return data;
     }

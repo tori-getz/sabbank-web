@@ -16,7 +16,8 @@ import {
 } from '@components/ui';
 
 import {
-    CreditLTV
+    CreditLTV,
+    IncreaseCollateral
 } from '@components';
 
 import { moneyAmountFormatter } from '@utils';
@@ -43,7 +44,13 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    const { getCredit } = useCredit();
+    const {
+        getCredit,
+        increaseCollateral
+    } = useCredit();
+
+    const [ increaseVisible, setIncreaseVisible ] = useState<boolean>(false);
+    const [ increaseLoading, setIncreaseLoading ] = useState<boolean>(false);
 
     const [ loading, setLoading ] = useState<boolean>(true);
     const [ credit, setCredit ] = useState<ICredit>(null);
@@ -52,6 +59,8 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
 
     const getData = async () => {
         try {
+            setLoading(true);
+
             const loadedCredit = await getCredit({ id });
 
             setCredit(loadedCredit);
@@ -59,6 +68,24 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
         } catch (e) {
             console.error(e);
             navigate('/credit');
+        }
+    }
+
+    const onIncreaseAgree = async (amount: number) => {
+        try {
+            setIncreaseLoading(true);
+
+            const loadedCredit = await increaseCollateral({
+                id: credit.id,
+                amount
+            });
+
+            setCredit(loadedCredit);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setIncreaseLoading(false);
+            setIncreaseVisible(false);
         }
     }
 
@@ -139,7 +166,10 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
                                     amount={moneyAmountFormatter(credit.amount, 8)}
                                     asset='usdt'
                                 >
-                                    <Button label={t('Increase the deposit')} />
+                                    <Button
+                                        label={t('Increase the deposit')}
+                                        onClick={() => setIncreaseVisible(true)}    
+                                    />
                                 </CurrencyAmount>
                                 <div className="widgetTitle pt-3">{t('Remaining amount')}</div>
                                 <CurrencyAmount
@@ -154,6 +184,15 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
                     </div>
                 </CardContent>
             </Card>
+            {!isClosed() && (
+                <IncreaseCollateral
+                    visible={increaseVisible}
+                    onClose={() => setIncreaseVisible(false)}
+                    asset={credit.deposit_currency}
+                    loading={increaseLoading}
+                    onAgree={onIncreaseAgree}
+                />
+            )}
         </ScreenContainer>
     )
 }

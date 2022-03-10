@@ -10,3 +10,8 @@ export interface ICreditPrepareDto {
 }
 
 export interface ICreditCreateDto extends ICreditPrepareDto {}
+
+export interface ICreditIncreaseCollateralDto {
+    id: string
+    amount: number
+}

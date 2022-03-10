@@ -64,45 +64,33 @@ export const DepositAgreement: React.FC<IDepositAgreement> = ({
                 setCheckboxes([]);
                 onClose();
             }}
+            title={t('Terms')}
         >
-            <div className='p-4'>
-                <div className='d-flex align-items-center justify-content-between mb-3'>
-                    <h3>{t('Terms')}</h3>
-                    <div
-                        className={styles.close}
-                        onClick={onClose}
-                    >
-                        <Icon
-                            name='close'
-                        />
-                    </div>
+            {content && content.map((item, key: number) => (
+                <div
+                    className={cn(
+                        styles.term,
+                        'my-2'
+                    )}
+                    key={key}
+                >
+                    <Checkbox
+                        value={getCheckboxValue(item.id)}
+                        onChange={() => !checkboxes.includes(item.id) ? setCheckboxes([ ...checkboxes, item.id ]) : setCheckboxes(checkboxes.filter(c => c !== item.id))}
+                    />
+                    <Label className={styles.termBody}>{item[`body_${language}`]}</Label>
                 </div>
-                {content && content.map((item, key: number) => (
-                    <div
-                        className={cn(
-                            styles.term,
-                            'my-2'
-                        )}
-                        key={key}
-                    >
-                        <Checkbox
-                            value={getCheckboxValue(item.id)}
-                            onChange={() => !checkboxes.includes(item.id) ? setCheckboxes([ ...checkboxes, item.id ]) : setCheckboxes(checkboxes.filter(c => c !== item.id))}
-                        />
-                        <Label className={styles.termBody}>{item[`body_${language}`]}</Label>
-                    </div>
-                ))}
-                <Button
-                    className={styles.agree}
-                    onClick={() => {
-                        setCheckboxes([]);
-                        onClose();
-                        onAgree();
-                    }}
-                    disabled={content?.length !== checkboxes.length}
-                    label={t('Agree').toUpperCase()}
-                />
-            </div>
+            ))}
+            <Button
+                className={styles.agree}
+                onClick={() => {
+                    setCheckboxes([]);
+                    onClose();
+                    onAgree();
+                }}
+                disabled={content?.length !== checkboxes.length}
+                label={t('Agree').toUpperCase()}
+            />
         </Modal>
     )
 }
