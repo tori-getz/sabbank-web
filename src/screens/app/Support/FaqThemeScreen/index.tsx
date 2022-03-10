@@ -24,7 +24,7 @@ export const FaqThemeScreen: React.FC<IFaqThemeScreen> = () => {
     const faq = location.state as IFaqTheme;
 
     return (
-        <ScreenContainer>
+        <ScreenContainer title={faq[`theme_${language}`]}>
             <GoBack onClick={() => navigate(-1)} />
             <h3>FAQ</h3>
             <Card>

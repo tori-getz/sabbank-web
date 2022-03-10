@@ -58,7 +58,8 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
         getCreditAmount,
         getSettings,
         settings,
-        prepareCredit
+        prepareCredit,
+        createCredit
     } = useCredit();
 
     const [ token, setToken ] = useState<iCurrency>(head(currencies));
@@ -163,11 +164,17 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
             try {
                 setPrepareLoading(true);
     
-                const { id } = await prepareCredit({
+                const dto = {
                     deposit: depositAmount,
                     settings: settingsObject?.id,
                     comission_currency: comissionCurrency
-                });
+                };
+
+                const prepared = await prepareCredit(dto);
+
+                if (!prepared) return navigate('/credit');
+
+                const { id } = await createCredit(dto);
     
                 navigate(`/credit/success/${id}`);
             } catch (e) {

@@ -8,7 +8,8 @@ import type {
 
 import type {
     ICreditGetDto,
-    ICreditPrepareDto
+    ICreditPrepareDto,
+    ICreditCreateDto
 } from '@dtos';
 
 import { HTTPClient } from '@http';
@@ -40,6 +41,12 @@ export class CreditService {
 
     public async prepare (dto: ICreditPrepareDto): Promise<ICredit> {
         const { data } = await this.http.post<ICredit>('/loan/prepare', dto);
+
+        return data;
+    }
+
+    public async create (dto: ICreditCreateDto): Promise<ICredit> {
+        const { data } = await this.http.post<ICredit>('/loan/create', dto);
 
         return data;
     }

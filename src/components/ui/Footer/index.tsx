@@ -6,6 +6,8 @@ import cn from 'classnames';
 import styles from './Footer.module.sass';
 import { useTranslation } from '@hooks'
 
+import { Link } from 'react-router-dom';
+
 interface IFooter {};
 
 export const Footer: React.FC<IFooter> = () => {
@@ -44,7 +46,7 @@ export const Footer: React.FC<IFooter> = () => {
                                 <ul className={styles.categoriesList}>
                                     <li><a href="#">{t('Terms & Conditions')}</a></li>
                                     <li><a href="#">{t('Privacy policy')}</a></li>
-                                    <li><a href="#">FAQ</a></li>
+                                    <li><Link to="/support/faq">FAQ</Link></li>
                                 </ul>
                             </div>
                             <div className="col-md-4">

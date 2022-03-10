@@ -8,3 +8,5 @@ export interface ICreditPrepareDto {
     settings: string
     comission_currency: string
 }
+
+export interface ICreditCreateDto extends ICreditPrepareDto {}
