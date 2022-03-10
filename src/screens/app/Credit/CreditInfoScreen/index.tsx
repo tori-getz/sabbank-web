@@ -181,19 +181,22 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
                         <Details
                             items={table}
                         />
-                        <div className='d-flex align-items-center justify-content-between'>
-                            <div
-                                className={styles.repaymentSchedule}
-                                onClick={() => navigate('/credit/schedule', { state: { id: credit.id } })}
-                            >
-                                {t('See repayment schedule')}
+                        {!isClosed() && (
+                            <div className='d-flex align-items-center justify-content-between'>
+                                <div
+                                    className={styles.repaymentSchedule}
+                                    onClick={() => navigate('/credit/schedule', { state: { id: credit.id } })}
+                                >
+                                    {t('See repayment schedule')}
+                                </div>
+                                <div>
+                                    <Button
+                                        label={t('Loan repayment')}
+                                        onClick={() => navigate('/credit/repayment', { state: { credit } })}
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <Button
-                                    label={t('Loan repayment')}
-                                />
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </CardContent>
             </Card>
