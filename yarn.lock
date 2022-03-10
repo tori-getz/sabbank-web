@@ -1083,6 +1083,11 @@ prop-types@^15.6.2, prop-types@^15.7.2:
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+  integrity sha1-ys6GOG9ZoNuAUPqQ2baw6IoeNk8=
+
 random@*, random@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/random/-/random-3.0.6.tgz#c918e9498dee461affde72986c79ac4d9ef486cf"
@@ -1160,6 +1165,14 @@ react-modern-drawer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-modern-drawer/-/react-modern-drawer-1.0.1.tgz#a400c551216b3dffadf93e80f7cc313d30434d13"
   integrity sha512-Stswd8ETIRTGLJl7aFtu92kXb+7UCPn2mzTvpGWsE1kMXco3dK+PZyw/4NGGwDpesZvwPsz3PFlO1BuVqBZpCg==
+
+react-qr-code@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-qr-code/-/react-qr-code-2.0.3.tgz#cc80785e08f817d1ab066ca4035262f77d049648"
+  integrity sha512-6GDH0l53lksf2JgZwwcoS0D60a1OAal/GQRyNFkMBW19HjSqvtD5S20scmSQsKl+BgWM85Wd5DCcUYoHd+PZnQ==
+  dependencies:
+    prop-types "^15.7.2"
+    qr.js "0.0.0"
 
 react-refresh@^0.11.0:
   version "0.11.0"

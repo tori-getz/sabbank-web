@@ -27,6 +27,7 @@
     "react-helmet": "^6.1.0",
     "react-modal": "^3.14.4",
     "react-modern-drawer": "^1.0.1",
+    "react-qr-code": "^2.0.3",
     "react-router-bootstrap": "^0.26.0",
     "react-router-dom": "^6.2.1",
     "ui-neumorphism": "^1.1.3",

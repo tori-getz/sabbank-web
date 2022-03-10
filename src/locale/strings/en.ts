@@ -91,5 +91,8 @@ export const en: ILocale = {
     'Enter Email': 'Enter Email',
     'FAQ and support': 'FAQ and support',
     'Frequently asked questions': 'Frequently asked questions',
-    'See all': 'See all'
+    'See all': 'See all',
+    'Wallet': 'Wallet',
+    'Wallet address': 'Wallet address',
+    'Copy wallet address to fund your account': 'Copy wallet address to fund your account'
 };

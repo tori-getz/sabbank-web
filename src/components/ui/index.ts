@@ -30,3 +30,4 @@ export { SettingsButton } from './SettingsButton';
 export { NavDrawer } from './NavDrawer';
 export { NavDrawerHeader } from './NavDrawerHeader';
 export { NavDrawerLink } from './NavDrawerLink';
+export { QRCode } from './QRCode';

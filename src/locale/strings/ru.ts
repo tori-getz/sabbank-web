@@ -90,5 +90,8 @@ export const ru: ILocale = {
     'Enter Email': 'Введите Email',
     'FAQ and support': 'Помощь и поддержка',
     'Frequently asked questions': 'Часто задаваемые вопросы',
-    'See all': 'Смотреть все'
+    'See all': 'Смотреть все',
+    'Wallet': 'Криптокошелёк',
+    'Wallet address': 'Адрес кошелька',
+    'Copy wallet address to fund your account': 'Копировать адрес кошелька для пополнения счета'
 };
