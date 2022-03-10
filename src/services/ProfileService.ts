@@ -3,12 +3,12 @@ import type { AxiosInstance } from 'axios';
 
 import type {
     IProfileUpdateDto,
-    IProfileUpdatePhoneDto
+    IProfileUpdatePhoneDto,
+    IProfileUpdateSettingsDto
 } from '@dtos';
 
 import type {
     IUser,
-    IUserSettings,
     IUserFiatCurrency
 } from '@typing';
 
@@ -33,8 +33,8 @@ export class ProfileService {
         return data;
     }
 
-    public async updateSettings (dto: IUserSettings) {
-        const { data } = await this.http.post('/user/settings', dto);
+    public async updateSettings (dto: IProfileUpdateSettingsDto): Promise<IUser> {
+        const { data } = await this.http.post<IUser>('/user/settings', dto);
 
         return data;
     }

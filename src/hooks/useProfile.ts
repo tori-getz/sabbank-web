@@ -10,7 +10,8 @@ import { useStore } from 'effector-react';
 
 import type {
     IProfileUpdateDto,
-    IProfileUpdatePhoneDto
+    IProfileUpdatePhoneDto,
+    IProfileUpdateSettingsDto
 } from '@dtos';
 
 import type {
@@ -28,7 +29,7 @@ interface IUseProfile {
     getUser: () => void
     updateProfile: (dto: IProfileUpdateDto) => Promise<IUser>;
     updatePhone: (dto: IProfileUpdatePhoneDto) => Promise<IUser>;
-    updateSettings: (settings: IUserSettings) => void,
+    updateSettings: (settings: IProfileUpdateSettingsDto) => Promise<void>,
     getFiatList: () => void
     getFullname: () => string
     getInitials: (fullName: string) => string
@@ -68,11 +69,11 @@ export const useProfile = (): IUseProfile => {
         }
     }
 
-    const updateSettings = async (settings: IUserSettings) => {
+    const updateSettings = async (dto: IProfileUpdateSettingsDto): Promise<void> => {
         try {
-            await profileService.updateSettings(settings);
+            const user = await profileService.updateSettings(dto);
 
-            setUser({ ...user, settings });
+            setUser({ ...user });
         } catch (e) {
             console.error(e);
         }

@@ -27,8 +27,7 @@ export const FiatSelect: React.FC<IFiatSelect> = () => {
 
     const handleChangeFiat = async (fiat: IUserFiatCurrency) => {
         await updateSettings({
-            ...settings,
-            fiat_currency: fiat
+            fiat_currency_id: fiat.id
         });
 
         setOpen(false);
