@@ -25,7 +25,7 @@ export const LanguageSelect: React.FC<ILanguageSelect> = () => {
                     key={key}
                 >
                     <span className={styles.languageItem}>
-                        <Icon name="flag-en"/>
+                        <Icon name={`flag-${lang}`}/>
                         {lang.toUpperCase()}
                     </span>
                 </NavDropdown.Item>
