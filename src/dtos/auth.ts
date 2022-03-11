@@ -6,6 +6,16 @@ export interface IAuthDto {
     password: string
 }
 
+export interface IAuthRegisterDto {
+    phone: string
+    password: string
+}
+
+export interface IAuthRegisterVerifyDto {
+    phone: string
+    verify_code: string
+}
+
 export interface IAuthTokens {
     access: string
     refresh: string

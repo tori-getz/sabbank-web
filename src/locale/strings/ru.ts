@@ -98,5 +98,9 @@ export const ru: ILocale = {
     'See repayment schedule': 'См. график погашения',
     'Loan repayment': 'Погашение кредита',
     'Repayment schedule': 'График погашений',
-    'Pay': 'Оплатить'
+    'Pay': 'Оплатить',
+    'No account?': 'Нет аккаунта?',
+    'You will receive a one-time verification code on your phone': 'Вы получите одноразовый код подтверждения на телефон',
+    'Create a strong password consisting of letters, numbers and symbols': 'Создайте надежный пароль, состоящий из букв, цифр и символов',
+    'Repeat password': 'Повторите пароль'
 };

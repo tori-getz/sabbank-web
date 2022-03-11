@@ -3,7 +3,11 @@ import { useStore } from 'effector-react';
 
 import { AuthService } from '@services';
 
-import type { IAuthDto } from '@dtos';
+import type {
+    IAuthDto,
+    IAuthRegisterDto,
+    IAuthRegisterVerifyDto
+} from '@dtos';
 
 import {
     $accessToken,
@@ -21,6 +25,8 @@ import {
 interface IUseAuth {
     isAuth: () => boolean
     login: (credentials: IAuthDto) => any,
+    register: (credentials: IAuthRegisterDto) => Promise<any>
+    verifyRegister: (dto: IAuthRegisterVerifyDto) => Promise<any>
     logout: () => void
 }
 
@@ -44,6 +50,14 @@ export const useAuth = (): IUseAuth => {
         }
     }
 
+    const register = async (credentials: IAuthRegisterDto): Promise<any> => {
+        return await authService.register(credentials);
+    }
+
+    const verifyRegister = async (dto: IAuthRegisterVerifyDto): Promise<any> => {
+        return await authService.verify(dto);
+    }
+
     const logout = () => {
         logoutEvent();
     }
@@ -51,6 +65,8 @@ export const useAuth = (): IUseAuth => {
     return {
         isAuth,
         login,
+        register,
+        verifyRegister,
         logout
     }
 }

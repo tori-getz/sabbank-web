@@ -99,5 +99,8 @@ export const en: ILocale = {
     'See repayment schedule': 'See repayment schedule',
     'Loan repayment': 'Loan repayment',
     'Repayment schedule': 'Repayment schedule',
-    'Pay': 'Pay'
+    'Pay': 'Pay',
+    'No account?': 'No account?',
+    'You will receive a one-time verification code on your phone': 'You will receive a one-time verification code on your phone',
+    'Repeat password': 'Repeat password'
 };

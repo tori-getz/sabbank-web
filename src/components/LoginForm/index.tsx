@@ -64,7 +64,7 @@ export const LoginForm: React.FC<ILoginForm> = () => {
                             <Button onClick={onSubmit} label={t('Sign in')} className={styles.button}/>
                         </div>
                         <div className='d-flex justify-content-center align-items-center mt-4'>
-                            <Label className={styles.signUpLabel}>Нет аккаунта?</Label>
+                            <Label className={styles.signUpLabel}>{t('No account?')}</Label>
                             <Link to='/register' className={styles.signUpLink}>{t('Sign up')}</Link>
                         </div>
                     </CardContent>

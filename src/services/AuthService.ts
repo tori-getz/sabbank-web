@@ -3,6 +3,8 @@ import type { AxiosInstance } from "axios";
 import { HTTPClient } from "@http";
 import type {
     IAuthDto,
+    IAuthRegisterDto,
+    IAuthRegisterVerifyDto,
     IAuthResponse,
     IAuthTokens,
     IAuthRestoreDto,
@@ -28,9 +30,21 @@ export class AuthService {
         this.http = HTTPClient;
     }
 
-    public async login (credentials: IAuthDto): Promise<IAuthResponse> {
-        const { data } = await this.http.post<IAuthResponse>('/auth/login', credentials);;
+    public async login (dto: IAuthDto): Promise<IAuthResponse> {
+        const { data } = await this.http.post<IAuthResponse>('/auth/login', dto);;
         
+        return data;
+    }
+
+    public async register (dto: IAuthRegisterDto) {
+        const { data } = await this.http.post('/auth/register', dto);
+
+        return data;
+    }
+
+    public async verify (dto: IAuthRegisterVerifyDto) {
+        const { data } = await this.http.post('/auth/verify', dto);
+
         return data;
     }
 
