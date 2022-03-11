@@ -1,4 +1,6 @@
 
+export * from './auth';
+
 export { dashboardRoutes } from './dashboard';
 export { depositRoutes } from './deposit';
 export { cardRoutes } from './card';

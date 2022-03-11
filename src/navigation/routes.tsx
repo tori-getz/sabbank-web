@@ -2,15 +2,10 @@
 import type { Routes } from '@typing';
 
 import {
-    DashboardScreen,
-    LoginScreen,
-    RegisterScreen,
-    ForgotPasswordScreen,
-    ForgotVerifyScreen,
-    ForgotChangePasswordScreen
-} from '@screens';
+    loginRoutes,
+    registerRoutes,
+    forgotRoutes,
 
-import {
     dashboardRoutes,
     depositRoutes,
     cardRoutes,
@@ -21,26 +16,9 @@ import {
 } from './stacks';
 
 export const unauthorizedRoutes: Routes = [
-    {
-        path: '/login',
-        component: <LoginScreen />
-    },
-    {
-        path: '/register',
-        component: <RegisterScreen />
-    },
-    {
-        path: '/forgot',
-        component: <ForgotPasswordScreen />
-    },
-    {
-        path: '/forgot/verify',
-        component: <ForgotVerifyScreen />
-    },
-    {
-        path: '/forgot/changepassword',
-        component: <ForgotChangePasswordScreen />
-    }
+    ...loginRoutes,
+    ...registerRoutes,
+    ...forgotRoutes
 ]
 
 export const authroizedRoutes: Routes = [

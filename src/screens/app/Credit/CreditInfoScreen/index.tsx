@@ -180,9 +180,10 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
                         )}
                         <Details
                             items={table}
+                            className='mt-5'
                         />
                         {!isClosed() && (
-                            <div className='d-flex align-items-center justify-content-between'>
+                            <div className='d-flex align-items-center justify-content-between mt-5'>
                                 <div
                                     className={styles.repaymentSchedule}
                                     onClick={() => navigate('/credit/schedule', { state: { id: credit.id } })}
