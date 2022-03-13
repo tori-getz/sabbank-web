@@ -102,5 +102,10 @@ export const ru: ILocale = {
     'No account?': 'Нет аккаунта?',
     'You will receive a one-time verification code on your phone': 'Вы получите одноразовый код подтверждения на телефон',
     'Create a strong password consisting of letters, numbers and symbols': 'Создайте надежный пароль, состоящий из букв, цифр и символов',
-    'Repeat password': 'Повторите пароль'
+    'Repeat password': 'Повторите пароль',
+    'Loan body': 'Тело кредита',
+    'Remaining % of charges': 'Остаток % начислений',
+    "Balance of the loan body": 'Остаток тела кредита',
+    'Scheduled payment': 'Запланированный платеж',
+    'Full repayment': 'Полное погашение'
 };

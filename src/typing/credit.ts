@@ -3,6 +3,22 @@ export type CreditStatus = 'active' | 'finished' | 'closed' | 'liquidated';
 
 export type CreditLtvStatus = 'ok' | 'closed' | 'warning';
 
+export type CreditRepaymentType = 'scheduled' | 'full';
+
+export interface ICreditActivePayment {
+    id: string
+    status: number
+    status_verbose: string
+    amount: string
+    type: number
+    type_verbose: string
+    paid_amount: any
+    paid_currency: string
+    paid_ts: string | null
+    due_ts: string
+    loan: string
+}
+
 export interface ICredit {
     id: string
     number: string
@@ -26,6 +42,7 @@ export interface ICredit {
     is_active: boolean
     update_ts: string
     created_ts: string
+    active_payment?: ICreditActivePayment
 }
 
 export interface ICreditSetting {

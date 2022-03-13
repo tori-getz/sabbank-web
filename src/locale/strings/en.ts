@@ -102,5 +102,10 @@ export const en: ILocale = {
     'Pay': 'Pay',
     'No account?': 'No account?',
     'You will receive a one-time verification code on your phone': 'You will receive a one-time verification code on your phone',
-    'Repeat password': 'Repeat password'
+    'Repeat password': 'Repeat password',
+    'Loan body': 'Loan body',
+    'Remaining % of charges': 'Remaining % of charges',
+    'Balance of the loan body': 'Balance of the loan body',
+    'Scheduled payment': 'Scheduled payment',
+    'Full repayment': 'Full repayment'
 };
