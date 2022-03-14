@@ -107,5 +107,6 @@ export const ru: ILocale = {
     'Remaining % of charges': 'Остаток % начислений',
     "Balance of the loan body": 'Остаток тела кредита',
     'Scheduled payment': 'Запланированный платеж',
-    'Full repayment': 'Полное погашение'
+    'Full repayment': 'Полное погашение',
+    'Payment method': 'Способ оплаты'
 };

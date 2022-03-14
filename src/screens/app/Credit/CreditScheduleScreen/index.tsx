@@ -14,7 +14,8 @@ import {
 } from '@components/ui';
 
 import type {
-    ICreditRepaymentSchedule
+    ICreditRepaymentSchedule,
+    ICredit
 } from '@typing';
 
 import {
@@ -24,7 +25,7 @@ import {
 import { Card, CardContent } from 'ui-neumorphism';
 
 interface ILocationState {
-    id: string
+    credit: ICredit
 }
 
 interface ICreditScheduleScreen {};
@@ -37,12 +38,14 @@ export const CreditScheduleScreen: React.FC<ICreditScheduleScreen> = () => {
 
     const [ schedule, setSchedule ] = useState<ICreditScheduleScreen[]>([]);
 
-    const { getSchedule } = useCredit();
+    const {
+        getSchedule
+    } = useCredit();
 
-    const { id } = location.state as ILocationState;
+    const { credit } = location.state as ILocationState;
 
     const getData = async () => {
-        const schedule = await getSchedule({ id });
+        const schedule = await getSchedule({ id: credit.id });
 
         setSchedule(schedule);
     }
@@ -66,8 +69,15 @@ export const CreditScheduleScreen: React.FC<ICreditScheduleScreen> = () => {
                         {schedule.map((s: ICreditRepaymentSchedule, key: number) => (
                             <CreditScheduleItem
                                 item={s}
-                                disabled={key !== 0}
-                                onClick={() => alert(s.id)}
+                                disabled={s.id !== credit?.active_payment?.id}
+                                onClick={() => {
+                                    navigate(`/credit/repayment`, {
+                                        state: {
+                                            credit,
+                                            paymentId: s.id
+                                        }
+                                    });
+                                }}
                             />
                         ))}
                     </div>

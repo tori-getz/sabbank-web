@@ -8,7 +8,9 @@ import { ScreenContainer } from '@containers';
 
 import type {
     ICredit,
-    CreditRepaymentType
+    CreditRepaymentType,
+    ICreditPaymentInfo,
+    CreditPaymentMethod
 } from '@typing';
 
 import {
@@ -26,8 +28,11 @@ import { Card, CardContent } from 'ui-neumorphism';
 
 import { moneyAmountFormatter } from '@utils';
 
+import { CreditService } from '@services';
+
 interface ILocationState {
-    credit: ICredit
+    credit: ICredit,
+    paymentId?: string
 }
 
 interface ICreditRepaymentScreen {};
@@ -35,13 +40,70 @@ interface ICreditRepaymentScreen {};
 export const CreditRepaymentScreen: React.FC<ICreditRepaymentScreen> = () => {
     const { t } = useTranslation();
 
+    const creditService = new CreditService();
+
     const [ paymentType, setPayemntType ] = useState<CreditRepaymentType>('scheduled');
     const [ repaymentVisible, setRepaymentVisible ] = useState<boolean>(false);
+    const [ repaymentLoading, setRepaymentLoading ] = useState<boolean>(false);
+
+    const [ info, setInfo ] = useState<ICreditPaymentInfo>();
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { credit } = location.state as ILocationState;
+    const state = location.state as ILocationState;
+    const { credit } = state;
+
+    const onSelect = async (type: CreditRepaymentType) => {
+        if (type === 'full') {
+            const closeInfo = await creditService.getCloseInfo({
+                id: credit.id
+            });
+    
+            setInfo(closeInfo);
+        }
+
+        if (type === 'scheduled') {
+            const paymentInfo = await creditService.getPaymentInfo({
+                id: credit.id,
+                payment_id: state?.paymentId || credit?.active_payment?.id
+            });
+
+            setInfo(paymentInfo);
+        }
+
+        setPayemntType(type);
+        setRepaymentVisible(true);
+    }
+
+    const onSubmit = async (method: CreditPaymentMethod) => {
+        try {
+            setRepaymentLoading(true);
+
+            if (paymentType === 'full') {
+                await creditService.close({
+                    id: credit.id,
+                    method
+                })
+            }
+
+            if (paymentType === 'scheduled') {
+                await creditService.pay({
+                    id: credit.id,
+                    payment_id: state?.paymentId || credit?.active_payment?.id,
+                    method
+                });
+            }
+
+            navigate(`/credit/${credit.id}`);
+
+            alert(method);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setRepaymentLoading(false);
+        }
+    }
 
     return (
         <ScreenContainer title={t('Loan repayment')}>
@@ -74,10 +136,7 @@ export const CreditRepaymentScreen: React.FC<ICreditRepaymentScreen> = () => {
                         >
                             <Button
                                 label={t('Pay')}
-                                onClick={() => {
-                                    setPayemntType('scheduled');
-                                    setRepaymentVisible(true);
-                                }}
+                                onClick={() => onSelect('scheduled')}
                             />
                         </CurrencyAmount>
                         <h5 className='mt-5'>{t('Full repayment')}</h5>
@@ -87,19 +146,19 @@ export const CreditRepaymentScreen: React.FC<ICreditRepaymentScreen> = () => {
                         >
                             <Button
                                 label={t('Pay')}
-                                onClick={() => {
-                                    setPayemntType('full');
-                                    setRepaymentVisible(true);
-                                }}
+                                onClick={() => onSelect('full')}
                             />
                         </CurrencyAmount>
                     </div>
                 </CardContent>
             </Card>
             <CreditRepayment
+                loading={repaymentLoading}
                 visible={repaymentVisible}
                 onClose={() => setRepaymentVisible(false)}
                 credit={credit}
+                info={info}
+                onSubmit={onSubmit}
                 paymentType={paymentType}
             />
         </ScreenContainer>

@@ -186,7 +186,7 @@ export const CreditinfoScreen: React.FC<ICreditInfoScreen> = () => {
                             <div className='d-flex align-items-center justify-content-between mt-5'>
                                 <div
                                     className={styles.repaymentSchedule}
-                                    onClick={() => navigate('/credit/schedule', { state: { id: credit.id } })}
+                                    onClick={() => navigate('/credit/schedule', { state: { credit } })}
                                 >
                                     {t('See repayment schedule')}
                                 </div>

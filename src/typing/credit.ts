@@ -5,6 +5,8 @@ export type CreditLtvStatus = 'ok' | 'closed' | 'warning';
 
 export type CreditRepaymentType = 'scheduled' | 'full';
 
+export type CreditPaymentMethod = 'wallet' | 'deposit';
+
 export interface ICreditActivePayment {
     id: string
     status: number
@@ -69,4 +71,14 @@ export interface ICreditRepaymentSchedule {
     status_verbose: string
     type: number
     type_verbose: string
+}
+
+export interface ICreditPaymentInfo {
+    amount_usdt: number
+    amount_deposit: number
+    deposit_currency: string
+    rate_str: string
+    rate: number
+    loan_body: number
+    loan_fee: number
 }

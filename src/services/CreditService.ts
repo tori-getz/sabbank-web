@@ -4,7 +4,8 @@ import type { AxiosInstance } from 'axios';
 import type {
     ICredit,
     ICreditSetting,
-    ICreditRepaymentSchedule
+    ICreditRepaymentSchedule,
+    ICreditPaymentInfo
 } from '@typing';
 
 import type {
@@ -12,7 +13,11 @@ import type {
     ICreditPrepareDto,
     ICreditCreateDto,
     ICreditIncreaseCollateralDto,
-    ICreditGetRepaymentScheduleDto
+    ICreditGetRepaymentScheduleDto,
+    ICreditGetCloseInfoDto,
+    ICreditGetPaymentInfoDto,
+    ICreditCloseDto,
+    ICreditPayDto
 } from '@dtos';
 
 import { HTTPClient } from '@http';
@@ -62,6 +67,30 @@ export class CreditService {
 
     public async getRepaymentSchedule ({ id }: ICreditGetRepaymentScheduleDto): Promise<ICreditRepaymentSchedule[]> {
         const { data } = await this.http.get<ICreditRepaymentSchedule[]>(`/loan/${id}/payment`);
+
+        return data;
+    }
+
+    public async getCloseInfo (dto: ICreditGetCloseInfoDto): Promise<ICreditPaymentInfo> {
+        const { data } = await this.http.get<ICreditPaymentInfo>(`/loan/${dto.id}/close`);
+
+        return data;
+    }
+
+    public async getPaymentInfo ({ id, payment_id }: ICreditGetPaymentInfoDto): Promise<ICreditPaymentInfo> {
+        const { data } = await this.http.get<ICreditPaymentInfo>(`/loan/${id}/payment/${payment_id}`);
+
+        return data;
+    }
+
+    public async close ({ id, method }: ICreditCloseDto): Promise<ICredit> {
+        const { data } = await this.http.post<ICredit>(`/loan/${id}/close`, { method });
+
+        return data;
+    }
+
+    public async pay ({ id, payment_id, method }: ICreditPayDto): Promise<ICredit> {
+        const { data } = await this.http.post<ICredit>(`/loan/${id}/payment/${payment_id}`, { method });
 
         return data;
     }
