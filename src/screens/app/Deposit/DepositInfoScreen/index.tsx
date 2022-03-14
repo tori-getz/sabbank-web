@@ -5,7 +5,7 @@ import { useTranslation, useDeposit  } from '@hooks';
 
 import { ScreenContainer } from '@containers';
 
-import { GoBack, DepositListItem, Details, Spinner } from '@components/ui';
+import { GoBack, DepositListItem, Details, Spinner, Button } from '@components/ui';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -20,6 +20,8 @@ import { moneyAmountFormatter } from '@utils';
 
 import { format as formatDate } from 'date-fns';
 
+import styles from './DepositInfoScreen.module.sass';
+
 interface IDepositInfoScreen {};
 
 export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
@@ -32,6 +34,7 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
+    const [ depositId, setDepositId ] = useState<string>('');
     const [ totalIncome, setTotalIncome ] = useState<number>(0);
     const [ depositPeriod, setDepositPeriod ] = useState<IDepositPeriod>();
     const [ currency, setCurrency ] = useState<IDepositCurrency>();
@@ -39,8 +42,9 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
 
     const getHistory = async () => {
         try {
-            const { total_income, created_deposit, data: { currency, deposit_period } } = await getDepositHistory({ id });
+            const { id: depositId, total_income, created_deposit, data: { currency, deposit_period } } = await getDepositHistory({ id });
 
+            setDepositId(depositId);
             setTotalIncome(total_income);
             setDepositPeriod(deposit_period);
             setCurrency(currency);
@@ -93,6 +97,24 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
                                 }
                             ]}
                         />
+                        <div className='d-flex justify-content-end mt-4'>
+                            <div className={styles.withdraw}>
+                                {t('Withdraw')}
+                            </div>
+                            <Button
+                                label={t('Top up')}
+                                onClick={() => navigate('/deposit/calculate', {
+                                    state: {
+                                        currency,
+                                        period: {
+                                            depositPeriod,
+                                            percentage: currency.percentage
+                                        },
+                                        depositId
+                                    }
+                                })}
+                            />
+                        </div>
                     </div>
                 </CardContent>
             </Card>

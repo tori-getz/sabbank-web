@@ -34,7 +34,8 @@ import {
 
 interface ILocationState {
     currency: IDepositSettingCurrency | iCurrency,
-    period: IDepositSettingCurrencyPeriod
+    period: IDepositSettingCurrencyPeriod,
+    depositId?: string
 }
 
 import styles from './CalculateDepositScreen.module.sass';
@@ -48,10 +49,11 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const state = location.state as ILocationState;
     const { currency, period } = location.state as ILocationState;
 
     const { currencies } = useWallet();
-    const { createDeposit } = useDeposit();
+    const { createDeposit, topUpDeposit } = useDeposit();
 
     const [ confirmVisible, setConfirmVisible ] = useState<boolean>(false);
     const [ confirmLoading, setConfirmLoading ] = useState<boolean>(false);
@@ -86,12 +88,21 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
         try {
             setConfirmLoading(true);
 
-            const { id } = await createDeposit({
-                deposit_settings: period.depositPeriod.settingsId,
-                amount: amount
-            });
+            if (!state?.depositId) {
+                const { id } = await createDeposit({
+                    deposit_settings: period?.depositPeriod?.settingsId,
+                    amount: amount
+                });
 
-            navigate(`/deposit/success/${id}`);
+                navigate(`/deposit/success/${id}`);
+            } else {
+                await topUpDeposit({
+                    deposit_id: state?.depositId,
+                    amount: amount
+                });
+
+                navigate(`/deposit/${state?.depositId}`);
+            }
         } catch (e) {
             console.error(e);
         } finally {

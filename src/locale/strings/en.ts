@@ -108,5 +108,7 @@ export const en: ILocale = {
     'Balance of the loan body': 'Balance of the loan body',
     'Scheduled payment': 'Scheduled payment',
     'Full repayment': 'Full repayment',
-    'Payment method': 'Payment method'
+    'Payment method': 'Payment method',
+    'Withdraw': 'Withdraw',
+    'Top up': 'Top up'
 };

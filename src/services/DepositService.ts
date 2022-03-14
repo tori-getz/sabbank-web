@@ -6,7 +6,8 @@ import type {
     IDepositHistoryDto,
     IDepositSettingResult,
     IDepositCreateDto,
-    IDepositCreateResult
+    IDepositCreateResult,
+    IDepositTopUpDto
 } from '@dtos';
 
 import type {
@@ -103,6 +104,12 @@ export class DepositService {
 
     public async getHistory (dto: IDepositHistoryDto): Promise<IDepositHistoryResult> {
         const { data } = await this.http.get<IDepositHistoryResult>(`/depositHistory/${dto.id}`);
+
+        return data;
+    }
+
+    public async topUp (dto: IDepositTopUpDto) {
+        const { data } = await this.http.post('/deposit/topUp', dto);
 
         return data;
     }

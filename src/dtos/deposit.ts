@@ -52,3 +52,8 @@ export interface IDepositCreateResult {
     detail: string
     id: string
 }
+
+export interface IDepositTopUpDto {
+    deposit_id: string
+    amount: string
+}

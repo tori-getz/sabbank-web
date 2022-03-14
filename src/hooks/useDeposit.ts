@@ -9,7 +9,8 @@ import type {
     IDepositCreateDto,
     IDepositCreateResult,
     IDepositHistoryResult,
-    IDepositHistoryDto
+    IDepositHistoryDto,
+    IDepositTopUpDto
 } from '@dtos';
 
 import { useStore } from 'effector-react';
@@ -40,6 +41,7 @@ interface IUseDeposit {
     getDeposits: () => Promise<void>
     createDeposit: (dto: IDepositCreateDto) => Promise<IDepositCreateResult>
     getGroupByDepositId: (id: string) => IDepositGroup | null
+    topUpDeposit: (dto: IDepositTopUpDto) => Promise<any>
 }
 
 export const useDeposit = (): IUseDeposit => {
@@ -94,6 +96,10 @@ export const useDeposit = (): IUseDeposit => {
         getDepositPeriodsFx();
     }
 
+    const topUpDeposit = async (dto: IDepositTopUpDto): Promise<any> => {
+        return await depositService.topUp(dto);
+    }
+
     return {
         totalAmount,
         depositList,
@@ -104,6 +110,7 @@ export const useDeposit = (): IUseDeposit => {
         // @ts-ignore
         currencies,
         depositPeriods,
-        getInfo
+        getInfo,
+        topUpDeposit
     }
 }

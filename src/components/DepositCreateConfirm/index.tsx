@@ -49,15 +49,15 @@ export const DepositCreateConfirm: React.FC<IDepositCreateConfirm> = ({
     const info: Array<ITable> = [
         {
             name: t('Cryptocurrency'),
-            value: currency.name
+            value: currency?.name
         },
         {
             name: t('Term'),
-            value: period.depositPeriod[`name_${language}`]
+            value: period?.depositPeriod[`name_${language}`] || ''
         },
         {
             name: t('Percent'),
-            value: `${period.percentage}%`
+            value: `${period?.percentage}%`
         },
         {
             name: t('Deposit amount'),

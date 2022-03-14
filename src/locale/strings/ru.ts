@@ -108,5 +108,7 @@ export const ru: ILocale = {
     "Balance of the loan body": 'Остаток тела кредита',
     'Scheduled payment': 'Запланированный платеж',
     'Full repayment': 'Полное погашение',
-    'Payment method': 'Способ оплаты'
+    'Payment method': 'Способ оплаты',
+    'Withdraw': 'Вывести',
+    'Top up': 'Пополнить'
 };
