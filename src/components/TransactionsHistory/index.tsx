@@ -4,7 +4,7 @@ import React from 'react';
 // import { ButtonWalletAction } from '@components/ui';
 import { Col } from 'react-bootstrap';
 import { IconButton, Card, CardContent } from 'ui-neumorphism';
-import { Spinner, Icon, Divider } from '@components/ui';
+import { Spinner, Icon, Divider, Table } from '@components/ui';
 import styles from './TransactionsHistory.module.sass'
 
 interface ITransactionHistory {};

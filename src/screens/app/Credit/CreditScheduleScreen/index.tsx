@@ -10,7 +10,8 @@ import { ScreenContainer } from '@containers';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import {
-    GoBack
+    GoBack,
+    Spinner
 } from '@components/ui';
 
 import type {
@@ -37,6 +38,7 @@ export const CreditScheduleScreen: React.FC<ICreditScheduleScreen> = () => {
     const location = useLocation();
 
     const [ schedule, setSchedule ] = useState<ICreditScheduleScreen[]>([]);
+    const [ loading, setLoading ] = useState<boolean>(true);
 
     const {
         getSchedule
@@ -45,9 +47,17 @@ export const CreditScheduleScreen: React.FC<ICreditScheduleScreen> = () => {
     const { credit } = location.state as ILocationState;
 
     const getData = async () => {
-        const schedule = await getSchedule({ id: credit.id });
-
-        setSchedule(schedule);
+        try {
+            setLoading(true);
+            const schedule = await getSchedule({ id: credit.id });
+    
+            setSchedule(schedule);
+        } catch (e) {
+            console.error(e);
+            navigate('/credit');
+        } finally {
+            setLoading(false)
+        }
     }
 
     useEffect(() => {
@@ -58,6 +68,14 @@ export const CreditScheduleScreen: React.FC<ICreditScheduleScreen> = () => {
             navigate('/credit');
         }
     } ,[]);
+
+    if (loading) {
+        return (
+            <ScreenContainer title={t('Loan repayment')}>
+                <Spinner />
+            </ScreenContainer>
+        )
+    }
 
     return (
         <ScreenContainer title={t('Loan repayment')}>

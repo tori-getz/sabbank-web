@@ -96,8 +96,6 @@ export const CreditRepaymentScreen: React.FC<ICreditRepaymentScreen> = () => {
             }
 
             navigate(`/credit/${credit.id}`);
-
-            alert(method);
         } catch (e) {
             console.error(e);
         } finally {
