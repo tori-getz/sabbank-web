@@ -68,3 +68,14 @@ export interface IDepositAgreementContent {
     body_en: string
     body_ru: string
 }
+
+export interface IDepositWithdrawInfo {
+    id: string
+    asset: {
+        ticker: string
+        name: string
+        enabled: boolean
+    }
+    amount: string
+    profit: string
+}

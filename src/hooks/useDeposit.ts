@@ -2,7 +2,8 @@
 import type {
     IDepositGroup,
     IDepositSettingCurrency,
-    IDepositPeriod
+    IDepositPeriod,
+    IDepositWithdrawInfo
 } from '@typing';
 
 import type {
@@ -10,7 +11,8 @@ import type {
     IDepositCreateResult,
     IDepositHistoryResult,
     IDepositHistoryDto,
-    IDepositTopUpDto
+    IDepositTopUpDto,
+    IDepositGetWithdrawInfoDto
 } from '@dtos';
 
 import { useStore } from 'effector-react';
@@ -42,6 +44,7 @@ interface IUseDeposit {
     createDeposit: (dto: IDepositCreateDto) => Promise<IDepositCreateResult>
     getGroupByDepositId: (id: string) => IDepositGroup | null
     topUpDeposit: (dto: IDepositTopUpDto) => Promise<any>
+    getWithdrawInfo: (dto: IDepositGetWithdrawInfoDto) => Promise<IDepositWithdrawInfo>
 }
 
 export const useDeposit = (): IUseDeposit => {
@@ -100,6 +103,10 @@ export const useDeposit = (): IUseDeposit => {
         return await depositService.topUp(dto);
     }
 
+    const getWithdrawInfo = async (dto: IDepositGetWithdrawInfoDto): Promise<IDepositWithdrawInfo> => {
+        return await depositService.getWithdrawInfo(dto);
+    }
+
     return {
         totalAmount,
         depositList,
@@ -111,6 +118,7 @@ export const useDeposit = (): IUseDeposit => {
         currencies,
         depositPeriods,
         getInfo,
-        topUpDeposit
+        topUpDeposit,
+        getWithdrawInfo
     }
 }

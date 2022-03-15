@@ -57,3 +57,7 @@ export interface IDepositTopUpDto {
     deposit_id: string
     amount: string
 }
+
+export interface IDepositGetWithdrawInfoDto {
+    id: string
+}

@@ -6,7 +6,8 @@ import {
     DepositInfoScreen,
     NewDepositScreen,
     CalculateDepositScreen,
-    DepositSuccessScreen
+    DepositSuccessScreen,
+    DepositWithdrawScreen
 } from '@screens';
 
 export const depositRoutes: Routes = [
@@ -29,5 +30,9 @@ export const depositRoutes: Routes = [
     {
         path: '/deposit/success/:id',
         component: <DepositSuccessScreen />
+    },
+    {
+        path: '/deposit/withdraw',
+        component: <DepositWithdrawScreen />
     }
 ];

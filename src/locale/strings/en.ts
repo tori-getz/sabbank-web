@@ -110,5 +110,6 @@ export const en: ILocale = {
     'Full repayment': 'Full repayment',
     'Payment method': 'Payment method',
     'Withdraw': 'Withdraw',
-    'Top up': 'Top up'
+    'Top up': 'Top up',
+    'Withdraw title': 'Withdraw'
 };

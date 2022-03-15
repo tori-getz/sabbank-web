@@ -29,7 +29,7 @@ import type {
 
 import { Card, CardContent } from 'ui-neumorphism';
 
-import styles from './CreditinfoScreen.module.sass';
+import styles from './CreditInfoScreen.module.sass';
 
 interface ICreditInfoScreen {};
 

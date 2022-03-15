@@ -21,6 +21,7 @@ import { moneyAmountFormatter } from '@utils';
 import { format as formatDate } from 'date-fns';
 
 import styles from './DepositInfoScreen.module.sass';
+import cn from 'classnames';
 
 interface IDepositInfoScreen {};
 
@@ -34,6 +35,7 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
 
     const [ loading, setLoading ] = useState<boolean>(true);
 
+    const [ onHold, setOnHold ] = useState<boolean>(false);
     const [ depositId, setDepositId ] = useState<string>('');
     const [ totalIncome, setTotalIncome ] = useState<number>(0);
     const [ depositPeriod, setDepositPeriod ] = useState<IDepositPeriod>();
@@ -42,8 +44,9 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
 
     const getHistory = async () => {
         try {
-            const { id: depositId, total_income, created_deposit, data: { currency, deposit_period } } = await getDepositHistory({ id });
+            const { id: depositId, total_income, created_deposit, data: { currency, deposit_period }, on_hold } = await getDepositHistory({ id });
 
+            setOnHold(on_hold);
             setDepositId(depositId);
             setTotalIncome(total_income);
             setDepositPeriod(deposit_period);
@@ -98,7 +101,13 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
                             ]}
                         />
                         <div className='d-flex justify-content-end mt-4'>
-                            <div className={styles.withdraw}>
+                            <div
+                                className={cn(
+                                    styles.withdraw,
+                                    { [styles.withdrawDisabled]: onHold }
+                                )}
+                                onClick={!onHold && (() => navigate('/deposit/withdraw', { state: { id: depositId } }))}
+                            >
                                 {t('Withdraw')}
                             </div>
                             <Button

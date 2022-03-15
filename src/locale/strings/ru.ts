@@ -109,6 +109,6 @@ export const ru: ILocale = {
     'Scheduled payment': 'Запланированный платеж',
     'Full repayment': 'Полное погашение',
     'Payment method': 'Способ оплаты',
-    'Withdraw': 'Вывести',
-    'Top up': 'Пополнить'
+    'Withdraw': 'Вывод',
+    'Top up': 'Пополнить',
 };
