@@ -105,7 +105,9 @@ export const Navbar: React.FC<INavbar> = () => {
                         <img src="/assets/img/logo.svg" alt="SabBank"/>
                     </BootstrapNavbar.Brand>
                     <BootstrapNavbar.Toggle className={styles.toggle}>
-                        <NavBalance />
+                        {isAuth() && (
+                            <NavBalance />
+                        )}
                         <Icon
                             name='menu'
                         />
