@@ -10,6 +10,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { LanguageSelect, UserActions, Button, Icon } from '@components/ui';
 
+import {
+    NavBalance
+} from '@components';
+
 import styles from './Navbar.module.sass';
 
 import {
@@ -28,6 +32,7 @@ export const Navbar: React.FC<INavbar> = () => {
     const { isAuth } = useAuth();
     const navigate = useNavigate();
 
+    const [ expanded, setExpanded ] = useState<boolean>(false);
     const [ drawerOpen, setDrawerOpen ] = useState<boolean>(false);
 
     const authorizedLinks: Array<ILink> = [
@@ -90,15 +95,17 @@ export const Navbar: React.FC<INavbar> = () => {
             <BootstrapNavbar
                 expand="lg"
                 className={cn(styles.navbar)}
-                collapseOnSelect
                 expanded={false}
-                onToggle={() => setDrawerOpen(true)}
+                onToggle={expanded => {
+                    setDrawerOpen(expanded)
+                }}
             >
                 <Container>
                     <BootstrapNavbar.Brand href="/">
                         <img src="/assets/img/logo.svg" alt="SabBank"/>
                     </BootstrapNavbar.Brand>
                     <BootstrapNavbar.Toggle className={styles.toggle}>
+                        <NavBalance />
                         <Icon
                             name='menu'
                         />

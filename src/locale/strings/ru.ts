@@ -9,7 +9,7 @@ export const ru: ILocale = {
     'Password': 'Пароль',
     'Home': 'Главная',
     'Deposit': 'Вклад',
-    'Total balance': 'Баланс',
+    'Total balance': 'Общий баланс',
     'Support': 'Поддержка',
     'Currencies': 'Курсы валют',
     'Wallets': 'Криптокошельки',
