@@ -5,7 +5,7 @@ import { CurrencyListItem, Spinner } from '@components/ui';
 
 import { useWallet, useTranslation } from '@hooks';
 
-import type { iCurrency } from '@typing';
+import type { ICurrency } from '@typing';
 
 import { isEmpty } from 'lodash';
 
@@ -25,7 +25,7 @@ export const CurrencyList: React.FC<ICurrencyList> = () => {
             )
         }
 
-        return currencies.map((currency: iCurrency, key: number) => (
+        return currencies.map((currency: ICurrency, key: number) => (
             <CurrencyListItem
                 {...currency}
                 key={key}

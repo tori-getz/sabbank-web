@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { WalletListItem, Spinner } from '@components/ui';
 
-import type { iCurrency } from '@typing';
+import type { ICurrency } from '@typing';
 
 import { isEmpty } from 'lodash'
 
@@ -29,7 +29,7 @@ export const WalletList: React.FC<IWalletList> = () => {
             )
         }
 
-        return currencies.map((currency: iCurrency, key: number) => (
+        return currencies.map((currency: ICurrency, key: number) => (
             <WalletListItem
                 {...currency}
                 key={key}

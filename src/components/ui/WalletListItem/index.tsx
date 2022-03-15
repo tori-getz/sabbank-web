@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import type { iCurrency } from '@typing';
+import type { ICurrency } from '@typing';
 
 import styles from './WalletListItem.module.sass';
 import { IconButton, Card, CardContent} from 'ui-neumorphism';
@@ -11,7 +11,7 @@ import { moneyAmountFormatter } from '@utils';
 
 import { useProfile } from '@hooks';
 
-interface IWalletListItem extends iCurrency {
+interface IWalletListItem extends ICurrency {
     onClick?: () => any
 }
 

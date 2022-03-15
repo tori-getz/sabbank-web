@@ -8,7 +8,7 @@ import {
 } from 'ui-neumorphism';
 
 import type {
-    iCurrency
+    ICurrency
 } from '@typing';
 
 import {
@@ -28,7 +28,7 @@ import styles from './PaymentMethod.module.sass';
 
 interface IPaymentMethod {
     active?: boolean
-    currency: iCurrency
+    currency: ICurrency
     comission: string,
     onClick?: () => any
     className?: string

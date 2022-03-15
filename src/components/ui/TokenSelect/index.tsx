@@ -9,13 +9,13 @@ import {
 } from '@components/ui';
 
 import type {
-    iCurrency
+    ICurrency
 } from '@typing'
 
 interface ITokenSelect {
-    items: Array<iCurrency>
-    defaultValue: iCurrency
-    onChange: (token: iCurrency) => any
+    items: Array<ICurrency>
+    defaultValue: ICurrency
+    onChange: (token: ICurrency) => any
     className?: string
 }
 
@@ -30,10 +30,10 @@ export const TokenSelect: React.FC<ITokenSelect> = ({
 }) => {
     const [ isOpen, setOpen ] = useState<boolean>(false);
 
-    const [ defaultCurrency, setDefaultCurrency ] = useState<iCurrency>(defaultValue);
-    const [ list, setList ] = useState<iCurrency[]>(items.filter(item => item.asset !== defaultValue.asset));
+    const [ defaultCurrency, setDefaultCurrency ] = useState<ICurrency>(defaultValue);
+    const [ list, setList ] = useState<ICurrency[]>(items.filter(item => item.asset !== defaultValue.asset));
 
-    const onSelect = (item: iCurrency) => {
+    const onSelect = (item: ICurrency) => {
         setDefaultCurrency(item);
         setList(items.filter(c => c.asset !== item.asset));
         setOpen(false);
@@ -67,7 +67,7 @@ export const TokenSelect: React.FC<ITokenSelect> = ({
                     { [styles.itemsOpen]: isOpen }
                 )}
             >
-                {list.map((item: iCurrency, key: number) => (
+                {list.map((item: ICurrency, key: number) => (
                     <TokenSelectItem
                         {...item}
                         key={key}

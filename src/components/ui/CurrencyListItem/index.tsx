@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import type { iCurrency } from '@typing';
+import type { ICurrency } from '@typing';
 
 import styles from './CurrencyListItem.module.sass';
 import { moneyAmountFormatter } from '../../../utils/moneyAmountFormatter';
@@ -10,7 +10,7 @@ import { Chart, Icon } from '@components/ui'
 
 import { useProfile } from '@hooks';
 
-export const CurrencyListItem: React.FC<iCurrency> = currency => {
+export const CurrencyListItem: React.FC<ICurrency> = currency => {
     const { settings } = useProfile();
 
     return (

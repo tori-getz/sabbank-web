@@ -33,3 +33,4 @@ export { NavDrawerLink } from './NavDrawerLink';
 export { QRCode } from './QRCode';
 export { RadioItem } from './RadioItem';
 export { Table } from './Table';
+export { ConfirmModal } from './ConfirmModal';

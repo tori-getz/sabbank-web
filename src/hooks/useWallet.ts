@@ -5,12 +5,12 @@ import { $totalBalance, $currencies, getCurrenciesFx } from '@store/wallet';
 
 import type {
     ITotalBalance,
-    iCurrency
+    ICurrency
 } from '@typing';
 
 interface IUseWallet {
     totalBalance: ITotalBalance,
-    currencies: Array<iCurrency>
+    currencies: Array<ICurrency>
     getCurrencies: () => void
 }
 

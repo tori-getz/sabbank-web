@@ -111,4 +111,9 @@ export const ru: ILocale = {
     'Payment method': 'Способ оплаты',
     'Withdraw': 'Вывод',
     'Top up': 'Пополнить',
+    'Available assets': 'Свободные средства',
+    'Withdrawal of funds to a crypto wallet': 'Вывод средств на криптокошелёк',
+    'Withdrawal amount': 'Сумма вывода',
+    'Enter withdrawal amount': 'Введите сумму вывода',
+    'Amount': 'Сумма'
 };

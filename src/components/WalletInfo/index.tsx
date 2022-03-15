@@ -2,7 +2,7 @@
 import React from 'react';
 
 import type {
-    iCurrency
+    ICurrency
 } from '@typing';
 
 import {
@@ -30,7 +30,7 @@ import { moneyAmountFormatter } from '@utils';
 import styles from './WalletInfo.module.sass';
 
 interface IWalletInfo {
-    crypto: iCurrency
+    crypto: ICurrency
 }
 
 export const WalletInfo: React.FC<IWalletInfo> = ({

@@ -12,7 +12,8 @@ import type {
     IDepositHistoryResult,
     IDepositHistoryDto,
     IDepositTopUpDto,
-    IDepositGetWithdrawInfoDto
+    IDepositGetWithdrawInfoDto,
+    IDepositWithdrawDto
 } from '@dtos';
 
 import { useStore } from 'effector-react';
@@ -45,6 +46,7 @@ interface IUseDeposit {
     getGroupByDepositId: (id: string) => IDepositGroup | null
     topUpDeposit: (dto: IDepositTopUpDto) => Promise<any>
     getWithdrawInfo: (dto: IDepositGetWithdrawInfoDto) => Promise<IDepositWithdrawInfo>
+    withdraw: (dto: IDepositWithdrawDto) => Promise<IDepositWithdrawInfo>
 }
 
 export const useDeposit = (): IUseDeposit => {
@@ -107,6 +109,10 @@ export const useDeposit = (): IUseDeposit => {
         return await depositService.getWithdrawInfo(dto);
     }
 
+    const withdraw = async (dto: IDepositWithdrawDto): Promise<IDepositWithdrawInfo> => {
+        return await depositService.withdraw(dto);
+    }
+
     return {
         totalAmount,
         depositList,
@@ -119,6 +125,7 @@ export const useDeposit = (): IUseDeposit => {
         depositPeriods,
         getInfo,
         topUpDeposit,
-        getWithdrawInfo
+        getWithdrawInfo,
+        withdraw
     }
 }

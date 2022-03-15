@@ -12,9 +12,9 @@ import cn from 'classnames';
 
 import { moneyAmountFormatter } from '@utils';
 
-import { iCurrency } from '@typing';
+import { ICurrency } from '@typing';
 
-interface ITokenSelectItem extends iCurrency {
+interface ITokenSelectItem extends ICurrency {
     onClick?: () => any
 };
 

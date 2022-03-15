@@ -8,7 +8,8 @@ import type {
     IDepositCreateDto,
     IDepositCreateResult,
     IDepositTopUpDto,
-    IDepositGetWithdrawInfoDto
+    IDepositGetWithdrawInfoDto,
+    IDepositWithdrawDto
 } from '@dtos';
 
 import type {
@@ -118,6 +119,12 @@ export class DepositService {
 
     public async getWithdrawInfo ({ id }: IDepositGetWithdrawInfoDto): Promise<IDepositWithdrawInfo> {
         const { data } = await this.http.get<IDepositWithdrawInfo>(`/deposit/withdraw/${id}`);
+
+        return data;
+    }
+
+    public async withdraw ({ id, ...dto }: IDepositWithdrawDto): Promise<IDepositWithdrawInfo> {
+        const { data } = await this.http.post<IDepositWithdrawInfo>(`/deposit/withdraw/${id}`, dto);
 
         return data;
     }

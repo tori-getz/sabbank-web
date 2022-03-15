@@ -111,5 +111,10 @@ export const en: ILocale = {
     'Payment method': 'Payment method',
     'Withdraw': 'Withdraw',
     'Top up': 'Top up',
-    'Withdraw title': 'Withdraw'
+    'Withdraw title': 'Withdraw',
+    'Available assets': 'Available assets',
+    'Withdrawal of funds to a crypto wallet': 'Withdrawal of funds to a crypto wallet',
+    'Withdrawal amount': 'Withdrawal amount',
+    'Enter withdrawal amount': 'Enter withdrawal amount',
+    'Amount': 'Amount'
 };

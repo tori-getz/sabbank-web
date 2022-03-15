@@ -3,9 +3,9 @@ import { $wallet } from '@store/domains';
 
 import type {
     ITotalBalance,
-    iCurrency
+    ICurrency
 } from '@typing';
 
 export const $totalBalance = $wallet.createStore<ITotalBalance>({});
 
-export const $currencies = $wallet.createStore<iCurrency[]>([]);
+export const $currencies = $wallet.createStore<ICurrency[]>([]);

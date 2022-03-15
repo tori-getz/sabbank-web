@@ -3,7 +3,7 @@ export interface ITotalBalance {
     [fiat: string]: number
 }
 
-export interface iCurrency {
+export interface ICurrency {
     id: string
     name: string
     asset: string
