@@ -90,11 +90,13 @@ export const TransactionsHistory: React.FC<ITransactionHistory> = () => {
         {
             Header: t('Status'),
             accessor: 'status',
-            minWidth: 85
+            minWidth: 50,
+            maxWidth: 70
         },
         {
             Header: t('Amount'),
             accessor: 'amount',
+            minWidth: 90,
             maxWidth: 155
         }
     ], [language, asset, operation]);
@@ -139,7 +141,7 @@ export const TransactionsHistory: React.FC<ITransactionHistory> = () => {
 
     return (
         <>
-            <Card>
+            <Card className={styles.wrapper}>
                 <CardContent>
                     <Table
                         columns={columns}

@@ -50,12 +50,15 @@ export const Table: React.FC<ITable> = ({
     );
 
     return (
-        <div {...getTableProps()}>
-            <div className='row py-3'>
+        <div
+            {...getTableProps()}
+            className={styles.wrapper}
+        >
+            <div className='d-flex py-3'>
                 {headerGroups.map(headerGroup => (
                     <>
                         {headerGroup.headers.map(column => (
-                            <Col {...column.getHeaderProps()}>
+                            <div {...column.getHeaderProps()}>
                                 <div className={styles.columnHeader}>{column.render('Header')}</div>
                                 {column.canResize && (
                                     <div
@@ -63,7 +66,7 @@ export const Table: React.FC<ITable> = ({
                                         {...column.getResizerProps()}
                                     />
                                 )}
-                            </Col>
+                            </div>
                         ))}
                     </>
                 ))}
@@ -77,14 +80,14 @@ export const Table: React.FC<ITable> = ({
                         <>
                             <div
                                 {...row.getRowProps()}
-                                className='row py-3 align-items-center'
+                                className='py-3 align-items-center'
                             >
                                 {row.cells.map(cell => (
-                                    <Col {...cell.getCellProps()}>
+                                    <div {...cell.getCellProps()}>
                                         <div className={styles.cell}>
                                             {cell.render('Cell')}
                                         </div>
-                                    </Col>
+                                    </div>
                                 ))}
                             </div>
                             <Divider />
