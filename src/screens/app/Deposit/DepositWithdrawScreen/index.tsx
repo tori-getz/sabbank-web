@@ -31,7 +31,7 @@ import { moneyAmountFormatter } from '@utils';
 
 import type {
     IDepositWithdrawInfo,
-    ICurrency
+    IWalletCurrency
 } from '@typing';
 
 import styles from './DepositWithdrawScreen.module.sass';
@@ -56,7 +56,7 @@ export const DepositWithdrawScreen: React.FC<IDepositWithdrawScreen> = () => {
 
     const [ loading, setLoading ] = useState<boolean>(true);
     const [ info, setInfo ] = useState<IDepositWithdrawInfo>();
-    const [ token, setToken ] = useState<ICurrency>();
+    const [ token, setToken ] = useState<IWalletCurrency>();
 
     const [ amount, setAmount ] = useState<string>('');
 

@@ -16,7 +16,7 @@ import {
 
 import { debounce } from 'lodash';
 
-interface ICurrencyInput {
+interface IWalletCurrencyInput {
     value: string
     assetFrom: string
     assetTo?: string
@@ -25,7 +25,7 @@ interface ICurrencyInput {
     loading?: boolean
 };
 
-export const CurrencyInput: React.FC<ICurrencyInput> = ({
+export const CurrencyInput: React.FC<IWalletCurrencyInput> = ({
     value,
     className,
     assetFrom,

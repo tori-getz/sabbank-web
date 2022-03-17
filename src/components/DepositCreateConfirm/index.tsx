@@ -11,7 +11,7 @@ import {
 import { useTranslation } from '@hooks';
 
 import type {
-    ICurrency,
+    IWalletCurrency,
     IDepositSettingCurrency,
     IDepositSettingCurrencyPeriod
 } from '@typing';
@@ -22,7 +22,7 @@ interface IDepositCreateConfirm {
     currency: IDepositSettingCurrency
     period: IDepositSettingCurrencyPeriod
     amount: string
-    selectedWallet: ICurrency
+    selectedWallet: IWalletCurrency
     visible: boolean
     onClose: () => any
     loading: boolean

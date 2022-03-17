@@ -1,7 +1,10 @@
 
 import { LoggerService } from "./LoggerService";
 
-import { setTotalBalance } from '@store/wallet';
+import {
+    setTotalBalance,
+    setCurrencies
+} from '@store/wallet';
 
 class SocketService {
     private ws = null;
@@ -36,12 +39,12 @@ class SocketService {
 
         this.ws.onmessage = e => {
             const parsedData = JSON.parse(e.data);
-            console.log(parsedData);
 
             if (parsedData.type === this.channelTypes.balanceUpdates) {
-                const { amount } = parsedData.data;
+                const { amount, data: currencies } = parsedData.data;
 
                 setTotalBalance(amount);
+                setCurrencies(currencies);
             }
         }
     }

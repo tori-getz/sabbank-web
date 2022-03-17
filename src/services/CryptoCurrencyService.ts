@@ -3,7 +3,7 @@ import { HTTPClient } from '@http';
 
 import type { AxiosInstance } from "axios";
 
-import type { ICurrency } from '@typing';
+import type { IWalletCurrency } from '@typing';
 
 import type {
     ICryptoCurrencyGetExchangRateeDto,
@@ -21,7 +21,7 @@ export class CryptoCurrencyService {
         this.http = HTTPClient;
     }
 
-    public async all (): Promise<ICurrency[]> {
+    public async all (): Promise<IWalletCurrency[]> {
         const { data: { data } } = await this.http.get('/crypto/currencyList');
 
         return data;

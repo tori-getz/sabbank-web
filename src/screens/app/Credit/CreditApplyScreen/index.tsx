@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ScreenContainer } from '@containers';
 
 import type {
-    ICurrency,
+    IWalletCurrency,
     ICreditSetting
 } from '@typing';
 
@@ -62,7 +62,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
         createCredit
     } = useCredit();
 
-    const [ token, setToken ] = useState<ICurrency>(head(currencies));
+    const [ token, setToken ] = useState<IWalletCurrency>(head(currencies));
     const [ depositAmount, setDepositAmount ] = useState<string>('');
 
     const [ loanAmount, setLoanAmount ] = useState<string>('0');
@@ -230,7 +230,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                             {loanAmountLoading && <Spinner />}
                         </CurrencyAmount>
                         <h4 className='mt-5'>{t('Commission payment method')}</h4>
-                        {paymentMethods.map((pm: ICurrency, key: number) => (
+                        {paymentMethods.map((pm: IWalletCurrency, key: number) => (
                             <PaymentMethod
                                 active={pm.asset === comissionCurrency}
                                 onClick={() => setComissionCurrency(pm.asset)}

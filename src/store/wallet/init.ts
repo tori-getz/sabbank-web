@@ -1,16 +1,22 @@
 
 import {
     $totalBalance,
-    $currencies
+    $currencies,
+    $transactions
 } from './stores';
 import {
-    setTotalBalance
+    setTotalBalance,
+    setCurrencies
 } from './events';
 
 import {
-    getCurrenciesFx
+    getCurrenciesFx,
+    getTransactionsFx
 } from './effects';
 
 $totalBalance.on(setTotalBalance, (_, totalBalance) => totalBalance);
 
 $currencies.on(getCurrenciesFx.doneData, (_, currencies) => currencies);
+$currencies.on(setCurrencies, (_, currencies) => currencies);
+
+$transactions.on(getTransactionsFx.doneData, (_, transactions) => transactions);

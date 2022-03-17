@@ -1,9 +1,9 @@
 
-export interface ITotalBalance {
+export interface IWalletTotalBalance {
     [fiat: string]: number
 }
 
-export interface ICurrency {
+export interface IWalletCurrency {
     id: string
     name: string
     asset: string
@@ -20,4 +20,21 @@ export interface ICurrency {
     address: string
     fee: string
     wallet_id: number
+}
+
+export type TransactionOperation = 'in' | 'out';
+export type TransactionPaymentSystem = 'wallet' | 'deposit';
+export type TransactionStatus = 'success' | 'pending' | 'updating' | 'rejected' | 'failed' | 'internal_error';
+
+export interface IWalletTransaction {
+    id: number
+    date: string
+    address_from: string | Array<string>
+    address_to: string | Array<string>
+    amount: string
+    operation: TransactionOperation
+    asset_name: string
+    asset_ticker: string
+    status: TransactionStatus
+    payment_system: string
 }

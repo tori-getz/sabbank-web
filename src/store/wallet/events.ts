@@ -2,7 +2,9 @@
 import { $wallet } from '@store/domains';
 
 import type {
-    ITotalBalance
+    IWalletTotalBalance,
+    IWalletCurrency
 } from '@typing';
 
-export const setTotalBalance = $wallet.createEvent<ITotalBalance>('set total balance');
+export const setTotalBalance = $wallet.createEvent<IWalletTotalBalance>('set total balance');
+export const setCurrencies = $wallet.createEvent<IWalletCurrency[]>('set currencies');

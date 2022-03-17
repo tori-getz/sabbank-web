@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface IDepositBanner {};
 
-interface ICurrency {
+interface IWalletCurrency {
     asset: string
     name: string
     percentage: number
@@ -26,7 +26,7 @@ export const DepositBanner: React.FC<IDepositBanner> = () => {
         'Заработок выплачивается в той же валюте, что и ваш вклад'
     ];
 
-    const currencies: Array<ICurrency> = [
+    const currencies: Array<IWalletCurrency> = [
         {
             name: 'Bitcoin',
             asset: 'btc',
@@ -44,7 +44,7 @@ export const DepositBanner: React.FC<IDepositBanner> = () => {
             <div className={cn(styles.header, 'p-5 pb-4')}>
                 <h3>Зарабатывай до 20% годовых на своих криптоактивах</h3>
                 <div className={styles.currenciesBlock}>
-                    {currencies.map((currency: ICurrency, key: number) => (
+                    {currencies.map((currency: IWalletCurrency, key: number) => (
                         <div
                             className={styles.currency}
                             key={key}

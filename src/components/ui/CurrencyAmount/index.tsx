@@ -5,13 +5,13 @@ import { Card, CardContent } from 'ui-neumorphism';
 
 import styles from './CurrencyAmount.module.sass';
 
-interface ICurrencyAmount {
+interface IWalletCurrencyAmount {
     amount: string | number
     asset: string
     children?: React.ReactNode
 }
 
-export const CurrencyAmount: React.FC<ICurrencyAmount> = ({
+export const CurrencyAmount: React.FC<IWalletCurrencyAmount> = ({
     amount,
     asset,
     children

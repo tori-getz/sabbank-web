@@ -27,13 +27,14 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
     if (isAuth()) useSocket();
 
     const { getUser } = useProfile();
-    const { getCurrencies } = useWallet();
+    const { getCurrencies, getTransactions } = useWallet();
 
     useEffect(() => {
         if (!isAuth()) return;
 
         getUser();
         getCurrencies();
+        getTransactions();
     }, []);
 
 

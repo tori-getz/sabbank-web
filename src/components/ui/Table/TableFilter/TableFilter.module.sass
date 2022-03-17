@@ -1,0 +1,36 @@
+
+.label
+    display: flex
+    align-items: center
+    gap: 5px
+
+.icon
+    cursor: pointer
+
+.labelText
+    cursor: pointer
+
+.dropdown
+    position: absolute
+    background-image: linear-gradient(140deg, #F5F5F9 0%, #F9F9FC 100%)
+    box-shadow: 0 0 20px 0 #E6E6EF, 2px 2px 25px 0 #C6C6D7
+    border-radius: 5px
+    display: flex
+    flex-direction: column
+    padding: .5em
+    gap: .5em
+    width: 200px
+    margin-top: 1em
+
+.dropdownItem
+    cursor: pointer
+    font-size: 14px
+    color: #17171A
+    border-radius: 5px
+    padding: 5px
+    transition: 0.3s background
+    &:hover
+        background: #EBECF4
+
+.dropdownItemActive
+    background: #EBECF4

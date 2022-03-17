@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useProfile } from '@hooks';
 
-import type { ICurrency } from '@typing';
+import type { IWalletCurrency } from '@typing';
 
 import { moneyAmountFormatter } from '@utils';
 
@@ -14,7 +14,7 @@ import { Icon } from '@components/ui';
 import styles from './WalletButton.module.sass';
 
 interface IWalletButton {
-    item: ICurrency,
+    item: IWalletCurrency,
     onClick?: () => any,
     className?: string
 }

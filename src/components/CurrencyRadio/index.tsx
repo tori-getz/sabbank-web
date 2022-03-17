@@ -10,14 +10,14 @@ import { Icon, RadioButton } from '@components/ui';
 import styles from './CurrencyRadio.module.sass';
 import cn from 'classnames';
 
-interface ICurrencyRadio {
+interface IWalletCurrencyRadio {
     item: IDepositSettingCurrency,
     percentageKey: number,
     active?: boolean,
     onClick: () => any
 };
 
-export const CurrencyRadio: React.FC<ICurrencyRadio> = ({
+export const CurrencyRadio: React.FC<IWalletCurrencyRadio> = ({
     item,
     percentageKey,
     active,

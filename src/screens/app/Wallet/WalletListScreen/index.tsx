@@ -19,7 +19,7 @@ import {
 import { WalletButton } from '@components';
 
 import type {
-    ICurrency
+    IWalletCurrency
 } from '@typing';
 
 import styles from './WalletListScreen.module.sass';
@@ -37,7 +37,7 @@ export const WalletListScreen: React.FC<IWalletListScreen> = () => {
             <GoBack onClick={() => navigate(-1)} />
             <h2>{t('Wallets')}</h2>
             <div className={styles.list}>
-                {currencies.map((currency: ICurrency, key: number) => (
+                {currencies.map((currency: IWalletCurrency, key: number) => (
                     <WalletButton
                         className={styles.listItem}
                         item={currency}

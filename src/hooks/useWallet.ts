@@ -1,30 +1,46 @@
 
 import { useStore } from 'effector-react';
 
-import { $totalBalance, $currencies, getCurrenciesFx } from '@store/wallet';
+import {
+    $totalBalance,
+    $currencies,
+    $transactions,
+    getCurrenciesFx,
+    getTransactionsFx
+} from '@store/wallet';
 
 import type {
-    ITotalBalance,
-    ICurrency
+    IWalletTotalBalance,
+    IWalletCurrency,
+    IWalletTransaction
 } from '@typing';
 
 interface IUseWallet {
-    totalBalance: ITotalBalance,
-    currencies: Array<ICurrency>
+    totalBalance: IWalletTotalBalance,
+    currencies: Array<IWalletCurrency>
+    transactions: Array<IWalletTransaction>
     getCurrencies: () => void
+    getTransactions: () => void
 }
 
 export const useWallet = (): IUseWallet => {
     const totalBalance = useStore($totalBalance);
     const currencies = useStore($currencies);
+    const transactions = useStore($transactions);
 
     const getCurrencies = () => {
         getCurrenciesFx();
     }
 
+    const getTransactions = () => {
+        getTransactionsFx();
+    }
+
     return {
         totalBalance,
         currencies,
-        getCurrencies
+        transactions,
+        getCurrencies,
+        getTransactions
     };
 }

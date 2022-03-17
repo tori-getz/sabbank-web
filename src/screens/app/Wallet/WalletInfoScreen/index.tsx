@@ -21,7 +21,7 @@ import {
 
 import { isEmpty } from 'lodash';
 
-import type { ICurrency } from '@typing';
+import type { IWalletCurrency } from '@typing';
 import { Card, CardContent } from 'ui-neumorphism';
 
 interface IWalletInfoScreen {};
@@ -35,7 +35,7 @@ export const WalletInfoScreen: React.FC<IWalletInfoScreen> = () => {
     const { currencies } = useWallet();
 
     const [ loading, setLoading ] = useState<boolean>(true);
-    const [ crypto, setCrypto ] = useState<ICurrency>();
+    const [ crypto, setCrypto ] = useState<IWalletCurrency>();
 
     useEffect(() => {
         if (isEmpty(currencies)) return;
@@ -58,7 +58,7 @@ export const WalletInfoScreen: React.FC<IWalletInfoScreen> = () => {
 
     return (
         <ScreenContainer title={`${crypto.asset.toUpperCase()} ${t('Wallet')}`}>
-            <GoBack onClick={() => navigate('/wallet')} />
+            <GoBack onClick={() => navigate(-1)} />
             <h2>{crypto.asset.toUpperCase()} {t('Wallet')}</h2>
             <Card>
                 <CardContent>

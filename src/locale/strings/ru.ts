@@ -115,5 +115,16 @@ export const ru: ILocale = {
     'Withdrawal of funds to a crypto wallet': 'Вывод средств на криптокошелёк',
     'Withdrawal amount': 'Сумма вывода',
     'Enter withdrawal amount': 'Введите сумму вывода',
-    'Amount': 'Сумма'
+    'Amount': 'Сумма',
+    'Operation': 'Операция',
+    'Date': 'Дата',
+    'Status': 'Статус',
+    'transactionOperation__in': 'Покупка',
+    'transactionOperation__out': 'Продажа',
+    'transactionStatus__in': 'Куплено',
+    'transactionStatus__out': 'Продано',
+    'transactionStatus__rejected': 'Отклонено',
+    'transactionStatus__pending': 'На рассмотрении',
+    'transactionStatus__failed': 'Ошибка',
+    'transactionStatus__internal_error': 'Ошибка',
 };

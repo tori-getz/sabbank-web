@@ -116,5 +116,16 @@ export const en: ILocale = {
     'Withdrawal of funds to a crypto wallet': 'Withdrawal of funds to a crypto wallet',
     'Withdrawal amount': 'Withdrawal amount',
     'Enter withdrawal amount': 'Enter withdrawal amount',
-    'Amount': 'Amount'
+    'Amount': 'Amount',
+    'Operation': 'Operation',
+    'Date': 'Date',
+    'Status': 'Status',
+    'transactionOperation__in': 'Cash in',
+    'transactionOperation__out': 'Cash out',
+    'transactionStatus__in': 'Bought',
+    'transactionStatus__out': 'Sold',
+    'transactionStatus__rejected': 'Rejected',
+    'transactionStatus__pending': 'Pending',
+    'transactionStatus__failed': 'Failed',
+    'transactionStatus__internal_error': 'Internal error',
 };

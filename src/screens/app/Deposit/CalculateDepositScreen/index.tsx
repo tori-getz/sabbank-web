@@ -27,13 +27,13 @@ import { Card, CardContent } from 'ui-neumorphism';
 import { moneyAmountFormatter } from '@utils';
 
 import {
-    ICurrency,
+    IWalletCurrency,
     IDepositSettingCurrency,
     IDepositSettingCurrencyPeriod,
 } from '@typing';
 
 interface ILocationState {
-    currency: IDepositSettingCurrency | ICurrency,
+    currency: IDepositSettingCurrency | IWalletCurrency,
     period: IDepositSettingCurrencyPeriod,
     depositId?: string
 }
@@ -58,7 +58,7 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
     const [ confirmVisible, setConfirmVisible ] = useState<boolean>(false);
     const [ confirmLoading, setConfirmLoading ] = useState<boolean>(false);
 
-    const [ selectedCurrency, setSelectedCurrency ] = useState<ICurrency>(currencies.find(c => c.asset === currency.asset));
+    const [ selectedCurrency, setSelectedCurrency ] = useState<IWalletCurrency>(currencies.find(c => c.asset === currency.asset));
 
     const [ amount, setAmount ] = useState<string>('');
 

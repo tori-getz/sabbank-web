@@ -5,13 +5,13 @@ import { CurrencyListItem, Spinner } from '@components/ui';
 
 import { useWallet, useTranslation } from '@hooks';
 
-import type { ICurrency } from '@typing';
+import type { IWalletCurrency } from '@typing';
 
 import { isEmpty } from 'lodash';
 
-interface ICurrencyList {};
+interface IWalletCurrencyList {};
 
-export const CurrencyList: React.FC<ICurrencyList> = () => {
+export const CurrencyList: React.FC<IWalletCurrencyList> = () => {
     const { t } = useTranslation();
 
     const { currencies } = useWallet();
@@ -25,7 +25,7 @@ export const CurrencyList: React.FC<ICurrencyList> = () => {
             )
         }
 
-        return currencies.map((currency: ICurrency, key: number) => (
+        return currencies.map((currency: IWalletCurrency, key: number) => (
             <CurrencyListItem
                 {...currency}
                 key={key}

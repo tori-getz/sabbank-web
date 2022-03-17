@@ -1,6 +1,7 @@
 
 export { AuthService } from './AuthService';
 export { ConfigService } from './ConfigService';
+export { WalletService } from './WalletService';
 export { CryptoCurrencyService } from './CryptoCurrencyService';
 export { default as SocketService } from './SocketService';
 export { LoggerService } from './LoggerService';
