@@ -127,4 +127,5 @@ export const ru: ILocale = {
     'transactionStatus__pending': 'На рассмотрении',
     'transactionStatus__failed': 'Ошибка',
     'transactionStatus__internal_error': 'Ошибка',
+    'Transaction number': 'Номер транзакции'
 };

@@ -128,4 +128,5 @@ export const en: ILocale = {
     'transactionStatus__pending': 'Pending',
     'transactionStatus__failed': 'Failed',
     'transactionStatus__internal_error': 'Internal error',
+    'Transaction number': 'Transaction number'
 };
