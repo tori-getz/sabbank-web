@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 import { Icon } from '@components/ui';
 
+import OutsideClickHandler from 'react-outside-click-handler';
+
 import styles from './TableFilter.module.sass';
 import cn from 'classnames';
 
@@ -50,23 +52,27 @@ export const TableFilter: React.FC<ITableFilter> = ({
                 </div>
             </div>
             {isOpen && (
-                <div className={styles.dropdown}>
-                    {values.map(({ label, ...i }, key: number) => (
-                        <div
-                            onClick={() => {
-                                toggleDropdown();
-                                onChange(i.value);
-                            }}
-                            className={cn(
-                                styles.dropdownItem,
-                                { [styles.dropdownItemActive]: i.value === value }
-                            )}
-                            key={key}
-                        >
-                            {label}
-                        </div>
-                    ))}
-                </div>
+                <OutsideClickHandler
+                    onOutsideClick={() => setOpen(false)}
+                >
+                    <div className={styles.dropdown}>
+                        {values.map(({ label, ...i }, key: number) => (
+                            <div
+                                onClick={() => {
+                                    toggleDropdown();
+                                    onChange(i.value);
+                                }}
+                                className={cn(
+                                    styles.dropdownItem,
+                                    { [styles.dropdownItemActive]: i.value === value }
+                                )}
+                                key={key}
+                            >
+                                {label}
+                            </div>
+                        ))}
+                    </div>
+                </OutsideClickHandler>
             )}
         </div>
     )

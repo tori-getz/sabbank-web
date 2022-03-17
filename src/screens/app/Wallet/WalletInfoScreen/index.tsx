@@ -16,7 +16,8 @@ import {
 } from '@components/ui';
 
 import {
-    WalletInfo
+    WalletInfo,
+    WalletTransactionsHistory
 } from '@components';
 
 import { isEmpty } from 'lodash';
@@ -60,7 +61,7 @@ export const WalletInfoScreen: React.FC<IWalletInfoScreen> = () => {
         <ScreenContainer title={`${crypto.asset.toUpperCase()} ${t('Wallet')}`}>
             <GoBack onClick={() => navigate(-1)} />
             <h2>{crypto.asset.toUpperCase()} {t('Wallet')}</h2>
-            <Card>
+            <Card className='mb-5'>
                 <CardContent>
                     <div className='p-4'>
                         <WalletInfo
@@ -69,6 +70,7 @@ export const WalletInfoScreen: React.FC<IWalletInfoScreen> = () => {
                     </div>
                 </CardContent>
             </Card>
+            <WalletTransactionsHistory asset={crypto.asset} />
         </ScreenContainer>
     )
 }

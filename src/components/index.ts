@@ -23,3 +23,4 @@ export { IncreaseCollateral } from './IncreaseCollateral';
 export { CreditScheduleItem } from './CreditScheduleItem';
 export { CreditRepayment } from './CreditRepayment';
 export { NavBalance } from './NavBalance';
+export { WalletTransactionsHistory } from './WalletTransactionsHistory';

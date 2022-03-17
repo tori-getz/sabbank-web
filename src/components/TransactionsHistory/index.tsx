@@ -50,7 +50,7 @@ export const TransactionsHistory: React.FC<ITransactionHistory> = () => {
                         label: (
                             <CurrencyTableItem
                                 asset={c.asset}
-                                name={c.asset.toUpperCase()}
+                                name={c.name}
                             />
                         ),
                         value: c.asset
@@ -131,7 +131,7 @@ export const TransactionsHistory: React.FC<ITransactionHistory> = () => {
                         operation={transaction.operation}
                     />
                 )
-            })
+            });
         }
 
         setData(table);
