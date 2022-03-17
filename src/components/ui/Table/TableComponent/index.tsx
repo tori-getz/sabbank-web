@@ -14,8 +14,6 @@ import {
 
 import styles from './Table.module.sass';
 
-import { Col } from 'react-bootstrap';
-
 import { Divider } from '@components/ui';
 
 interface ITable {
@@ -54,46 +52,48 @@ export const Table: React.FC<ITable> = ({
             {...getTableProps()}
             className={styles.wrapper}
         >
-            <div className='d-flex py-3'>
-                {headerGroups.map(headerGroup => (
-                    <>
-                        {headerGroup.headers.map(column => (
-                            <div {...column.getHeaderProps()}>
-                                <div className={styles.columnHeader}>{column.render('Header')}</div>
-                                {column.canResize && (
-                                    <div
-                                        className={styles.resizer}
-                                        {...column.getResizerProps()}
-                                    />
-                                )}
-                            </div>
-                        ))}
-                    </>
-                ))}
-            </div>
-            <Divider />
-            <div {...getTableBodyProps()}>
-                {rows.map(row => {
-                    prepareRow(row);
-
-                    return (
+            <div className={styles.table}>
+                <div className='d-flex py-3'>
+                    {headerGroups.map(headerGroup => (
                         <>
-                            <div
-                                {...row.getRowProps()}
-                                className='py-3 align-items-center'
-                            >
-                                {row.cells.map(cell => (
-                                    <div {...cell.getCellProps()}>
-                                        <div className={styles.cell}>
-                                            {cell.render('Cell')}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            <Divider />
+                            {headerGroup.headers.map(column => (
+                                <div {...column.getHeaderProps()}>
+                                    <div className={styles.columnHeader}>{column.render('Header')}</div>
+                                    {column.canResize && (
+                                        <div
+                                            className={styles.resizer}
+                                            {...column.getResizerProps()}
+                                        />
+                                    )}
+                                </div>
+                            ))}
                         </>
-                    )
-                })}
+                    ))}
+                </div>
+                <Divider />
+                <div {...getTableBodyProps()}>
+                    {rows.map(row => {
+                        prepareRow(row);
+
+                        return (
+                            <>
+                                <div
+                                    {...row.getRowProps()}
+                                    className='py-3 align-items-center'
+                                >
+                                    {row.cells.map(cell => (
+                                        <div {...cell.getCellProps()}>
+                                            <div className={styles.cell}>
+                                                {cell.render('Cell')}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <Divider />
+                            </>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
