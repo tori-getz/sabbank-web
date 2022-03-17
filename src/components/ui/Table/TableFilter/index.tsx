@@ -1,9 +1,9 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import { Icon } from '@components/ui';
 
-import OutsideClickHandler from 'react-outside-click-handler';
+import { useOutsideClick } from '@hooks';
 
 import styles from './TableFilter.module.sass';
 import cn from 'classnames';
@@ -32,6 +32,13 @@ export const TableFilter: React.FC<ITableFilter> = ({
 
     const toggleDropdown = () => setOpen(!isOpen);
 
+    const dropdownRef = useRef(null);
+
+    useOutsideClick({
+        ref: dropdownRef,
+        callback: () => setOpen(false)
+    });
+
     return (
         <div>
             <div className={styles.label}>
@@ -52,27 +59,26 @@ export const TableFilter: React.FC<ITableFilter> = ({
                 </div>
             </div>
             {isOpen && (
-                <OutsideClickHandler
-                    onOutsideClick={() => setOpen(false)}
+                <div
+                    className={styles.dropdown}
+                    ref={dropdownRef}
                 >
-                    <div className={styles.dropdown}>
-                        {values.map(({ label, ...i }, key: number) => (
-                            <div
-                                onClick={() => {
-                                    toggleDropdown();
-                                    onChange(i.value);
-                                }}
-                                className={cn(
-                                    styles.dropdownItem,
-                                    { [styles.dropdownItemActive]: i.value === value }
-                                )}
-                                key={key}
-                            >
-                                {label}
-                            </div>
-                        ))}
-                    </div>
-                </OutsideClickHandler>
+                    {values.map(({ label, ...i }, key: number) => (
+                        <div
+                            onClick={() => {
+                                toggleDropdown();
+                                onChange(i.value);
+                            }}
+                            className={cn(
+                                styles.dropdownItem,
+                                { [styles.dropdownItemActive]: i.value === value }
+                            )}
+                            key={key}
+                        >
+                            {label}
+                        </div>
+                    ))}
+                </div>
             )}
         </div>
     )
