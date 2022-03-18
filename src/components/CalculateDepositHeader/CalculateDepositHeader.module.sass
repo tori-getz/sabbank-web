@@ -1,7 +1,11 @@
-
 .wrapper
     display: flex
-    gap: 2em
+    gap: 40px 
+    @media (max-width: 780px)
+        gap: 15px 
+
+    & > div 
+        flex: 1
 
 .block
     flex: 1

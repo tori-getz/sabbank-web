@@ -74,17 +74,16 @@ export const NewDepositScreen: React.FC<INewDepositScreen> = () => {
     return (
         <ScreenContainer title={t('Open deposit')}>
             <GoBack onClick={() => navigate(-1)} />
-            <h2>Вклад</h2>
+            <div className="widgetTitleL">{t('Deposit')}</div>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4 py-4'>
                         {!isEmpty(currencies) && (
                             <div>
-                                <h3>{t('Cryptocurrency')}</h3>
+                                <div className="widgetTitleL">{t('Cryptocurrency')}</div>
                                 <Label>{t('Choose a cryptocurrency to invest to earn money')}</Label>
                                 <div className={cn(
-                                    styles.currencies,
-                                    'd-flex'
+                                    styles.currenciesRadio
                                 )}>
                                     {currencies.map((crypto, key: number) => (
                                         <CurrencyRadio 

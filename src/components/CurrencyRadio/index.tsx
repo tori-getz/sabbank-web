@@ -27,12 +27,7 @@ export const CurrencyRadio: React.FC<IWalletCurrencyRadio> = ({
         <Card inset={active}>
             <CardContent>
                 <div
-                    className={cn(
-                        styles.wrapper,
-                        'p-2',
-                        'd-flex',
-                        'align-items-center'
-                    )}
+                    className={cn(styles.wrapper)}
                     onClick={onClick}
                 >
                     <RadioButton
@@ -50,17 +45,18 @@ export const CurrencyRadio: React.FC<IWalletCurrencyRadio> = ({
                             size={20}
                         />
                     </IconButton>
-                    <div>
-                        <p>{item.name}</p>
-                        <p className={styles.asset}>{item.asset.toUpperCase()}</p>
+                    <div className={styles.assetColumn}>
+                        <div>{item.name}</div>
+                        <div className={styles.asset}>{item.asset.toUpperCase()}</div>
                     </div>
-                    <h1
+                    <div
                         className={cn(
+                            styles.percentage,
                             { [styles.percentageActive]: active }
                         )}
                     >
                         {item.data[percentageKey].percentage}%
-                    </h1>
+                    </div>
                 </div>
             </CardContent>
         </Card>

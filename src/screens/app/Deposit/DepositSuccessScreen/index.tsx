@@ -107,7 +107,7 @@ export const DepositSuccessScreen: React.FC<IDepositSuccessScreen> = () => {
             <h2>{t('Deposit')}</h2>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4 pt-4'>
                         {renderInfo()}
                     </div>
                 </CardContent>

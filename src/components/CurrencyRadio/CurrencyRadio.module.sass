@@ -1,11 +1,26 @@
-
 .wrapper
+    display: flex
     flex: 1
     cursor: pointer
+    align-items: center
+    padding: 5px
 
+    @media (max-width: 780px)
+        padding: 0px
+
+.assetColumn
+    flex-grow: 1
+    @media (max-width: 780px)
+        display: none
 .asset
     font-size: 14px
     color: #A8A9BC
+
+.percentage
+    font-size: 24px
+    font-weight: bold
+    @media (max-width: 780px)
+        font-size: 18px
 
 .percentageActive
     color: #5C14F1

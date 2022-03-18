@@ -116,15 +116,15 @@ export const CalculateDepositScreen: React.FC<ICalculateDepositScreen> = () => {
             <GoBack
                 onClick={() => navigate(-1)}
             />
-            <h3>{t('Deposit')}</h3>
+            <div className="widgetTitleL">{t('Deposit')}</div>
             <CalculateDepositHeader
                 currency={currency as IDepositSettingCurrency}
                 period={period}
             />
             <Card>
                 <CardContent>
-                    <div className='p-2 pt-4 pb-4'>
-                        <h4>{t('Cryptocurrency')}</h4>
+                    <div className='p-md-4 py-4'>
+                    <div className="widgetTitle">{t('Cryptocurrency')}</div>
                         <Label>{t('Wallet from which funds for the deposit will be credited')}</Label>
                         <TokenSelect
                             defaultValue={selectedCurrency}
