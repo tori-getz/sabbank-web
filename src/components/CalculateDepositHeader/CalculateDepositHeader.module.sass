@@ -10,8 +10,20 @@
 .block
     flex: 1
 
+.wrapperRadio    
+    display: flex
+    flex: 1
+    cursor: pointer
+    align-items: center
+    padding: 5px
+
+    @media (max-width: 780px)
+        padding: 0px
+
 .currencyInfo
     margin-left: 1em
+    @media (max-width: 780px)
+        display: none
 
 .currencyName
     font-size: 18px
@@ -24,6 +36,11 @@
     margin-left: auto
     font-size: 24px
     color: #5C14F1
+    font-weight: bold
+
+    @media (max-width: 780px)
+        font-size: 18px
+
 
 .termBlock
     display: flex

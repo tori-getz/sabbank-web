@@ -30,7 +30,7 @@ export const CalculateDepositHeader: React.FC<ICalculateDepositHeader> = ({
         <div className={styles.wrapper}>
             <Card className={styles.block}>
                 <CardContent>
-                    <div className='d-flex p-2 align-items-center'>
+                    <div  className={styles.wrapperRadio}>
                         <IconButton
                             rounded
                             size='large'
@@ -43,7 +43,7 @@ export const CalculateDepositHeader: React.FC<ICalculateDepositHeader> = ({
                             <div className={styles.currencyName}>{currency.name}</div>
                             <div className={styles.currencyAsset}>{currency.asset.toUpperCase()}</div>
                         </div>
-                        <h2 className={styles.value}>{period?.percentage}%</h2>
+                        <div className={styles.value}>{period?.percentage}%</div>
                     </div>
                 </CardContent>
             </Card>
@@ -55,8 +55,8 @@ export const CalculateDepositHeader: React.FC<ICalculateDepositHeader> = ({
                             'p-2'
                         )}
                     >
-                        <h3>{t('Term')}</h3>
-                        <h2 className={styles.value}>{period?.depositPeriod[`name_${language}`] || ''}</h2>
+                        <div className={styles.currencyName}>{t('Term')}</div>
+                        <div className={styles.value}>{period?.depositPeriod[`name_${language}`] || ''}</div>
                     </div>        
                 </CardContent>
             </Card>
