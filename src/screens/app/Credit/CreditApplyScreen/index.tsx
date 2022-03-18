@@ -189,18 +189,18 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
     return (
         <ScreenContainer title={t('Credit')}>
             <GoBack onClick={() => navigate('/credit')}/>
-            <h2>{t('Credit')}</h2>
+            <div className="widgetTitleL">{t('Credit')}</div>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
-                        <h4>{t('Cryptocurrency')}</h4>
+                    <div className='p-md-4 py-4'>
+                        <div className="widgetTitle">{t('Cryptocurrency')}</div>
                         <Label>{t('Choose a cryptocurrency for collateral')}</Label>
                         <TokenSelect
                             defaultValue={token}
                             items={currencies.filter(c => c.asset !== 'usdt')}
                             onChange={c => setToken(c)}
                         />
-                        <h4 className='mt-5'>{t('DepositAmount')}</h4>
+                        <div className='widgetTitle mt-5'>{t('DepositAmount')}</div>
                         <Label>{t('Enter the depositamount')}</Label>
                         <CurrencyInput
                             value={depositAmount}
@@ -209,7 +209,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                         />
                         {!isEmpty(filteredSettings) && (
                             <>
-                                <h4 className='mt-5'>{t('Loan/collateral ratio (LTV)')}</h4>
+                                <div className='widgetTitle mt-5'>{t('Loan/collateral ratio (LTV)')}</div>
                                 <div className={styles.ltvSelect}>
                                     {filteredSettings?.map((s: ICreditSetting, key: number) => (
                                         <ToggleButton
@@ -222,14 +222,14 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                                 </div>
                             </>
                         )}
-                        <h4 className='mt-5'>{t('Loan amount')}</h4>
+                        <div className='widgetTitle mt-5'>{t('Loan amount')}</div>
                         <CurrencyAmount
                             amount={loanAmount}
                             asset='usdt'
                         >
                             {loanAmountLoading && <Spinner />}
                         </CurrencyAmount>
-                        <h4 className='mt-5'>{t('Commission payment method')}</h4>
+                        <div className='widgetTitle mt-5'>{t('Commission payment method')}</div>
                         {paymentMethods.map((pm: IWalletCurrency, key: number) => (
                             <PaymentMethod
                                 active={pm.asset === comissionCurrency}
@@ -239,7 +239,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                                 key={key}
                             />
                         ))}
-                        <h4 className='mt-5'>{t('Term')}</h4>
+                        <div className='widgetTitle mt-5'>{t('Term')}</div>
                         <Card>
                             <CardContent>
                                 <div className={styles.term}>
