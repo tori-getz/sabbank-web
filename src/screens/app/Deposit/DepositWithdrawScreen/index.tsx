@@ -111,10 +111,10 @@ export const DepositWithdrawScreen: React.FC<IDepositWithdrawScreen> = () => {
     return (
         <ScreenContainer title={`${t('Withdraw')} ${token.asset.toUpperCase()}`}>
             <GoBack onClick={() => navigate(-1)} />
-            <h2>{t('Withdraw')} {token.asset.toUpperCase()}</h2>
+            <div className="widgetTitleL">{t('Withdraw')} {token.asset.toUpperCase()}</div>
             <Card className={styles.fundsCard}>
                 <CardContent>
-                    <div className={cn(styles.funds, 'p-4')}>
+                    <div className={cn(styles.funds)}>
                         <div>{t('Available assets')}</div>
                         <div className={styles.fundsAmount}>{moneyAmountFormatter(info.amount, 8)} {token.asset.toUpperCase()}</div>
                     </div>
@@ -122,29 +122,26 @@ export const DepositWithdrawScreen: React.FC<IDepositWithdrawScreen> = () => {
             </Card>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
-                        <h3>{t('Cryptocurrency')}</h3>
+                    <div className={styles.withdrawFormWrapper}>
+                        <div className="widgetTitle">{t('Cryptocurrency')}</div>
                         <Label>{t('Withdrawal of funds to a crypto wallet')}</Label>
                         <div className={cn(styles.token, 'mt-2')}>
                             <TokenSelectItem {...token} />
                         </div>
-                        <Divider className='my-5' />
-                        <h3>{t('Withdrawal amount')}</h3>
+                        <Divider className='my-4' />
+                        <div className="widgetTitle">{t('Withdrawal amount')}</div>
                         <Label>{t('Enter withdrawal amount')}</Label>
                         <CurrencyInput
                             value={amount}
                             onChange={setAmount}
                             assetFrom={token.asset}
                         />
-                        <div className='d-flex justify-content-end mt-3'>
-                            <div>
-                                <Button
-                                    label={t('Withdraw')}
-                                    disabled={!amount || Number(amount) > Number(info.amount)}
-                                    onClick={() => setConfirmVisible(true)}
-                                />
-                            </div>
-                        </div>
+                        <Button
+                            label={t('Withdraw')}
+                            className={styles.button}
+                            disabled={!amount || Number(amount) > Number(info.amount)}
+                            onClick={() => setConfirmVisible(true)}
+                        />
                     </div>
                 </CardContent>
             </Card>

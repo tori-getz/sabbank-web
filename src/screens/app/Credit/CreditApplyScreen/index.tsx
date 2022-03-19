@@ -250,7 +250,7 @@ export const CreditApplyScreen: React.FC<ICreditApplyScreen> = () => {
                         <Details
                             items={detailsTable}
                         />
-                        <div className='d-flex mt-5'>
+                        <div className={styles.agreeWrapper}>
                             <div className={styles.agree}>
                                 <Checkbox
                                     value={agree}

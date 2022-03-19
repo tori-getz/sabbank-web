@@ -108,7 +108,7 @@ export const WalletTransactionsHistory: React.FC<IWalletTransactionsHistory> = (
 
     return (
         <>
-            <h2>{t('Transaction history')}</h2>
+            <div className="widgetTitle">{t('Transaction history')}</div>
             <Card>
                 <CardContent>
                     <Table
