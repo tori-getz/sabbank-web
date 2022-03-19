@@ -76,10 +76,10 @@ export const DepositInfoScreen: React.FC<IDepositInfoScreen> = () => {
             <GoBack
                 onClick={() => navigate(-1)}
             />
-            <h2>{depositPeriod[`name_${language}`]} ({currency.percentage}%)</h2>
+            <div className="widgetTitleL">{depositPeriod[`name_${language}`]} ({currency.percentage}%)</div>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className={styles.wrapper}>
                         <DepositListItem
                             id={currency.id}
                             is_active={true}

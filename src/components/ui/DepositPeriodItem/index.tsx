@@ -28,7 +28,7 @@ export const DepositPeriodItem: React.FC<IDepositPeriodItem> = ({
 
     return (
         <Card inset={active}>
-            <CardContent>
+            <CardContent className="bgTransparent">
                 <div
                     className={cn(
                         styles.wrapper,

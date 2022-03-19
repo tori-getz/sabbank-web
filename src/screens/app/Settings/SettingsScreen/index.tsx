@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Card, CardContent } from 'ui-neumorphism';
 
+import styles from './SettingsScreen.module.sass';
+
 interface ISettingsScreen {};
 
 export const SettingsScreen: React.FC<ISettingsScreen> = () => {
@@ -21,10 +23,10 @@ export const SettingsScreen: React.FC<ISettingsScreen> = () => {
 
     return (
         <ScreenContainer title={t('Settings')}>
-            <h3>{t('Settings')}</h3>
+            <div className="widgetTitleL">{t('Settings')}</div>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className={styles.wrapper}>
                         <ProfileSettings />
                     </div>
                 </CardContent>

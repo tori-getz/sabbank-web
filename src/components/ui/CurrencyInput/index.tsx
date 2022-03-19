@@ -127,7 +127,9 @@ export const CurrencyInput: React.FC<IWalletCurrencyInput> = ({
             </div>
             {assetFrom !== assetTo && (
                 <>
-                    <Icon name='equals' />
+                    <div className={styles.equals}>
+                        <Icon name='equals' />
+                    </div>
                     <div className={cn(styles.field, className)}>
                         <input
                             type='number'

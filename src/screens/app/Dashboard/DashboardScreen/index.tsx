@@ -24,7 +24,7 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
             <WalletActions />
             {!isEmpty(transactions) && (
                 <>
-                    <div className="widgetTitle pt-4">{t('Transaction history')}</div>
+                    <div className="widgetTitle pt-4 mb-3">{t('Transaction history')}</div>
                     <TransactionsHistory />
                 </>
             )}

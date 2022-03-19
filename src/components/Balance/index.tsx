@@ -35,7 +35,7 @@ export const Balance: React.FC<IBalance> = () => {
     }
 
     return (
-        <div className={cn(styles.widget)}>
+        <div className={cn(styles.widget, "d-none d-md-block")}>
             <div className='d-flex align-items-center justify-content-between'>
                 <div className={cn(styles.title)}>{t('Total balance')}</div>
                 <FiatSelect />

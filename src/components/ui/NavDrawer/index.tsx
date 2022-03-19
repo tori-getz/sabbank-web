@@ -13,8 +13,13 @@ import styles from './NavDrawer.module.sass';
 
 import {
     NavDrawerHeader,
-    NavDrawerLink
+    NavDrawerLink,
+    Icon,
 } from '@components/ui';
+
+import {
+    useTranslation,
+} from '@hooks';
 
 interface ILink {
     to: string
@@ -36,6 +41,8 @@ export const NavDrawer: React.FC<INavDrawer> = ({
 
     const location = useLocation();
     const navigate = useNavigate();
+
+    const { t } = useTranslation();
 
     return (
         <Drawer
@@ -60,7 +67,10 @@ export const NavDrawer: React.FC<INavDrawer> = ({
                         ))}
                     </div>
                 </div>
-                <div className="p-5">Settings</div>
+                <div className={styles.controlsContainer}>
+                    <a><span><Icon name="settings"/>{t('Settings')}</span></a>
+                    <a><span><Icon name="logout"/>{t('Logout')}</span></a>
+                </div>
             </div>
         </Drawer>
     )

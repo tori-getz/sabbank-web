@@ -48,7 +48,7 @@ export const PaymentMethod: React.FC<IPaymentMethod> = ({
             inset={active}
             className={className}
         >
-            <CardContent>
+            <CardContent className="bgTransparent">
                 <div
                     className={styles.wrapper}
                     onClick={onClick}

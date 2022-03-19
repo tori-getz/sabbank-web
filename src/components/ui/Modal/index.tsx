@@ -30,8 +30,8 @@ export const Modal: React.FC<IModal> = ({
         >
             <div className='p-4'>
                 {title && (
-                    <div className='d-flex align-items-center justify-content-between mb-3'>
-                        <h3>{title}</h3>
+                    <div className='d-flex align-items-top justify-content-between mb-3'>
+                        <div className="widgetTitleL">{title}</div>
                         <div
                             className={styles.close}
                             onClick={onClose}

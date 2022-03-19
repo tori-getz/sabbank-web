@@ -1,12 +1,19 @@
 
 .funds
     font-size: 18px
+    font-weight: bold
     display: flex
     justify-content: space-between
     flex-wrap: wrap
+    padding: 22px 8px
+
+    @media (max-width: 780px)
+        padding: 24px 0px
 
 .fundsCard
     width: 70%
+    @media (max-width: 780px)
+        width: 100%
 
 .fundsAmount
     font-size: 20px
@@ -18,4 +25,19 @@
     box-shadow: inset 1px 2px 8px 0 #DBDBE6
     border-radius: 5px
     flex-direction: column
-    padding: .5em
+    padding: 11px 10px 9px 16px
+
+.withdrawFormWrapper
+    padding: 20px 8px 32px
+
+    @media (max-width: 780px)
+        padding: 16px 0px
+
+
+.button
+    margin-top: 1.5rem
+    margin-left: auto
+    width: 164px
+
+    @media (max-width: 780px)
+        width: 100%
