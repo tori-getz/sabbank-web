@@ -21,7 +21,7 @@ export const SettingsScreen: React.FC<ISettingsScreen> = () => {
 
     return (
         <ScreenContainer title={t('Settings')}>
-            <h3>{t('Settings')}</h3>
+            <div className="widgetTitleL">{t('Settings')}</div>
             <Card>
                 <CardContent>
                     <div className='p-4'>
