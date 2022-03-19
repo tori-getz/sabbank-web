@@ -6,6 +6,7 @@ import {
     getFiatListFx,
     $fiatList
 } from '@store/profile';
+
 import { useStore } from 'effector-react';
 
 import type {
@@ -37,7 +38,7 @@ interface IUseProfile {
 
 export const useProfile = (): IUseProfile => {
     const profileService = new ProfileService();
-
+    
     const user: IUser = useStore($user);
     const fiatList: Array<IUserFiatCurrency> = useStore($fiatList);
 
@@ -86,7 +87,7 @@ export const useProfile = (): IUseProfile => {
     const getFullname = (): string => {
         const name: string = `${user?.first_name || ''} ${user?.last_name || ''}`;
 
-        if (name === ' ') return 'user';
+        if (name === ' ') return 'User'
 
         return name;
     }

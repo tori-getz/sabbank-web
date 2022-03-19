@@ -13,7 +13,7 @@ import { useAuth, useTranslation } from '@hooks';
 interface ILoginForm {};
 
 export const LoginForm: React.FC<ILoginForm> = () => {
-    const [ phone, setPhone ] = useState<string>(''); 
+    const [ email, setEmail ] = useState<string>(''); 
     const [ password, setPassword ] = useState<string>('');
 
     const [ error, setError ] = useState<string>('');
@@ -24,7 +24,7 @@ export const LoginForm: React.FC<ILoginForm> = () => {
 
     const onSubmit = async () => {
         try {
-            await login({ phone, password });
+            await login({ email, password });
         } catch (e) {
             setError(t(e.message));
         }
@@ -38,11 +38,11 @@ export const LoginForm: React.FC<ILoginForm> = () => {
                         <h3 className="h4 pt-3 pb-2">{t('Sign in')}</h3>
                         <Divider />
                         <div className="mt-3">
-                            <Label>{t('Phone number')}</Label>
+                            <Label>Email</Label>
                         </div>
                         <TextInput
-                            value={phone}
-                            onChange={({ target: {value} }) => setPhone(value)}
+                            value={email}
+                            onChange={({ target: {value} }) => setEmail(value)}
                             id="phone"
                             maxLength={12}
                         />

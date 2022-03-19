@@ -31,23 +31,23 @@ export const RegisterScreen: React.FC<IRegisterScreen> = () => {
 
     const { register } = useAuth();
 
-    const [ phone, setPhone ] = useState<string>('');
+    const [ email, setEmail ] = useState<string>('');
     const [ password, setPassword ] = useState<string>('');
     const [ repeatPassword, setRepeatPassword ] = useState<string>('');
 
     const validate = useCallback(() => {
-        if (phone.length !== 12) return false;
+        if (!email) return false;
         if (!password) return false;
         if (password !== repeatPassword) return false;
 
         return true;
-    }, [phone, password, repeatPassword]);
+    }, [email, password, repeatPassword]);
 
     const onSubmit = async () => {
         try {
-            await register({ phone, password });
+            await register({ email, password });
 
-            navigate('/register/verify', { state: { phone } });
+            navigate('/register/verify', { state: { email } });
         } catch (e) {
             console.error(e);
         }
@@ -61,11 +61,11 @@ export const RegisterScreen: React.FC<IRegisterScreen> = () => {
                         <CardContent className="p-4">
                             <h3 className="h4 pt-3 pb-2">{t('Sign up')}</h3>
                             <Divider className='mb-3' />
-                            <div className={styles.formTitle}>{t('Phone number')}</div>
+                            <div className={styles.formTitle}>Email</div>
                             <Label>{t('You will receive a one-time verification code on your phone')}</Label>
                             <TextInput
-                                value={phone}
-                                onChange={e => setPhone(e.target.value)}
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
                                 maxLength={12}
                             />
                             <div className={cn(styles.formTitle, 'mt-3')}>{t('Password')}</div>

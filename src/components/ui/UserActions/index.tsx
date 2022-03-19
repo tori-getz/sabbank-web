@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { NavDropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -15,25 +15,25 @@ import {
 interface IUserActions {};
 
 export const UserActions: React.FC<IUserActions> = () => {
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
     const { getFullname, getInitials } = useProfile();
     const { logout } = useAuth();
 
     const navigate = useNavigate();
 
-    const getUsername = () => {
+    const getUsername = useCallback(() => {
         const name: string = getFullname();
-        const initials: string = getInitials(name);
+        const initials: string = getInitials(t(name));
 
-        if (name === ' ') return (<div>{t('User')}</div>);
+        if (name === 'user') return (<div>{t('User')}</div>);
 
         return (
             <span>
                 <span className={styles.userInitials}><span>{initials}</span></span>
-                <span className={styles.userName}>{name}</span>
+                <span className={styles.userName}>{t(name)}</span>
             </span>
         );
-    }
+    }, [language])
     
     return (
         <NavDropdown title={getUsername()}>

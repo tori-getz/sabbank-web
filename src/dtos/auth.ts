@@ -2,17 +2,17 @@
 import type { IUser } from "@typing";
 
 export interface IAuthDto {
-    phone: string
+    email: string
     password: string
 }
 
 export interface IAuthRegisterDto {
-    phone: string
+    email: string
     password: string
 }
 
 export interface IAuthRegisterVerifyDto {
-    phone: string
+    email: string
     verify_code: string
 }
 
