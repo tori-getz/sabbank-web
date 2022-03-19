@@ -106,7 +106,7 @@ export const ProfileSettings: React.FC<IProfileSettings> = () => {
 
     return (
         <>
-            <h4>{t('Profile')}</h4>
+            <div className="widgetTitle">{t('Profile')}</div>
             <Label>{t('Name')}</Label>
             <TextInput
                 value={name}
