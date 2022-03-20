@@ -31,11 +31,11 @@ export const TokenSelect: React.FC<ITokenSelect> = ({
     const [ isOpen, setOpen ] = useState<boolean>(false);
 
     const [ defaultCurrency, setDefaultCurrency ] = useState<IWalletCurrency>(defaultValue);
-    const [ list, setList ] = useState<IWalletCurrency[]>(items.filter(item => item.asset !== defaultValue.asset));
+    const [ list, setList ] = useState<IWalletCurrency[]>(items?.filter(item => item?.asset !== defaultValue?.asset));
 
     const onSelect = (item: IWalletCurrency) => {
         setDefaultCurrency(item);
-        setList(items.filter(c => c.asset !== item.asset));
+        setList(items.filter(c => c?.asset !== item?.asset));
         setOpen(false);
         onChange(item);
     }

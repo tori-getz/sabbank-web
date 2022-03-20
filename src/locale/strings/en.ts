@@ -101,7 +101,7 @@ export const en: ILocale = {
     'Repayment schedule': 'Repayment schedule',
     'Pay': 'Pay',
     'No account?': 'No account?',
-    'You will receive a one-time verification code on your phone': 'You will receive a one-time verification code on your phone',
+    'You will receive a one-time verification code on your email': 'You will receive a one-time verification code on your email',
     'Repeat password': 'Repeat password',
     'Loan body': 'Loan body',
     'Remaining % of charges': 'Remaining % of charges',
@@ -128,5 +128,13 @@ export const en: ILocale = {
     'transactionStatus__pending': 'Pending',
     'transactionStatus__failed': 'Failed',
     'transactionStatus__internal_error': 'Internal error',
-    'Transaction number': 'Transaction number'
+    'Transaction number': 'Transaction number',
+    'Receive': 'Receive',
+    'Transfer': 'Transfer',
+    'Exchange': 'Exchange',
+    'Cash out': 'Cash out',
+    'Choose a cryptocurrency for receive': 'Choose a cryptocurrency for receive',
+    'Receive amount': 'Receive amount',
+    'Choose a cryptocurrency for transfer': 'Choose a cryptocurrency for transfer',
+    'Transfer amount': 'Transfer amount'
 };

@@ -43,16 +43,14 @@ export const LoginForm: React.FC<ILoginForm> = () => {
                         <TextInput
                             value={email}
                             onChange={({ target: {value} }) => setEmail(value)}
-                            id="phone"
-                            maxLength={12}
                         />
                         <div className="d-flex flex-wrap justify-content-between mt-3">
                             <Label>{t('Password')}</Label>
                             <Link to='/forgot' className={styles.forgotLink}>{t('Forgot password?')}</Link>
                         </div>
                         <TextInput
-                            value={password}
                             type='password'
+                            value={password}
                             onChange={({ target: {value} }) => setPassword(value)}
                         />
                         <div className="mt-4 flex-column">

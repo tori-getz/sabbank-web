@@ -62,7 +62,7 @@ export const RegisterScreen: React.FC<IRegisterScreen> = () => {
                             <h3 className="h4 pt-3 pb-2">{t('Sign up')}</h3>
                             <Divider className='mb-3' />
                             <div className={styles.formTitle}>Email</div>
-                            <Label>{t('You will receive a one-time verification code on your phone')}</Label>
+                            <Label>{t('You will receive a one-time verification code on your email')}</Label>
                             <TextInput
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}

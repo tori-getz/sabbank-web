@@ -45,7 +45,7 @@ export const TokenSelectItem: React.FC<ITokenSelectItem> = ({
             </IconButton>
             <div>
                 <div className={styles.currencyName}>{name}</div>
-                <div className={styles.currencyAsset}>{asset.toUpperCase()}</div>
+                <div className={styles.currencyAsset}>{asset?.toUpperCase()}</div>
             </div>
             <div className={styles.amountBlock}>
                 <div className={styles.amount}><strong>{moneyAmountFormatter(balance, 4)}</strong> {asset.toUpperCase()}</div>

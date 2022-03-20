@@ -23,7 +23,7 @@ import {
 } from '@components/ui';
 
 interface ILocationState {
-    phone: string
+    email: string
 }
 
 interface IRegisterVerifyScreen {};
@@ -36,18 +36,18 @@ export const RegisterVerifyScreen: React.FC<IRegisterVerifyScreen> = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const { phone } = location.state as ILocationState;
+    const { email } = location.state as ILocationState;
 
     const [ code, setCode ] = useState<string>('');
 
     const onSubmit = async () => {
         try {
             await verifyRegister({
-                phone,
+                email,
                 verify_code: code
             });
 
-            navigate('/register/pincode');
+            navigate('/register/pincode', { state: { email } });
         } catch (e) {
             console.error(e);
         }

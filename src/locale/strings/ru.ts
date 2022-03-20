@@ -100,7 +100,7 @@ export const ru: ILocale = {
     'Repayment schedule': 'График погашений',
     'Pay': 'Оплатить',
     'No account?': 'Нет аккаунта?',
-    'You will receive a one-time verification code on your phone': 'Вы получите одноразовый код подтверждения на телефон',
+    'You will receive a one-time verification code on your email': 'Вы получите одноразовый код подтверждения на Emails',
     'Create a strong password consisting of letters, numbers and symbols': 'Создайте надежный пароль, состоящий из букв, цифр и символов',
     'Repeat password': 'Повторите пароль',
     'Loan body': 'Тело кредита',
@@ -127,5 +127,13 @@ export const ru: ILocale = {
     'transactionStatus__pending': 'На рассмотрении',
     'transactionStatus__failed': 'Ошибка',
     'transactionStatus__internal_error': 'Ошибка',
-    'Transaction number': 'Номер транзакции'
+    'Transaction number': 'Номер транзакции',
+    'Receive': 'Пополнить',
+    'Transfer': 'Перевод',
+    'Exchange': 'Обмен',
+    'Cash out': 'Вывод',
+    'Choose a cryptocurrency for receive': 'Выберите криптокошелёк для пополнения',
+    'Receive amount': 'Сумма пополнения',
+    'Choose a cryptocurrency for transfer': 'Выберите криптокошелёк для перевода',
+    'Transfer amount': 'Сумма перевода'
 };
