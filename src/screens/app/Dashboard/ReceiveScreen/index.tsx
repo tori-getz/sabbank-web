@@ -10,7 +10,8 @@ import {
     Label,
     TokenSelect,
     CurrencyInput,
-    Button
+    TextInput,
+    QRCode
 } from '@components/ui';
 
 import { Card, CardContent } from 'ui-neumorphism';
@@ -23,6 +24,8 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import type { IWalletCurrency } from '@typing';
+
+import styles from './ReceiveScreen.module.sass';
 
 interface IReceiveScreen {};
 
@@ -56,10 +59,20 @@ export const ReceiveScreen: React.FC<IReceiveScreen> = () => {
                             onChange={setAmount}
                             assetFrom={currency?.asset}
                         />
-                        <div className='mt-4 d-flex'>
-                            <div>
-                                <Button
-                                    label={t('Next')}
+                        <div className='d-flex mt-4'>
+                            <Card>
+                                <CardContent>
+                                    <QRCode
+                                        text={currency?.address}
+                                        size={180}
+                                    />
+                                </CardContent>
+                            </Card>
+                            <div className={styles.address}>
+                                <Label>{t('Copy wallet address to fund your account')}</Label>
+                                <TextInput
+                                    disabled
+                                    value={currency?.address}
                                 />
                             </div>
                         </div>

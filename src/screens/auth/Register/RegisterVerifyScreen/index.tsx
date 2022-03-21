@@ -47,7 +47,7 @@ export const RegisterVerifyScreen: React.FC<IRegisterVerifyScreen> = () => {
                 verify_code: code
             });
 
-            navigate('/register/pincode', { state: { email } });
+            navigate('/register/pincode', { state: { email, code } });
         } catch (e) {
             console.error(e);
         }

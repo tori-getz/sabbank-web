@@ -6,7 +6,8 @@ import { AuthService } from '@services';
 import type {
     IAuthDto,
     IAuthRegisterDto,
-    IAuthRegisterVerifyDto
+    IAuthRegisterVerifyDto,
+    IAuthRegisterCompleteRegisterDto
 } from '@dtos';
 
 import {
@@ -24,10 +25,11 @@ import {
 
 interface IUseAuth {
     isAuth: () => boolean
-    login: (credentials: IAuthDto) => any,
+    login: (credentials: IAuthDto) => Promise<void>
+    logout: () => void
     register: (credentials: IAuthRegisterDto) => Promise<any>
     verifyRegister: (dto: IAuthRegisterVerifyDto) => Promise<any>
-    logout: () => void
+    completeRegister: (dto: IAuthRegisterCompleteRegisterDto) => Promise<void>
 }
 
 export const useAuth = (): IUseAuth => {
@@ -37,7 +39,7 @@ export const useAuth = (): IUseAuth => {
 
     const isAuth = () => accessToken !== '';
 
-    const login = async (credentials: IAuthDto) => {
+    const login = async (credentials: IAuthDto): Promise<void> => {
         try {
             const { token, user } = await authService.login(credentials);
 
@@ -50,6 +52,10 @@ export const useAuth = (): IUseAuth => {
         }
     }
 
+    const logout = () => {
+        logoutEvent();
+    }
+
     const register = async (credentials: IAuthRegisterDto): Promise<any> => {
         return await authService.register(credentials);
     }
@@ -58,15 +64,25 @@ export const useAuth = (): IUseAuth => {
         return await authService.verify(dto);
     }
 
-    const logout = () => {
-        logoutEvent();
+    const completeRegister = async (dto: IAuthRegisterCompleteRegisterDto): Promise<void> => {
+        try {
+            const { token, user } = await authService.completeRegister(dto);
+
+            setUser(user);
+
+            setRefreshToken(token.refresh);
+            setAccessToken(token.access);
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     return {
         isAuth,
         login,
+        logout,
         register,
         verifyRegister,
-        logout
+        completeRegister
     }
 }

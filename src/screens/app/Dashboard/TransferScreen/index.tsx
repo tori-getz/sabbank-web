@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
     ScreenContainer
@@ -10,7 +10,9 @@ import {
     Label,
     TokenSelect,
     CurrencyInput,
-    Button
+    Button,
+    TextInput,
+    Spinner
 } from '@components/ui';
 
 import { Card, CardContent } from 'ui-neumorphism';
@@ -24,6 +26,8 @@ import { useNavigate } from 'react-router-dom';
 
 import type { IWalletCurrency } from '@typing';
 
+import { isEmpty } from 'lodash';
+
 interface ITransferScreen {};
 
 export const TransferScreen: React.FC<ITransferScreen> = () => {
@@ -33,11 +37,27 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
 
     const { currencies } = useWallet();
 
-    const [ currency, setCurrency ] = useState<IWalletCurrency>(currencies[0]);
+    const [ currency, setCurrency ] = useState<IWalletCurrency>();
     const [ amount, setAmount ] = useState<string>('');
+    const [ address, setAddress ] = useState<string>('');
+
+    useEffect(() => {
+        if (isEmpty(currencies)) return;
+        if (currency) return;
+
+        setCurrency(currencies[0]);
+    }, [currencies]);
+
+    if (!currency) {
+        return (
+            <ScreenContainer title={t('Transfer')}>
+                <Spinner />
+            </ScreenContainer>
+        )
+    }
 
     return (
-        <ScreenContainer>
+        <ScreenContainer title={t('Transfer')}>
             <GoBack onClick={() => navigate('/dashboard')}/>
             <h2>{t('Transfer')}</h2>
             <Card>
@@ -56,9 +76,16 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
                             onChange={setAmount}
                             assetFrom={currency?.asset}
                         />
-                        <div className='mt-4 d-flex'>
-                            <div>
+                        <h4 className='mt-5'>{t('Wallet address')}</h4>
+                        <Label>{t('Enter wallet address')}</Label>
+                        <TextInput
+                            value={address}
+                            onChange={e => setAddress(e.target.value)}
+                        />
+                        <div className='mt-4 d-flex align-end'>
+                            <div className=''>
                                 <Button
+                                    disabled={!address || Number(amount) > currency?.balance}
                                     label={t('Next')}
                                 />
                             </div>

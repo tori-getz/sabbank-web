@@ -16,6 +16,13 @@ export interface IAuthRegisterVerifyDto {
     verify_code: string
 }
 
+export interface IAuthRegisterCompleteRegisterDto {
+    email: string
+    pin_code: string
+    pin_code_confirmation: string
+    verify_code: string
+}
+
 export interface IAuthTokens {
     access: string
     refresh: string

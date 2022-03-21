@@ -135,5 +135,8 @@ export const ru: ILocale = {
     'Choose a cryptocurrency for receive': 'Выберите криптокошелёк для пополнения',
     'Receive amount': 'Сумма пополнения',
     'Choose a cryptocurrency for transfer': 'Выберите криптокошелёк для перевода',
-    'Transfer amount': 'Сумма перевода'
+    'Transfer amount': 'Сумма перевода',
+    'Set PIN-code': 'Установить PIN-код',
+    'Repeat PIN-code': 'Повторите PIN-код',
+    'Enter wallet address': 'Введите адрес кошелька'
 };

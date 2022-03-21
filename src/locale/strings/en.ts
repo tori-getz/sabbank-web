@@ -136,5 +136,8 @@ export const en: ILocale = {
     'Choose a cryptocurrency for receive': 'Choose a cryptocurrency for receive',
     'Receive amount': 'Receive amount',
     'Choose a cryptocurrency for transfer': 'Choose a cryptocurrency for transfer',
-    'Transfer amount': 'Transfer amount'
+    'Transfer amount': 'Transfer amount',
+    'Set PIN-code': 'Set PIN-code',
+    'Repeat PIN-code': 'Repeat PIN-code',
+    'Enter wallet address': 'Enter wallet address'
 };

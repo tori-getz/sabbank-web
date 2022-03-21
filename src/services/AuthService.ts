@@ -5,6 +5,7 @@ import type {
     IAuthDto,
     IAuthRegisterDto,
     IAuthRegisterVerifyDto,
+    IAuthRegisterCompleteRegisterDto,
     IAuthResponse,
     IAuthTokens,
     IAuthRestoreDto,
@@ -44,6 +45,12 @@ export class AuthService {
 
     public async verify (dto: IAuthRegisterVerifyDto) {
         const { data } = await this.http.post('/auth/verify', dto);
+
+        return data;
+    }
+
+    public async completeRegister (dto: IAuthRegisterCompleteRegisterDto): Promise<IAuthResponse> {
+        const { data } = await this.http.post<IAuthResponse>('/auth/completeRegister', dto);
 
         return data;
     }
