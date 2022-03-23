@@ -39,7 +39,7 @@ export const FiatSelect: React.FC<IFiatSelect> = () => {
                 className={styles.btn}
                 onClick={() => setOpen(!isOpen)}
             >
-                {settings.fiat_currency.iso_code.toUpperCase()} {`>`}
+                {settings?.fiat_currency?.iso_code?.toUpperCase()} {`>`}
             </div>
             {isOpen && (
                 <div className={styles.menu}>

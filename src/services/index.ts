@@ -10,3 +10,4 @@ export { ContentService } from './ContentServkce';
 export { CreditService } from './CreditService';
 export { ProfileService } from './ProfileService';
 export { SupportService } from './SupportService';
+export { TwoFactorAuthService } from './TwoFactorAuthService';

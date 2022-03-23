@@ -28,7 +28,7 @@ export const ru: ILocale = {
     'User': 'Пользователь',
     'About': 'О нас',
     'Forgot password?': 'Забыли пароль?',
-    'Enter your registration phone number below for instructions on how to reset your password.': 'Введите ниже свой регистрационный номер телефона, чтобы получить инструкцию по сбросу пароля.',
+    'Enter your registration email below for instructions on how to reset your password.': 'Введите ниже свой регистрационный email, чтобы получить инструкцию по сбросу пароля.',
     'Send': 'Отправить',
     'Password recovery': 'Восстановление пароля',
     'Confirmation code': 'Код подтверждения',
@@ -138,5 +138,12 @@ export const ru: ILocale = {
     'Transfer amount': 'Сумма перевода',
     'Set PIN-code': 'Установить PIN-код',
     'Repeat PIN-code': 'Повторите PIN-код',
-    'Enter wallet address': 'Введите адрес кошелька'
+    'Enter wallet address': 'Введите адрес кошелька',
+    'Two-factor authentication': 'Двухфакторная аутентификация',
+    'Setting up two-factor authentication': 'Установка двухфакторной аутентификации',
+    '2fa step 1': '1.  Скачайте и установите мобильное приложение Google Authenticator. Доступно приложение как на платформе IOS, так и на платформе Android.',
+    '2fa step 2': '2.  После установки Google Authenticator, нажмите + в верхнем правом углу (нижний правый угол для Андроид) и введите ключ или отсканируйте QR код, представленные ниже.',
+    '2fa step 3': '3.  После успешного добавления, введите одноразовый пароль из 6 цифр в на основе сгенерированного кода и нажмите кнопку \'сохранить\'.',
+    'Activation key': 'Ключ активации',
+    'Enter 2FA code': 'Введите 2FA код'
 };

@@ -96,9 +96,9 @@ export const useProfile = (): IUseProfile => {
         let initials: Array<string> = [];
         
         for (let word of fullName.split(' ')) {
-            const firstSymbol = word.split('')[0];
+            const firstSymbol = word?.split('')[0];
 
-            initials.push(firstSymbol.toUpperCase());
+            initials.push(firstSymbol?.toUpperCase());
         }
 
         return initials.join('');

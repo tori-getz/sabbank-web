@@ -17,3 +17,7 @@ export interface IProfileUpdatePhoneDto {
 export interface IProfileUpdateSettingsDto extends Partial<IUserSettings> {
     fiat_currency_id?: number
 }
+
+export interface IProfile2FAToggleDto {
+    otp: string
+}

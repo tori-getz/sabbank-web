@@ -27,3 +27,8 @@ export interface IUser {
     phone: string
     settings: IUserSettings
 }
+
+export interface IUser2FAInfo {
+    detail: string 
+    secret: string
+}

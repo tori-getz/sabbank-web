@@ -42,7 +42,7 @@ export const ForgotChangePasswordScreen: React.FC<IForgotChangePasswordScreen> =
 
             await authService.restoreComplete({
                 // @ts-ignore
-                phone: location.state.phone,
+                email: location.state.email,
                 new_password: password,
                 // @ts-ignore
                 verify_code: location.state.code

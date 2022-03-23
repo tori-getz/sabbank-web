@@ -15,11 +15,27 @@ import { Card, CardContent } from 'ui-neumorphism';
 
 import styles from './SettingsScreen.module.sass';
 
+interface ISettingsItem {
+    title: string
+    path: string
+}
+
 interface ISettingsScreen {};
 
 export const SettingsScreen: React.FC<ISettingsScreen> = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
+
+    const settingsList: Array<ISettingsItem> = [
+        {
+            title: t('Two-factor authentication'),
+            path: '/settings/2fa'
+        },
+        {
+            title: t('FAQ and support'),
+            path: '/support'
+        }
+    ];
 
     return (
         <ScreenContainer title={t('Settings')}>
@@ -31,10 +47,13 @@ export const SettingsScreen: React.FC<ISettingsScreen> = () => {
                     </div>
                 </CardContent>
             </Card>
-            <SettingsButton
-                title={t('FAQ and support')}
-                onClick={() => navigate('/support')}
-            />
+            {settingsList.map(({ title, path }: ISettingsItem, key: number) => (
+                <SettingsButton
+                    key={key}
+                    title={title}
+                    onClick={() => navigate(path)}
+                />
+            ))}
         </ScreenContainer>
     )
 }

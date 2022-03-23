@@ -8,3 +8,4 @@ export { useContent } from './useContent';
 export { useCredit } from './useCredit';
 export { useSupport } from './useSupport';
 export { useOutsideClick } from './useOutsideClick';
+export { useTwoFactorAuth } from './useTwoFactorAuth';

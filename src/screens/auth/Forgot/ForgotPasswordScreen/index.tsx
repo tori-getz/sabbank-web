@@ -20,16 +20,16 @@ export const ForgotPasswordScreen: React.FC<IForgotPasswordScreen> = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const [ phone, setPhone ] = useState<string>('');
+    const [ email, setEmail ] = useState<string>('');
     const [ loading, setLoading ] = useState<boolean>(false);
 
     const onSubmit = async () => {
         try {
             setLoading(true);
 
-            await authService.restore({ phone });
+            await authService.restore({ email });
 
-            navigate('/forgot/verify', { state: { phone } })
+            navigate('/forgot/verify', { state: { email } })
         } catch (e) {
             console.error(e);
         } finally {
@@ -45,44 +45,18 @@ export const ForgotPasswordScreen: React.FC<IForgotPasswordScreen> = () => {
                         <CardContent className="p-4">
                             <h3 className="h4 pt-3 pb-2">{t('Forgot password?')}</h3>
                             <Divider />
-                            <Label>{t('Enter your registration phone number below for instructions on how to reset your password.')}</Label>
+                            <Label>{t('Enter your registration email below for instructions on how to reset your password.')}</Label>
                             <TextInput
-                                value={phone}
-                                onChange={({ target: {value} }) => setPhone(value)}
-                                id="phone"
-                                maxLength={12}
+                                value={email}
+                                onChange={({ target: {value} }) => setEmail(value)}
                             />
                             <Button
                                 label={t('Send')}
                                 className='mt-4'   
-                                disabled={phone.length !== 12 || loading}
+                                disabled={loading}
                                 onClick={onSubmit}
                                 loading={loading}
                             />
-                            {/* <div className="mt-3">
-                                <Label>{t('Phone number')}</Label>
-                            </div> */}
-                            {/* <TextInput
-                                value={phone}
-                                onChange={({ target: {value} }) => setPhone(value)}
-                                id="phone"
-                            />
-                            <div className="d-flex flex-wrap justify-content-between mt-3">
-                                <Label>{t('Password')}</Label>
-                                <a href="#" className="">{t('Forgot password?')}</a>
-                            </div>
-                            <TextInput
-                                value={password}
-                                onChange={({ target: {value} }) => setPassword(value)}
-                            />
-                            <div className="mt-4">
-                                {error && (
-                                    <Alert variant='danger'>
-                                        {error}
-                                    </Alert>
-                                )}
-                                <Button onClick={onSubmit} label={t('Sign in')} className="mt-2"/>
-                            </div> */}
                         </CardContent>
                     </Card>
                 </div>

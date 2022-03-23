@@ -34,11 +34,11 @@ export interface IAuthResponse {
 }
 
 export interface IAuthRestoreDto {
-    phone: string
+    email: string
 }
 
 export interface IAuthRestoreVerifyDto {
-    phone: string
+    email: string
     verify_code: string
 }
 
@@ -47,7 +47,7 @@ export interface IAuthRestoreVerifyResponse {
 }
 
 export interface IAuthRestoreCompleteDto {
-    phone: string
+    email: string
     new_password: string
     verify_code: string
 }

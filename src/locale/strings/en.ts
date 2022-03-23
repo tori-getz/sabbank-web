@@ -28,7 +28,7 @@ export const en: ILocale = {
     'User': 'User',
     'About': 'About',
     'Forgot password?': 'Forgot password?',
-    'Enter your registration phone number below for instructions on how to reset your password.': 'Enter your registration phone number below for instructions on how to reset your password.',
+    'Enter your registration email below for instructions on how to reset your password.': 'Enter your registration email below for instructions on how to reset your password.',
     'Send': 'Send',
     'Password recovery': 'Password recovery',
     'Confirmation code': 'Confirmation code',
@@ -139,5 +139,12 @@ export const en: ILocale = {
     'Transfer amount': 'Transfer amount',
     'Set PIN-code': 'Set PIN-code',
     'Repeat PIN-code': 'Repeat PIN-code',
-    'Enter wallet address': 'Enter wallet address'
+    'Enter wallet address': 'Enter wallet address',
+    'Two-factor authentication': 'Two-factor authentication',
+    'Setting up two-factor authentication': 'Setting up two-factor authentication',
+    '2fa step 1': '1. Download and install the Google Authenticator mobile app. The app is available for both IOS and Android platforms.',
+    '2fa step 2': '2. After installing Google Authenticator, click the + in the top right corner (bottom right corner for Android) and enter the key or scan the QR code below.',
+    '2fa step 3': '3. After successfully adding, enter a 6-digit one-time password based on the generated code and click the \'save\' button.',
+    'Activation key': 'Activation key',
+    'Enter 2FA code': 'Enter 2FA code'
 };

@@ -31,14 +31,14 @@ export const ForgotVerifyScreen: React.FC<IForgotVerifyScreen> = () => {
             
             await authService.restoreVerify({ 
                 // @ts-ignore
-                phone: location.state?.phone,
+                email: location?.state?.email,
                 verify_code: code    
             });
 
             navigate('/forgot/changepassword', {
                 state: {
                     // @ts-ignore
-                    phone: location.state.phone,
+                    email: location?.state?.email,
                     code
                 }
             });
