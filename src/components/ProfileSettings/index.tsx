@@ -118,17 +118,6 @@ export const ProfileSettings: React.FC<IProfileSettings> = () => {
                     {t(nameError)}
                 </ErrorLabel>
             )}
-            <Label className='mt-4'>{t('Phone number')}</Label>
-            {/* <TextInput
-                value={phone}
-                error={phoneError !== ''}
-                onChange={e => handleChangePhone(e.target.value)}
-            />
-            {phoneError && (
-                <ErrorLabel>
-                    {t(phoneError)}
-                </ErrorLabel>
-            )} */}
             <Label className='mt-4'>Email</Label>
             <TextInput
                 error={emailError !== ''}

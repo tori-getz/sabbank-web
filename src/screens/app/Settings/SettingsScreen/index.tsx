@@ -42,7 +42,7 @@ export const SettingsScreen: React.FC<ISettingsScreen> = () => {
             <div className="widgetTitleL">{t('Settings')}</div>
             <Card>
                 <CardContent>
-                    <div className={styles.wrapper}>
+                    <div className='p-4'>
                         <ProfileSettings />
                     </div>
                 </CardContent>

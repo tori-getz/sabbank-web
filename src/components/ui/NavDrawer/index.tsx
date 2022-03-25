@@ -19,6 +19,7 @@ import {
 
 import {
     useTranslation,
+    useAuth
 } from '@hooks';
 
 interface ILink {
@@ -44,6 +45,11 @@ export const NavDrawer: React.FC<INavDrawer> = ({
 
     const { t } = useTranslation();
 
+    const {
+        logout,
+        isAuth
+    } = useAuth();
+
     return (
         <Drawer
             open={expanded}
@@ -67,10 +73,12 @@ export const NavDrawer: React.FC<INavDrawer> = ({
                         ))}
                     </div>
                 </div>
-                <div className={styles.controlsContainer}>
-                    <a><span><Icon name="settings"/>{t('Settings')}</span></a>
-                    <a><span><Icon name="logout"/>{t('Logout')}</span></a>
-                </div>
+                {isAuth() && (
+                    <div className={styles.controlsContainer}>
+                        <a onClick={() => navigate('/settings')}><span><Icon name="settings"/> {t('Settings')}</span></a>
+                        <a onClick={logout}><span><Icon name="logout"/> {t('Logout')}</span></a>
+                    </div>
+                )}
             </div>
         </Drawer>
     )

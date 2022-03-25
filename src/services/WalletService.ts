@@ -4,7 +4,8 @@ import type { AxiosInstance } from 'axios';
 import { HTTPClient } from '@http';
 
 import type {
-    IWalletTransaction
+    IWalletTransaction,
+    IWalletCurrency
 } from '@typing';
 
 export class WalletService {
@@ -12,6 +13,12 @@ export class WalletService {
 
     public constructor () {
         this.http = HTTPClient;
+    }
+
+    public async createWallets (): Promise<IWalletCurrency[]> {
+        const { data: { data } } = await this.http.post('/wallets');
+
+        return data;
     }
 
     public async getTransactions (): Promise<IWalletTransaction[]> {

@@ -66,7 +66,7 @@ export const WalletInfo: React.FC<IWalletInfo> = ({
                 <Card>
                     <CardContent>
                         <QRCode
-                            text={crypto.address}
+                            text={crypto.address || ''}
                             size={180}
                         />
                     </CardContent>

@@ -13,6 +13,8 @@ import { Container } from 'react-bootstrap';
 import { Navbar, Footer } from '@components/ui';
 import { Balance, WalletList, CurrencyList } from '@components';
 
+import { isEmpty } from 'lodash';
+
 interface IScreenContainer {
     title?: string,
     children?: React.ReactNode
@@ -27,7 +29,20 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
     if (isAuth()) useSocket();
 
     const { getUser } = useProfile();
-    const { getCurrencies, getTransactions } = useWallet();
+
+    const {
+        getCurrencies,
+        getTransactions,
+        currencies,
+        walletsIsCreated,
+        createWallets
+    } = useWallet();
+
+    const checkWallets = async () => {
+        if (walletsIsCreated()) return;
+
+        await createWallets();
+    }
 
     useEffect(() => {
         if (!isAuth()) return;
@@ -37,6 +52,11 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
         getTransactions();
     }, []);
 
+    useEffect(() => {
+        if (isEmpty(currencies)) return;
+
+        checkWallets();
+    }, [currencies]);
 
     return (
         <>
