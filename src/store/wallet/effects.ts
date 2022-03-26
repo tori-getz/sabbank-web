@@ -13,6 +13,10 @@ export const getCurrenciesFx = $wallet.createEffect(async () => {
     return cryptoCurrencyService.all();
 });
 
+export const getRateDataFx = $wallet.createEffect(async () => {
+    return cryptoCurrencyService.getRateData();
+});
+
 export const getTransactionsFx = $wallet.createEffect(async () => {
     return walletService.getTransactions();
 })

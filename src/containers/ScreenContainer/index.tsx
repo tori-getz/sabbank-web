@@ -33,6 +33,7 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
     const {
         getCurrencies,
         getTransactions,
+        getRateData,
         currencies,
         walletsIsCreated,
         createWallets
@@ -49,6 +50,7 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
 
         getUser();
         getCurrencies();
+        getRateData();
         getTransactions();
     }, []);
 

@@ -27,6 +27,12 @@ export class CryptoCurrencyService {
         return data;
     }
 
+    public async getRateData () {
+        const { data } = await this.http.get('/crypto/currencyAllData');
+
+        return data;
+    }
+
     public async aetExchangeRate (dto: ICryptoCurrencyGetExchangRateeDto): Promise<ICryptoCurrencyGetExchangRateResult> {
         const { data } = await this.http.get<ICryptoCurrencyGetExchangRateResult>(`/exchange?${formatToQueryParams<ICryptoCurrencyGetExchangRateeDto>(dto)}`);
 

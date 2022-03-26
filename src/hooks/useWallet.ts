@@ -7,7 +7,8 @@ import {
     $transactions,
     getCurrenciesFx,
     getTransactionsFx,
-    setCurrencies
+    setCurrencies,
+    getRateDataFx
 } from '@store/wallet';
 
 import { WalletService } from '@services';
@@ -23,6 +24,7 @@ interface IUseWallet {
     currencies: Array<IWalletCurrency>
     transactions: Array<IWalletTransaction>
     getCurrencies: () => void
+    getRateData: () => void
     getTransactions: () => void
     walletsIsCreated: () => boolean
     createWallets: () => Promise<void>
@@ -57,6 +59,10 @@ export const useWallet = (): IUseWallet => {
         getCurrenciesFx();
     }
 
+    const getRateData = () => {
+        getRateDataFx();
+    }
+
     const getTransactions = () => {
         getTransactionsFx();
     }
@@ -66,6 +72,7 @@ export const useWallet = (): IUseWallet => {
         currencies,
         transactions,
         getCurrencies,
+        getRateData,
         getTransactions,
         walletsIsCreated,
         createWallets
