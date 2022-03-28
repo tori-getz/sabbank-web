@@ -22,6 +22,19 @@ export interface IWalletCurrency {
     wallet_id: number
 }
 
+export interface IWalletRate {
+    id: string
+    name: string
+    asset: string
+    percentage_24h: {
+        [fiat: string]: number
+    }
+    price: {
+        [fiat: string]: number
+    }
+    chart_data: Array<number>
+}
+
 export type TransactionOperation = 'in' | 'out';
 export type TransactionPaymentSystem = 'wallet' | 'deposit';
 export type TransactionStatus = 'success' | 'pending' | 'updating' | 'rejected' | 'failed' | 'internal_error';

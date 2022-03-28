@@ -8,7 +8,8 @@ import {
     getCurrenciesFx,
     getTransactionsFx,
     setCurrencies,
-    getRateDataFx
+    getRateDataFx,
+    $rateData
 } from '@store/wallet';
 
 import { WalletService } from '@services';
@@ -20,13 +21,15 @@ import type {
 import type {
     IWalletTotalBalance,
     IWalletCurrency,
-    IWalletTransaction
+    IWalletTransaction,
+    IWalletRate
 } from '@typing';
 
 interface IUseWallet {
     totalBalance: IWalletTotalBalance,
     currencies: Array<IWalletCurrency>
     transactions: Array<IWalletTransaction>
+    rateData: Array<IWalletRate>
     getCurrencies: () => void
     getRateData: () => void
     getTransactions: () => void
@@ -41,6 +44,8 @@ export const useWallet = (): IUseWallet => {
     const totalBalance = useStore($totalBalance);
     const currencies = useStore($currencies);
     const transactions = useStore($transactions);
+
+    const rateData = useStore($rateData);
 
     const walletsIsCreated = (): boolean => {
         let createdWallets = [];
@@ -79,6 +84,7 @@ export const useWallet = (): IUseWallet => {
     return {
         totalBalance,
         currencies,
+        rateData,
         transactions,
         getCurrencies,
         getRateData,

@@ -14,10 +14,10 @@ interface IWalletCurrencyList {};
 export const CurrencyList: React.FC<IWalletCurrencyList> = () => {
     const { t } = useTranslation();
 
-    const { currencies } = useWallet();
+    const { rateData } = useWallet();
 
     const renderCurrencies = () => {
-        if (isEmpty(currencies)) {
+        if (isEmpty(rateData)) {
             return (
                 <Spinner
                     variant='dark'
@@ -25,7 +25,7 @@ export const CurrencyList: React.FC<IWalletCurrencyList> = () => {
             )
         }
 
-        return currencies.map((currency: IWalletCurrency, key: number) => (
+        return rateData.map((currency: IWalletCurrency, key: number) => (
             <CurrencyListItem
                 {...currency}
                 key={key}
