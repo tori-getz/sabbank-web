@@ -20,7 +20,10 @@ import {
 
 import { Card, CardContent } from 'ui-neumorphism';
 
-import { SettingsSwitch } from '@components';
+import { 
+    SettingsSwitch,
+    TwoFactorModal
+} from '@components';
 
 import styles from './Settings2FAScreen.module.sass';
 
@@ -37,6 +40,8 @@ export const Settings2FAScreen: React.FC<ISettings2FAScreen> = () => {
         enable: enable2FA
     } = useTwoFactorAuth();
 
+    const [ twoFactorVisible, setTwoFactorVisible ] = useState<boolean>(false);
+
     const [ toggle, setToggle ] = useState<boolean>(enabled);
 
     const enable = async () => {
@@ -48,6 +53,7 @@ export const Settings2FAScreen: React.FC<ISettings2FAScreen> = () => {
     }
 
     const disable = async () => {
+        setTwoFactorVisible(true);
         setToggle(false);
         setConfigureVisible(false);
     }
@@ -112,6 +118,11 @@ export const Settings2FAScreen: React.FC<ISettings2FAScreen> = () => {
                 onChange={toggle ? disable : enable}
             />
             {configureVisible && renderConfigure()}
+            <TwoFactorModal
+                visible={twoFactorVisible}
+                onClose={() => setTwoFactorVisible(false)}
+                onConfirm={() => null}
+            />
         </ScreenContainer>
     )
 }

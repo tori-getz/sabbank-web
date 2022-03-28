@@ -4,6 +4,10 @@ import type { AxiosInstance } from 'axios';
 import { HTTPClient } from '@http';
 
 import type {
+    IWalletFinddto
+} from '@dtos';
+
+import type {
     IWalletTransaction,
     IWalletCurrency
 } from '@typing';
@@ -25,5 +29,11 @@ export class WalletService {
         const { data } = await this.http.get<IWalletTransaction[]>('/wallets/transactions');
 
         return data;
+    }
+
+    public async find (dto: IWalletFinddto): Promise<boolean> {
+        const { data } = await this.http.post<{ detail: boolean }>('/wallets/check', dto);
+
+        return data.detail;
     }
 }

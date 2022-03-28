@@ -14,6 +14,10 @@ import {
 import { WalletService } from '@services';
 
 import type {
+    IWalletFinddto
+} from '@dtos';
+
+import type {
     IWalletTotalBalance,
     IWalletCurrency,
     IWalletTransaction
@@ -28,6 +32,7 @@ interface IUseWallet {
     getTransactions: () => void
     walletsIsCreated: () => boolean
     createWallets: () => Promise<void>
+    findWallet: (dto: IWalletFinddto) => Promise<boolean>
 }
 
 export const useWallet = (): IUseWallet => {
@@ -67,6 +72,10 @@ export const useWallet = (): IUseWallet => {
         getTransactionsFx();
     }
 
+    const findWallet = async (dto: IWalletFinddto): Promise<boolean> => {
+        return await walletService.find(dto);
+    }
+
     return {
         totalBalance,
         currencies,
@@ -75,6 +84,7 @@ export const useWallet = (): IUseWallet => {
         getRateData,
         getTransactions,
         walletsIsCreated,
-        createWallets
+        createWallets,
+        findWallet
     };
 }

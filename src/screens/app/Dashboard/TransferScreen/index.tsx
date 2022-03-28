@@ -12,7 +12,8 @@ import {
     CurrencyInput,
     Button,
     TextInput,
-    Spinner
+    Spinner,
+    ErrorLabel
 } from '@components/ui';
 
 import { Card, CardContent } from 'ui-neumorphism';
@@ -26,7 +27,7 @@ import { useNavigate } from 'react-router-dom';
 
 import type { IWalletCurrency } from '@typing';
 
-import { isEmpty } from 'lodash';
+import { isEmpty, debounce } from 'lodash';
 
 interface ITransferScreen {};
 
@@ -35,11 +36,30 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
     
     const navigate = useNavigate();
 
-    const { currencies } = useWallet();
+    const { 
+        currencies,
+        findWallet
+     } = useWallet();
 
     const [ currency, setCurrency ] = useState<IWalletCurrency>();
     const [ amount, setAmount ] = useState<string>('');
     const [ address, setAddress ] = useState<string>('');
+    const [ addressValid, setAddressValid ] = useState<boolean>(true);
+
+    const findWalletDebounced = debounce(async () => {
+        const valid = await findWallet({
+            address,
+            network: currency?.network
+        });
+
+        setAddressValid(valid);
+    }, 250);
+
+    useEffect(() => {
+        if (!currency || !address) return;
+
+        findWalletDebounced();
+    }, [address]);
 
     useEffect(() => {
         if (isEmpty(currencies)) return;
@@ -82,6 +102,9 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
                             value={address}
                             onChange={e => setAddress(e.target.value)}
                         />
+                        {!addressValid && (
+                            <ErrorLabel>{t('Enter wallet address')}</ErrorLabel>
+                        )}
                         <div className='mt-4 d-flex align-end'>
                             <div className=''>
                                 <Button
