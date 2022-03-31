@@ -10,7 +10,9 @@ import { useTranslation } from '@hooks';
 
 import { useNavigate } from 'react-router-dom';
 
-interface IWalletActions {};
+interface IWalletActions {
+    id?: string
+};
 
 interface IWalletAction {
     label: string
@@ -18,7 +20,9 @@ interface IWalletAction {
     action: () => any
 };
 
-export const WalletActions: React.FC<IWalletActions> = () => {
+export const WalletActions: React.FC<IWalletActions> = ({
+    id
+}) => {
     const { t } = useTranslation();
 
     const navigate = useNavigate();
@@ -32,7 +36,7 @@ export const WalletActions: React.FC<IWalletActions> = () => {
         {
             label: t('Transfer'), 
             icon: 'transfer',
-            action: () => navigate("/transfer")
+            action: () => navigate("/transfer", { state: { walletId: id } })
         },
         {
             label: t('Exchange'), 

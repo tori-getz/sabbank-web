@@ -60,7 +60,7 @@ export const WalletInfo: React.FC<IWalletInfo> = ({
                     <div className={styles.fiatBalance}>{settings?.fiat_currency.symbol}{moneyAmountFormatter(crypto.balance * crypto.price[settings?.fiat_currency?.iso_code], 2)}</div>
                 </div>
             </div>
-            <WalletActions />
+            <WalletActions id={crypto.id} />
             <h4 className='mt-4'>{t('Wallet address')}</h4>
             <div className='d-flex mt-4'>
                 <Card>

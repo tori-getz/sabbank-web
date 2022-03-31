@@ -15,14 +15,16 @@ import {
 import { WalletService } from '@services';
 
 import type {
-    IWalletFinddto
+    IWalletFinddto,
+    IWalletWithdrawDto
 } from '@dtos';
 
 import type {
     IWalletTotalBalance,
     IWalletCurrency,
     IWalletTransaction,
-    IWalletRate
+    IWalletRate,
+    IWalletWithdrawalSetting
 } from '@typing';
 
 interface IUseWallet {
@@ -36,6 +38,8 @@ interface IUseWallet {
     walletsIsCreated: () => boolean
     createWallets: () => Promise<void>
     findWallet: (dto: IWalletFinddto) => Promise<boolean>
+    withdraw: (dto: IWalletWithdrawDto) => Promise<any>
+    getWithdrawalSettings: (asset: string) => Promise<IWalletWithdrawalSetting>
 }
 
 export const useWallet = (): IUseWallet => {
@@ -81,6 +85,16 @@ export const useWallet = (): IUseWallet => {
         return await walletService.find(dto);
     }
 
+    const withdraw = async (dto: IWalletWithdrawDto): Promise<any> => {
+        return await walletService.withdraw(dto);
+    }
+
+    const getWithdrawalSettings = async (asset: string): Promise<IWalletWithdrawalSetting> => {
+        const settings = await walletService.getWithdrawalSettings();
+
+        return settings.find(s => s.asset === asset);
+    }
+
     return {
         totalBalance,
         currencies,
@@ -91,6 +105,8 @@ export const useWallet = (): IUseWallet => {
         getTransactions,
         walletsIsCreated,
         createWallets,
-        findWallet
+        findWallet,
+        withdraw,
+        getWithdrawalSettings
     };
 }

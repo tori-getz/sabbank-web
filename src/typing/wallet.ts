@@ -51,3 +51,11 @@ export interface IWalletTransaction {
     status: TransactionStatus
     payment_system: string
 }
+
+export interface IWalletWithdrawalSetting {
+    asset: string
+    created_ts: string
+    updated_ts: string
+    min_amount: string
+    max_amount: string    
+}

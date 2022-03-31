@@ -4,12 +4,14 @@ import type { AxiosInstance } from 'axios';
 import { HTTPClient } from '@http';
 
 import type {
-    IWalletFinddto
+    IWalletFinddto,
+    IWalletWithdrawDto
 } from '@dtos';
 
 import type {
     IWalletTransaction,
-    IWalletCurrency
+    IWalletCurrency,
+    IWalletWithdrawalSetting
 } from '@typing';
 
 export class WalletService {
@@ -35,5 +37,17 @@ export class WalletService {
         const { data } = await this.http.post<{ detail: boolean }>('/wallets/check', dto);
 
         return data.detail;
+    }
+
+    public async withdraw (dto: IWalletWithdrawDto) {
+        const { data } = await this.http.post('/wallets/withdraw', dto);
+
+        return data;
+    }
+
+    public async getWithdrawalSettings (): Promise<IWalletWithdrawalSetting[]> {
+        const { data } = await this.http.get<IWalletWithdrawalSetting[]>('/withdrawalSettings');
+
+        return data;
     }
 }

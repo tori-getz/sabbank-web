@@ -28,11 +28,25 @@ import {
     useProfile
 } from '@hooks';
 
-import { useNavigate } from 'react-router-dom';
+import {
+    moneyAmountFormatter
+} from '@utils';
 
-import type { IWalletCurrency } from '@typing';
+import {
+    useNavigate,
+    useLocation
+} from 'react-router-dom';
+
+import type {
+    IWalletCurrency,
+    IWalletWithdrawalSetting
+} from '@typing';
 
 import { isEmpty, debounce } from 'lodash';
+
+interface ILocationState {
+    walletId?: string
+}
 
 interface ITransferScreen {};
 
@@ -41,9 +55,15 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
     
     const navigate = useNavigate();
 
+    const location = useLocation();
+
+    const state = location.state as ILocationState;
+
     const { 
         currencies,
-        findWallet
+        findWallet,
+        withdraw,
+        getWithdrawalSettings
      } = useWallet();
 
     const {
@@ -51,9 +71,11 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
     } = useProfile();
 
     const [ currency, setCurrency ] = useState<IWalletCurrency>();
+    const [ withdrawSettings, setWithdrawSettings ] = useState<IWalletWithdrawalSetting>();
+
     const [ amount, setAmount ] = useState<string>('');
     const [ address, setAddress ] = useState<string>('');
-    const [ addressValid, setAddressValid ] = useState<boolean>(true);
+    const [ addressValid, setAddressValid ] = useState<boolean>(false);
 
     const [ otpVisible, setOtpVisible ] = useState<boolean>(false);
 
@@ -67,6 +89,12 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
     }, 250);
 
     useEffect(() => {
+        if (!currency) return;
+
+        getWithdrawalSettings(currency?.asset).then(setWithdrawSettings);
+    }, [currency]);
+
+    useEffect(() => {
         if (!currency || !address) return;
 
         findWalletDebounced();
@@ -76,13 +104,19 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
         if (isEmpty(currencies)) return;
         if (currency) return;
 
-        setCurrency(currencies[0]);
+        const selectedCrypto = state?.walletId ? currencies.find(c => c.id === state?.walletId) : currencies[0];
+
+        setCurrency(selectedCrypto);
     }, [currencies]);
 
     const getButtonDisabledState = useCallback((): boolean => {
         if (!settings?.two_factor) return true;
+        if (!amount) return true;
         if (Number(amount) > Number(currency?.balance)) return true;
         if (!addressValid) return true;
+
+        if (Number(amount) > Number(withdrawSettings?.max_amount)) return true;
+        if (Number(amount) < Number(withdrawSettings?.min_amount)) return true;
 
         return false;
     }, [currency, amount, addressValid])
@@ -91,11 +125,24 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
         if (!settings?.two_factor) return t('Enable 2FA');
         if (Number(amount) > Number(currency?.balance)) return t('Insufficient balance');
 
+        if (Number(amount) > Number(withdrawSettings?.max_amount)) return `max ${moneyAmountFormatter(withdrawSettings?.max_amount, 8)} ${withdrawSettings?.asset?.toUpperCase()}`;
+        if (Number(amount) < Number(withdrawSettings?.min_amount)) return `min ${moneyAmountFormatter(withdrawSettings?.min_amount, 8)} ${withdrawSettings?.asset?.toUpperCase()}`;
+
         return t('Next');
     }, [currency, amount]);
 
     const onConform = async (code: string) => {
+        alert(code)
 
+        await withdraw({
+            wallet_id: currency.wallet_id,
+            receiver_address: address,
+            amount: Number(amount),
+            asset: currency.asset,
+            otp: code
+        });
+
+        navigate('/dashboard')
     }
 
     if (!currency) {
