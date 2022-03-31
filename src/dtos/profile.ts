@@ -21,3 +21,7 @@ export interface IProfileUpdateSettingsDto extends Partial<IUserSettings> {
 export interface IProfile2FAToggleDto {
     otp: string
 }
+
+export interface IProfile2FAVerifyDto {
+    otp: string
+}

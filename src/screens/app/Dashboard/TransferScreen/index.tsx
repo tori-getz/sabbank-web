@@ -1,9 +1,13 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import {
     ScreenContainer
 } from '@containers';
+
+import {
+    TwoFactorModal
+} from '@components';
 
 import {
     GoBack,
@@ -20,7 +24,8 @@ import { Card, CardContent } from 'ui-neumorphism';
 
 import {
     useTranslation,
-    useWallet
+    useWallet,
+    useProfile
 } from '@hooks';
 
 import { useNavigate } from 'react-router-dom';
@@ -41,10 +46,16 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
         findWallet
      } = useWallet();
 
+    const {
+        settings
+    } = useProfile();
+
     const [ currency, setCurrency ] = useState<IWalletCurrency>();
     const [ amount, setAmount ] = useState<string>('');
     const [ address, setAddress ] = useState<string>('');
     const [ addressValid, setAddressValid ] = useState<boolean>(true);
+
+    const [ otpVisible, setOtpVisible ] = useState<boolean>(false);
 
     const findWalletDebounced = debounce(async () => {
         const valid = await findWallet({
@@ -67,6 +78,25 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
 
         setCurrency(currencies[0]);
     }, [currencies]);
+
+    const getButtonDisabledState = useCallback((): boolean => {
+        if (!settings?.two_factor) return true;
+        if (Number(amount) > Number(currency?.balance)) return true;
+        if (!addressValid) return true;
+
+        return false;
+    }, [currency, amount, addressValid])
+
+    const getButtonLabel = useCallback( (): string => {
+        if (!settings?.two_factor) return t('Enable 2FA');
+        if (Number(amount) > Number(currency?.balance)) return t('Insufficient balance');
+
+        return t('Next');
+    }, [currency, amount]);
+
+    const onConform = async (code: string) => {
+
+    }
 
     if (!currency) {
         return (
@@ -108,14 +138,20 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
                         <div className='mt-4 d-flex align-end'>
                             <div className=''>
                                 <Button
-                                    disabled={!address || Number(amount) > currency?.balance}
-                                    label={t('Next')}
+                                    disabled={getButtonDisabledState()}
+                                    label={getButtonLabel()}
+                                    onClick={() => setOtpVisible(true)}
                                 />
                             </div>
                         </div>
                     </div>
                 </CardContent>
             </Card>
+            <TwoFactorModal
+                visible={otpVisible}
+                onClose={() => setOtpVisible(false)}
+                onConfirm={onConform}
+            />
         </ScreenContainer>
     );
 }

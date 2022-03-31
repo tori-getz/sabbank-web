@@ -8,7 +8,8 @@ import type {
 } from '@typing';
 
 import type {
-    IProfile2FAToggleDto
+    IProfile2FAToggleDto,
+    IProfile2FAVerifyDto
 } from '@dtos';
 
 export class TwoFactorAuthService {
@@ -28,5 +29,11 @@ export class TwoFactorAuthService {
         const { data } = await this.http.post('/2fa/enable', dto);
 
         return data;
+    }
+
+    public async verify (dto: IProfile2FAVerifyDto): Promise<boolean> {
+        const { data } = await this.http.post<{ detail: boolean }>('/2fa/verify', dto);
+
+        return data.detail;
     }
 }
