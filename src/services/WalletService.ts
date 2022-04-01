@@ -57,4 +57,10 @@ export class WalletService {
 
         return data;
     }
+
+    public async getExchangeHistory () {
+        const { data } = await this.http.get('/exchangeHistory');
+
+        return data;
+    }
 }

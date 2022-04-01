@@ -26,3 +26,4 @@ export { NavBalance } from './NavBalance';
 export { WalletTransactionsHistory } from './WalletTransactionsHistory';
 export { SettingsSwitch } from './SettingsSwitch';
 export { TwoFactorModal } from './TwoFactorModal';
+export { ExchangeHistory } from './ExchangeHistory';

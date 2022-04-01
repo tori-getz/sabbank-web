@@ -9,7 +9,8 @@ import {
     getTransactionsFx,
     setCurrencies,
     getRateDataFx,
-    $rateData
+    $rateData,
+    getExchangeHistoryFx    
 } from '@store/wallet';
 
 import {
@@ -47,6 +48,7 @@ interface IUseWallet {
     withdraw: (dto: IWalletWithdrawDto) => Promise<any>
     getWithdrawalSettings: (asset: string) => Promise<IWalletWithdrawalSetting>
     getExchangeRate: (dto: ICryptoCurrencyGetExchangRateeDto) => Promise<ICryptoCurrencyGetExchangRateResult>
+    getExchangeHistory: () => void
     exchange: (dto: IWalletExchangeDto) => Promise<any>
 }
 
@@ -104,6 +106,10 @@ export const useWallet = (): IUseWallet => {
         return settings.find(s => s.asset === asset);
     }
 
+    const getExchangeHistory = () => {
+        getExchangeHistoryFx();
+    }
+
     const getExchangeRate = async (dto: ICryptoCurrencyGetExchangRateeDto): Promise<ICryptoCurrencyGetExchangRateResult> => {
         return await cryptoCurrencyService.aetExchangeRate(dto);
     }
@@ -126,6 +132,7 @@ export const useWallet = (): IUseWallet => {
         withdraw,
         getWithdrawalSettings,
         getExchangeRate,
+        getExchangeHistory,
         exchange
     };
 }

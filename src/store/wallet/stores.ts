@@ -14,3 +14,5 @@ export const $currencies = $wallet.createStore<IWalletCurrency[]>([]);
 export const $rateData = $wallet.createStore<IWalletRate[]>([]);
 
 export const $transactions = $wallet.createStore<IWalletTransaction[]>([]);
+
+export const $exchangeHistory = $wallet.createStore([]);

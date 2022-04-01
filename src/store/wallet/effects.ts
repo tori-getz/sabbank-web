@@ -20,3 +20,7 @@ export const getRateDataFx = $wallet.createEffect(async () => {
 export const getTransactionsFx = $wallet.createEffect(async () => {
     return walletService.getTransactions();
 })
+
+export const getExchangeHistoryFx = $wallet.createEffect(async () => {
+    return walletService.getExchangeHistory();
+});

@@ -19,6 +19,10 @@ import {
     Button
 } from '@components/ui';
 
+import {
+    ExchangeHistory
+} from '@components';
+
 import { Card, CardContent } from 'ui-neumorphism';
 
 import { useNavigate } from 'react-router-dom';
@@ -103,7 +107,7 @@ export const ExchangeScreen: React.FC<IExchangeScreen> = () => {
 
     if (preload) {
         return (
-            <ScreenContainer>
+            <ScreenContainer title={t('Exchange')}>
                 <GoBack onClick={() => navigate('/dashboard')} />
                 <Spinner />
             </ScreenContainer>
@@ -155,6 +159,7 @@ export const ExchangeScreen: React.FC<IExchangeScreen> = () => {
                     </div>
                 </CardContent>
             </Card>
+            {/* <ExchangeHistory /> */}
         </ScreenContainer>
     )
 }

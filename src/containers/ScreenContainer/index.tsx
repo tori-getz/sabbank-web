@@ -36,7 +36,8 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
         getRateData,
         currencies,
         walletsIsCreated,
-        createWallets
+        createWallets,
+        getExchangeHistory
     } = useWallet();
 
     const checkWallets = async () => {
@@ -52,6 +53,7 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
         getCurrencies();
         getRateData();
         getTransactions();
+        getExchangeHistory();
     }, []);
 
     useEffect(() => {
