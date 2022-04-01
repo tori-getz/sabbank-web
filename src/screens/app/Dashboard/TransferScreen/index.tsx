@@ -132,8 +132,6 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
     }, [currency, amount]);
 
     const onConform = async (code: string) => {
-        alert(code)
-
         await withdraw({
             wallet_id: currency.wallet_id,
             receiver_address: address,

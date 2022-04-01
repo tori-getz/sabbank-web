@@ -12,11 +12,17 @@ import {
     $rateData
 } from '@store/wallet';
 
-import { WalletService } from '@services';
+import {
+    WalletService,
+    CryptoCurrencyService
+} from '@services';
 
 import type {
     IWalletFinddto,
-    IWalletWithdrawDto
+    IWalletWithdrawDto,
+    ICryptoCurrencyGetExchangRateeDto,
+    ICryptoCurrencyGetExchangRateResult,
+    IWalletExchangeDto
 } from '@dtos';
 
 import type {
@@ -40,10 +46,13 @@ interface IUseWallet {
     findWallet: (dto: IWalletFinddto) => Promise<boolean>
     withdraw: (dto: IWalletWithdrawDto) => Promise<any>
     getWithdrawalSettings: (asset: string) => Promise<IWalletWithdrawalSetting>
+    getExchangeRate: (dto: ICryptoCurrencyGetExchangRateeDto) => Promise<ICryptoCurrencyGetExchangRateResult>
+    exchange: (dto: IWalletExchangeDto) => Promise<any>
 }
 
 export const useWallet = (): IUseWallet => {
     const walletService = new WalletService();
+    const cryptoCurrencyService = new CryptoCurrencyService();
 
     const totalBalance = useStore($totalBalance);
     const currencies = useStore($currencies);
@@ -95,6 +104,14 @@ export const useWallet = (): IUseWallet => {
         return settings.find(s => s.asset === asset);
     }
 
+    const getExchangeRate = async (dto: ICryptoCurrencyGetExchangRateeDto): Promise<ICryptoCurrencyGetExchangRateResult> => {
+        return await cryptoCurrencyService.aetExchangeRate(dto);
+    }
+
+    const exchange = async (dto: IWalletExchangeDto) => {
+        return await walletService.exchange(dto);
+    }
+
     return {
         totalBalance,
         currencies,
@@ -107,6 +124,8 @@ export const useWallet = (): IUseWallet => {
         createWallets,
         findWallet,
         withdraw,
-        getWithdrawalSettings
+        getWithdrawalSettings,
+        getExchangeRate,
+        exchange
     };
 }

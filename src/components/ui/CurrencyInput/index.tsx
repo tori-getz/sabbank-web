@@ -4,7 +4,13 @@ import React, { useCallback, useState } from 'react';
 import styles from './CurrencyInput.module.sass';
 import cn from 'classnames';
 
-import { Icon, Spinner } from '@components/ui';
+import {
+    Icon,
+    Spinner,
+    Label
+} from '@components/ui';
+
+import { useTranslation } from '@hooks';
 
 import {
     CryptoCurrencyService
@@ -23,6 +29,7 @@ interface IWalletCurrencyInput {
     className?: string
     onChange: (newValue: string) => any
     loading?: boolean
+    labeled?: boolean
 };
 
 export const CurrencyInput: React.FC<IWalletCurrencyInput> = ({
@@ -31,8 +38,11 @@ export const CurrencyInput: React.FC<IWalletCurrencyInput> = ({
     assetFrom,
     assetTo = 'usdt',
     onChange,
-    loading
+    loading,
+    labeled
 }) => {
+    const { t } = useTranslation();
+
     const cryptoCurrencyService = new CryptoCurrencyService();
 
     const [ toValue, setToValue ] = useState<string>('');
@@ -64,14 +74,14 @@ export const CurrencyInput: React.FC<IWalletCurrencyInput> = ({
                     amount: Number(newValue)
                 });
 
-                setToValue(moneyAmountFormatter(result, 2));
+                setToValue(moneyAmountFormatter(result, 8));
             } catch (e) {
                 console.error(e);
             } finally {
                 setToLoading(false);
             }
         }, 500),
-        [assetFrom]
+        [assetFrom, assetTo]
     );
 
     const exchangeFromValue = useCallback(
@@ -92,7 +102,7 @@ export const CurrencyInput: React.FC<IWalletCurrencyInput> = ({
                 setFromLoading(false);
             }
         }, 500),
-        [assetTo]
+        [assetFrom, assetTo]
     );
 
     const handleFromChange = (newValue: string) => {
@@ -111,38 +121,51 @@ export const CurrencyInput: React.FC<IWalletCurrencyInput> = ({
 
     return (
         <div className={styles.wrapper}>
-            <div className={cn(styles.field, className)}>
-                <input
-                    type='number'
-                    value={value}
-                    onChange={e => handleFromChange(e.target.value)}
-                    className={styles.input}
-                    placeholder='0'
-                />
-                {(loading || fromLoading) ? (
-                    <Spinner />
-                ) : (
-                    <div>{assetFrom.toUpperCase()}</div>
+            <div className={styles.block}>
+                {labeled && (
+                    <Label>{t('Change')}</Label>
                 )}
+                <div className={cn(styles.field, className)}>
+                    <input
+                        type='number'
+                        value={value}
+                        onChange={e => handleFromChange(e.target.value)}
+                        className={styles.input}
+                        placeholder='0'
+                    />
+                    {(loading || fromLoading) ? (
+                        <Spinner />
+                    ) : (
+                        <div>{assetFrom.toUpperCase()}</div>
+                    )}
+                </div>
             </div>
             {assetFrom !== assetTo && (
                 <>
                     <div className={styles.equals}>
+                        {labeled && (
+                            <Label>{''}</Label>
+                        )}
                         <Icon name='equals' />
                     </div>
-                    <div className={cn(styles.field, className)}>
-                        <input
-                            type='number'
-                            value={toValue}
-                            onChange={e => handleToChange(e.target.value)}
-                            className={styles.input}
-                            placeholder='0'
-                        />
-                        {toLoading ? (
-                            <Spinner />
-                        ) : (
-                            <div>{assetTo.toUpperCase()}</div>
+                    <div className={styles.block}>
+                        {labeled && (
+                            <Label>{t('Get')}</Label>
                         )}
+                        <div className={cn(styles.field, className)}>
+                            <input
+                                type='number'
+                                value={toValue}
+                                onChange={e => handleToChange(e.target.value)}
+                                className={styles.input}
+                                placeholder='0'
+                            />
+                            {toLoading ? (
+                                <Spinner />
+                            ) : (
+                                <div>{assetTo.toUpperCase()}</div>
+                            )}
+                        </div>
                     </div>
                 </>
             )}

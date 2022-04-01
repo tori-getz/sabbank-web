@@ -5,7 +5,8 @@ import { HTTPClient } from '@http';
 
 import type {
     IWalletFinddto,
-    IWalletWithdrawDto
+    IWalletWithdrawDto,
+    IWalletExchangeDto
 } from '@dtos';
 
 import type {
@@ -47,6 +48,12 @@ export class WalletService {
 
     public async getWithdrawalSettings (): Promise<IWalletWithdrawalSetting[]> {
         const { data } = await this.http.get<IWalletWithdrawalSetting[]>('/withdrawalSettings');
+
+        return data;
+    }
+
+    public async exchange (dto: IWalletExchangeDto) {
+        const { data } = await this.http.post('/exchange', dto);
 
         return data;
     }

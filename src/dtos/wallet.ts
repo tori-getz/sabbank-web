@@ -11,3 +11,9 @@ export interface IWalletWithdrawDto {
     asset: string
     otp: string
 }
+
+export interface IWalletExchangeDto {
+    asset_from: string
+    asset_to: string
+    amount: number
+}

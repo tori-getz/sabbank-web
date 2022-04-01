@@ -146,5 +146,7 @@ export const en: ILocale = {
     '2fa step 2': '2. After installing Google Authenticator, click the + in the top right corner (bottom right corner for Android) and enter the key or scan the QR code below.',
     '2fa step 3': '3. After successfully adding, enter a 6-digit one-time password based on the generated code and click the \'save\' button.',
     'Activation key': 'Activation key',
-    'Enter 2FA code': 'Enter 2FA code'
+    'Enter 2FA code': 'Enter 2FA code',
+    'From wallet': 'From wallet',
+    'To wallet': 'To wallet'
 };
