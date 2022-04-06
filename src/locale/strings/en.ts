@@ -148,5 +148,8 @@ export const en: ILocale = {
     'Activation key': 'Activation key',
     'Enter 2FA code': 'Enter 2FA code',
     'From wallet': 'From wallet',
-    'To wallet': 'To wallet'
+    'To wallet': 'To wallet',
+    'Feedback form': 'Feedback form',
+    "Description": "Description",
+    "Description your problem": "Description your problem"
 };

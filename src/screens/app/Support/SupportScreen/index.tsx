@@ -26,6 +26,11 @@ export const SupportScreen: React.FC<ISupportScreen> = () => {
                 description={t('Frequently asked questions')}
                 onClick={() => navigate('/support/faq')}
             />
+            <SettingsButton
+                title={t('Support')}
+                // description={t('Frequently asked questions')}
+                onClick={() => navigate('/support/form')}
+            />
         </ScreenContainer>
     )
 }

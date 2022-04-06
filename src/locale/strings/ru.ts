@@ -147,5 +147,8 @@ export const ru: ILocale = {
     'Activation key': 'Ключ активации',
     'Enter 2FA code': 'Введите 2FA код',
     'From wallet': 'С кошелька',
-    'To wallet': 'На кошелек'
+    'To wallet': 'На кошелек',
+    'Feedback form': 'Форма обратной связи',
+    'Description': "Описание",
+    'Description your problem': 'Описание вашей проблемы'
 };
