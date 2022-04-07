@@ -7,14 +7,22 @@ import {
     unauthorizedRoutes
 } from '@navigation';
 
-import { useAuth } from '@hooks';
+import {
+    useAuth,
+    useSocket
+} from '@hooks';
 
 import { overrideThemeVariables } from 'ui-neumorphism'
 
 interface IAppContainer {};
 
 export const AppContainer: React.FC<IAppContainer> = () => {
-    const { isAuth } = useAuth();
+    const {
+        accessToken,
+        isAuth
+    } = useAuth();
+
+    useSocket();
 
     useEffect(() => {
         overrideThemeVariables({

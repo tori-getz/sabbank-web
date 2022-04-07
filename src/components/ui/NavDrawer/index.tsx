@@ -66,6 +66,7 @@ export const NavDrawer: React.FC<INavDrawer> = ({
                     <div className={styles.links}>
                         {links.map((link: ILink, key: number) => (
                             <NavDrawerLink
+                                key={key}
                                 title={link.title}
                                 active={location.pathname === link.to}
                                 onClick={() => navigate(link.to)}

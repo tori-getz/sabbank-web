@@ -26,8 +26,6 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
 }) => {
     const { isAuth } = useAuth();
 
-    if (isAuth()) useSocket();
-
     const { getUser } = useProfile();
 
     const {
@@ -47,20 +45,20 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
     }
 
     useEffect(() => {
-        if (!isAuth()) return;
+        if (isEmpty(currencies)) return;
+
+        checkWallets();
+    }, [currencies]);
+
+    useEffect(() => {
+        if (!isAuth()) return () => console.error('not authorized!');
 
         getUser();
         getCurrencies();
         getRateData();
         getTransactions();
         getExchangeHistory();
-    }, []);
-
-    useEffect(() => {
-        if (isEmpty(currencies)) return;
-
-        checkWallets();
-    }, [currencies]);
+    } ,[]);
 
     return (
         <>

@@ -24,6 +24,7 @@ import {
 } from '@store/profile';
 
 interface IUseAuth {
+    accessToken: string
     isAuth: () => boolean
     login: (credentials: IAuthDto) => Promise<void>
     logout: () => void
@@ -78,6 +79,7 @@ export const useAuth = (): IUseAuth => {
     }
 
     return {
+        accessToken,
         isAuth,
         login,
         logout,
