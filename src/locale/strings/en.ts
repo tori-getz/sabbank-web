@@ -151,5 +151,7 @@ export const en: ILocale = {
     'To wallet': 'To wallet',
     'Feedback form': 'Feedback form',
     "Description": "Description",
-    "Description your problem": "Description your problem"
+    "Description your problem": "Description your problem",
+    'Choose a wallet to withdraw funds': 'Choose a wallet to withdraw funds',
+    'Total': 'Total'
 };

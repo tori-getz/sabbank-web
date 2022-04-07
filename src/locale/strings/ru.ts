@@ -150,5 +150,7 @@ export const ru: ILocale = {
     'To wallet': 'На кошелек',
     'Feedback form': 'Форма обратной связи',
     'Description': "Описание",
-    'Description your problem': 'Описание вашей проблемы'
+    'Description your problem': 'Описание вашей проблемы',
+    'Choose a wallet to withdraw funds': 'Выберите кошелёк для вывода средств',
+    'Total': 'Итого'
 };

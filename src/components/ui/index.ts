@@ -35,3 +35,4 @@ export { RadioItem } from './RadioItem';
 export * from './Table';
 export { ConfirmModal } from './ConfirmModal';
 export { Switch } from './Switch';
+export { TabButton } from './TabButton';
