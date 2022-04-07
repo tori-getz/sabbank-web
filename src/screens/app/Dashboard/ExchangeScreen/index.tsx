@@ -57,8 +57,8 @@ export const ExchangeScreen: React.FC<IExchangeScreen> = () => {
 
     const [ amount, setAmount ] = useState<string>('');
 
-    const fromItems = useMemo(() => currencies.filter(c => toCrypto.id !== c.id), [toCrypto]);
-    const toItems = useMemo(() => currencies.filter(c => fromCrypto.id !== c.id), [fromCrypto]);
+    const fromItems = useMemo(() => currencies.filter(c => toCrypto?.id !== c.id), [toCrypto]);
+    const toItems = useMemo(() => currencies.filter(c => fromCrypto?.id !== c.id), [fromCrypto]);
 
     const [ preload, setPreload ] = useState<boolean>(true);
 

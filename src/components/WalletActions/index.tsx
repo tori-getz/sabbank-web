@@ -44,7 +44,7 @@ export const WalletActions: React.FC<IWalletActions> = ({
             action: () => navigate("/exchange")
         },
         {
-            label: t('Cashout'), 
+            label: t('Cash out'), 
             icon: 'cashout',
             action: () => navigate("/cashout")
         },                 
