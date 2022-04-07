@@ -1,10 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ScreenContainer } from '@containers';
 
 import {
-    useTranslation
+    useTranslation,
+    useSupport
 } from '@hooks';
 
 import { useNavigate } from 'react-router-dom';
@@ -25,6 +26,32 @@ export const SupportFormScreen: React.FC<ISupportFormScreen> = () => {
     
     const navigate = useNavigate();
 
+    const {
+        sendFeedback
+    } = useSupport();
+
+    const [ message, setMessage ] = useState<string>('');
+
+    const [ success, setSuccess ] = useState<boolean>(false);
+    const [ loading, setLoading ] = useState<boolean>(false);
+
+    const onSubmit = async () => {
+        try {
+            setLoading(true);
+
+            await sendFeedback({
+                body: message
+            });
+
+            setSuccess(true);
+        } catch (e) {
+            console.error(e);
+            setSuccess(false);
+        } finally {
+            setLoading(false);
+        }
+    }
+
     return (
         <ScreenContainer title={t('Support')}>
             <GoBack onClick={() => navigate(-1)} />
@@ -33,19 +60,22 @@ export const SupportFormScreen: React.FC<ISupportFormScreen> = () => {
                 <CardContent>
                     <div className='p-4'>
                         <h4>{t('Feedback form')}</h4>
-                        <h5 className='mt-4'>Email</h5>
-                        <Label>{t('Enter Email')}</Label>
-                        <TextInput
-                            placeholder='user@example.com'
-                        />
                         <h5 className='mt-4'>{t('Description')}</h5>
                         <Label>{t('Description your problem')}</Label>
                         <TextInput
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
                         />
                         <Button
+                            disabled={message === '' || loading}
+                            loading={loading}
                             className='mt-4'
                             label={t('Send')}
+                            onClick={onSubmit}
                         />
+                        {success && (
+                            <div className='my-2'>Отправлено!</div>
+                        )}
                     </div>
                 </CardContent>
             </Card>

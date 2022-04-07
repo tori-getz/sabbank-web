@@ -3,8 +3,13 @@ import { SupportService } from '@services';
 
 import type { IFaqTheme } from '@typing';
 
+import type {
+    ISupportSendFeedbackDto
+} from '@dtos';
+
 interface IUseSupport {
     getFAQs: () => Promise<IFaqTheme[]>
+    sendFeedback: (dto: ISupportSendFeedbackDto) => Promise<any>
 }
 
 export const useSupport = (): IUseSupport => {
@@ -20,8 +25,13 @@ export const useSupport = (): IUseSupport => {
         }
     }
 
+    const sendFeedback = async (dto: ISupportSendFeedbackDto) => {
+        return await supportService.sendFeedback(dto);
+    }
+
     return {
-        getFAQs
+        getFAQs,
+        sendFeedback
     }
 }
 
