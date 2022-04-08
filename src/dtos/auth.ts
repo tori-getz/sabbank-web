@@ -51,3 +51,9 @@ export interface IAuthRestoreCompleteDto {
     new_password: string
     verify_code: string
 }
+
+export interface IAuthChangePasswordDto {
+    password: string
+    new_password: string
+    totp: string
+}

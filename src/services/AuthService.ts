@@ -11,7 +11,8 @@ import type {
     IAuthRestoreDto,
     IAuthRestoreVerifyDto,
     IAuthRestoreVerifyResponse,
-    IAuthRestoreCompleteDto
+    IAuthRestoreCompleteDto,
+    IAuthChangePasswordDto
 } from "@dtos";
 
 import {
@@ -57,6 +58,12 @@ export class AuthService {
 
     public async getProfile (): Promise<IUser> {
         const { data } = await this.http.get<IUser>('/user/profile'); 
+
+        return data;
+    }
+
+    public async changePassword (dto: IAuthChangePasswordDto) {
+        const { data } = await this.http.post('/auth/changePassword', dto);
 
         return data;
     }

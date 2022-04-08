@@ -3,7 +3,8 @@ import type { Routes } from '@typing';
 
 import {
     SettingsScreen,
-    Settings2FAScreen
+    Settings2FAScreen,
+    SettingsChangePasswordScreen
 } from '@screens';
 
 export const settingsRoutes: Routes = [
@@ -14,5 +15,9 @@ export const settingsRoutes: Routes = [
     {
         path: '/settings/2fa',
         component: <Settings2FAScreen />
+    },
+    {
+        path: '/settings/changepassword',
+        component: <SettingsChangePasswordScreen />
     }
 ];

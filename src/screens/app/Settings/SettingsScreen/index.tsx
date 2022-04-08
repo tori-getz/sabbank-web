@@ -32,6 +32,10 @@ export const SettingsScreen: React.FC<ISettingsScreen> = () => {
             path: '/settings/2fa'
         },
         {
+            title: t('Password'),
+            path: '/settings/changepassword'
+        },
+        {
             title: t('FAQ and support'),
             path: '/support'
         }

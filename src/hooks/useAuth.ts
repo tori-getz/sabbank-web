@@ -7,7 +7,8 @@ import type {
     IAuthDto,
     IAuthRegisterDto,
     IAuthRegisterVerifyDto,
-    IAuthRegisterCompleteRegisterDto
+    IAuthRegisterCompleteRegisterDto,
+    IAuthChangePasswordDto
 } from '@dtos';
 
 import {
@@ -31,6 +32,7 @@ interface IUseAuth {
     register: (credentials: IAuthRegisterDto) => Promise<any>
     verifyRegister: (dto: IAuthRegisterVerifyDto) => Promise<any>
     completeRegister: (dto: IAuthRegisterCompleteRegisterDto) => Promise<void>
+    changePassword: (dto: IAuthChangePasswordDto) => Promise<any>
 }
 
 export const useAuth = (): IUseAuth => {
@@ -78,6 +80,10 @@ export const useAuth = (): IUseAuth => {
         }
     }
 
+    const changePassword = async (dto: IAuthChangePasswordDto): Promise<any> => {
+        return await authService.changePassword(dto);
+    }
+
     return {
         accessToken,
         isAuth,
@@ -85,6 +91,7 @@ export const useAuth = (): IUseAuth => {
         logout,
         register,
         verifyRegister,
-        completeRegister
+        completeRegister,
+        changePassword
     }
 }
