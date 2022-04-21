@@ -43,7 +43,7 @@ export const DepositBanner: React.FC<IDepositBanner> = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={cn(styles.header, 'p-5 pb-4')}>
+            <div className={cn(styles.header, 'p-md-5 p-4')}>
                 <h3>{t('Earn up to 20% per annum on your cryptoassets')}</h3>
                 <div className={styles.currenciesBlock}>
                     {currencies.map((currency: IWalletCurrency, key: number) => (
@@ -63,7 +63,7 @@ export const DepositBanner: React.FC<IDepositBanner> = () => {
                                     size={20}
                                 />
                             </IconButton>
-                            <div>
+                            <div className='d-none d-md-block'>
                                 <div className={styles.currencyName}>{currency.name}</div>
                                 <div className={styles.currencyAsset}>{currency.asset.toUpperCase()}</div>
                             </div>
@@ -83,7 +83,7 @@ export const DepositBanner: React.FC<IDepositBanner> = () => {
                     ))}
                 </div>
             </div>
-            <div className='p-5 d-flex justify-content-center'>
+            <div className='p-md-5 p-4 d-flex justify-content-center'>
                 <Button
                     label={t('Open deposit')}
                     onClick={() => navigate('/deposit/new')}

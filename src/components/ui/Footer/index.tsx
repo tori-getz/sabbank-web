@@ -18,14 +18,14 @@ export const Footer: React.FC<IFooter> = () => {
             <Container>
                 <div className="row py-5">
                     <div className={cn(styles.footerLogoColumn, 'col-lg-5')}>
-                        <a className="site-logo d-md-inline-block mb-4" href="/">
+                        <a className="site-logo d-md-inline-block mb-4" href="/dashboard">
                             <img src="/assets/img/logo.svg" alt="SAB Bank"/>
                         </a> 
                         <div>
-                            <a className={styles.storeLink} href="/">
+                            <a className={styles.storeLink} href="#">
                                 <img src="/assets/img/App-Store-badge.svg" alt="SAB Bank"/>
                             </a> 
-                            <a className={styles.storeLink} href="/">
+                            <a className={styles.storeLink} href="#">
                                 <img src="/assets/img/Google-Play-badge.svg" alt="SAB Bank"/>
                             </a> 
                         </div>
@@ -56,13 +56,13 @@ export const Footer: React.FC<IFooter> = () => {
                                     <li><a href="#">11-000-000</a></li>
                                 </ul>
                                 <div>
-                                    <a className={styles.socialLink} href="/">
+                                    <a className={styles.socialLink} href="#">
                                         <img src="/assets/img/instagram.svg" alt="SAB Bank"/>
                                     </a> 
-                                    <a className={styles.socialLink} href="/">
+                                    <a className={styles.socialLink} href="#">
                                         <img src="/assets/img/facebook.svg" alt="SAB Bank"/>
                                     </a> 
-                                    <a className={styles.socialLink} href="/">
+                                    <a className={styles.socialLink} href="#">
                                         <img src="/assets/img/youtube.svg" alt="SAB Bank"/>
                                     </a> 
                                 </div>

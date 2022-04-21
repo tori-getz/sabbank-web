@@ -101,7 +101,7 @@ export const Navbar: React.FC<INavbar> = () => {
                 }}
             >
                 <Container>
-                    <BootstrapNavbar.Brand href="/">
+                    <BootstrapNavbar.Brand href="/dashboard">
                         <img src="/assets/img/logo.svg" alt="SabBank"/>
                     </BootstrapNavbar.Brand>
                     <BootstrapNavbar.Toggle className={styles.toggle}>

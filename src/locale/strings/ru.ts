@@ -153,5 +153,7 @@ export const ru: ILocale = {
     'Description your problem': 'Описание вашей проблемы',
     'Choose a wallet to withdraw funds': 'Выберите кошелёк для вывода средств',
     'Total': 'Итого',
-    'Earn up to 20% per annum on your cryptoassets':'Зарабатывай до 20% годовых на своих криптоактивах'
+    'Earn up to 20% per annum on your cryptoassets':'Зарабатывай до 20% годовых на своих криптоактивах',
+    'Earning will be created to your wallet every 7 days':'Заработок будет зачисляться на ваш кошелек каждые 7 дней',
+    'Earnings are paid in the same currency as your deposit':'Заработок выплачивается в той же валюте, что и ваш вклад',
 };

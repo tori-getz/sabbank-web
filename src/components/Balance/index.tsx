@@ -28,7 +28,7 @@ export const Balance: React.FC<IBalance> = () => {
 
     if (isEmpty(totalBalance)) {
         return (
-            <div className={styles.widget}>
+            <div className={cn(styles.widget, "d-none d-md-block")}>
                 <Spinner variant='light' />
             </div>
         )
