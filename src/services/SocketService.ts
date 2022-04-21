@@ -35,7 +35,8 @@ class SocketService {
         this.ws = new WebSocket(url);
 
         this.ws.onopen = () => this.logger.info('connected');
-        this.ws.onerror = () => this.logger.error('error');
+        this.ws.onerror = e => console.error(`error event`, e);
+        this.ws.onclose = e => console.log('close event', e);
 
         this.ws.onmessage = e => {
             const parsedData = JSON.parse(e.data);

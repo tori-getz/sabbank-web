@@ -66,7 +66,6 @@ export const RegisterScreen: React.FC<IRegisterScreen> = () => {
                             <TextInput
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
-                                maxLength={12}
                             />
                             <div className={cn(styles.formTitle, 'mt-3')}>{t('Password')}</div>
                             <Label>{t('Create a strong password consisting of letters, numbers and symbols')}</Label>

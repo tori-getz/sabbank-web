@@ -54,9 +54,9 @@ export const Table: React.FC<ITable> = ({
         >
             <div className={styles.table}>
                 <div className='d-flex py-3'>
-                    {headerGroups.map(headerGroup => (
+                    {headerGroups.map((headerGroup, key: number) => (
                         <>
-                            {headerGroup.headers.map(column => (
+                            {headerGroup.headers.map((column, key: number) => (
                                 <div {...column.getHeaderProps()}>
                                     <div className={styles.columnHeader}>{column.render('Header')}</div>
                                     {column.canResize && (
@@ -72,12 +72,13 @@ export const Table: React.FC<ITable> = ({
                 </div>
                 <Divider />
                 <div {...getTableBodyProps()}>
-                    {rows.map(row => {
+                    {rows.map((row, key: number) => {
                         prepareRow(row);
 
                         return (
                             <>
                                 <div
+                                    key={key}
                                     {...row.getRowProps()}
                                     className='py-3 align-items-center'
                                 >

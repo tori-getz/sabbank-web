@@ -7,7 +7,6 @@ import cn from 'classnames';
 interface IButton {
     label: string
     loading?: boolean
-    variant?: 'primary' | 'secondary'
     onClick?: () => any
     disabled?: boolean
     className?: string

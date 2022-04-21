@@ -53,7 +53,13 @@ export const WalletActions: React.FC<IWalletActions> = ({
     return (
         <Row className={cn(styles.walletActionsWrapper)}>
             {walletActions.map((button: IWalletAction, key: number) => (
-                <ButtonWalletAction label={button.label} icon={button.icon} onClick={() => button.action() } className="col-sm-6 col-md-3" />
+                <ButtonWalletAction
+                    label={button.label}
+                    icon={button.icon}
+                    onClick={() => button.action() }
+                    className="col-sm-6 col-md-3"
+                    key={key}
+                />
             ))}
         </Row>
     )
