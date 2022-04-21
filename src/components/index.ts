@@ -12,6 +12,7 @@ export { DepositAgreement } from './DepositAgreement';
 export { CalculateDepositHeader } from './CalculateDepositHeader';
 export { DepositCreateConfirm } from './DepositCreateConfirm';
 export { DepositBanner } from './DepositBanner';
+export { CreditBanner } from './CreditBanner';
 export { CreditLTV } from './CreditLTV';
 export { PaymentMethod } from './PaymentMethod';
 export { CreditAgreement } from './CreditAgreement';

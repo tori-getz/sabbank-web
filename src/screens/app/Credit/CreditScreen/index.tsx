@@ -15,9 +15,15 @@ import {
     CreditItem
 } from '@components/ui';
 
+import {
+    CreditBanner
+} from '@components';
+
+
 import { Card, CardContent } from 'ui-neumorphism';
 
 import type { ICredit } from '@typing';
+import { isEmpty } from 'lodash';
 
 interface ICreditScreen {};
 
@@ -47,6 +53,14 @@ export const CreditScreen: React.FC<ICreditScreen> = () => {
         return (
             <ScreenContainer title={t('Credit')}>
                 <Spinner />
+            </ScreenContainer>
+        )
+    }
+
+    if (isEmpty(creditsList)) {
+        return (
+            <ScreenContainer title={t('Deposit')}>
+                <CreditBanner />
             </ScreenContainer>
         )
     }
