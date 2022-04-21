@@ -152,5 +152,6 @@ export const ru: ILocale = {
     'Description': "Описание",
     'Description your problem': 'Описание вашей проблемы',
     'Choose a wallet to withdraw funds': 'Выберите кошелёк для вывода средств',
-    'Total': 'Итого'
+    'Total': 'Итого',
+    'Earn up to 20% per annum on your cryptoassets':'Зарабатывай до 20% годовых на своих криптоактивах'
 };

@@ -2,6 +2,7 @@
 import React from 'react';
 
 import { IconButton, Card, CardContent } from 'ui-neumorphism';
+import { useTranslation } from '@hooks';
 
 import { Icon, Button } from '@components/ui';
 
@@ -19,11 +20,12 @@ interface IWalletCurrency {
 }
 
 export const DepositBanner: React.FC<IDepositBanner> = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
     const headerCheck: Array<string> = [
-        'Заработок будет зачисляться на ваш кошелек каждые 7 дней',
-        'Заработок выплачивается в той же валюте, что и ваш вклад'
+        'Earning will be created to your wallet every 7 days',
+        'Earnings are paid in the same currency as your deposit'
     ];
 
     const currencies: Array<IWalletCurrency> = [
@@ -42,7 +44,7 @@ export const DepositBanner: React.FC<IDepositBanner> = () => {
     return (
         <div className={styles.wrapper}>
             <div className={cn(styles.header, 'p-5 pb-4')}>
-                <h3>Зарабатывай до 20% годовых на своих криптоактивах</h3>
+                <h3>{t('Earn up to 20% per annum on your cryptoassets')}</h3>
                 <div className={styles.currenciesBlock}>
                     {currencies.map((currency: IWalletCurrency, key: number) => (
                         <div
@@ -76,14 +78,14 @@ export const DepositBanner: React.FC<IDepositBanner> = () => {
                             key={key}
                         >
                             <Icon name='check-white' />
-                            <div className={styles.headerCheckText}>{text}</div>
+                            <div className={styles.headerCheckText}>{t(text)}</div>
                         </div>
                     ))}
                 </div>
             </div>
             <div className='p-5 d-flex justify-content-center'>
                 <Button
-                    label='Открыть вклад'
+                    label={t('Open deposit')}
                     onClick={() => navigate('/deposit/new')}
                 />
             </div>
