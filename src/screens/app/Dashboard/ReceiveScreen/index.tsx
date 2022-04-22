@@ -45,7 +45,7 @@ export const ReceiveScreen: React.FC<IReceiveScreen> = () => {
             <h3>{t('Receive')}</h3>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4 px-2 py-3'>
                         <h4>{t('Cryptocurrency')}</h4>
                         <Label>{t('Choose a cryptocurrency for receive')}</Label>
                         <TokenSelect
@@ -59,15 +59,17 @@ export const ReceiveScreen: React.FC<IReceiveScreen> = () => {
                             onChange={setAmount}
                             assetFrom={currency?.asset}
                         />
-                        <div className='d-flex mt-4'>
-                            <Card>
-                                <CardContent>
-                                    <QRCode
-                                        text={currency?.address}
-                                        size={180}
-                                    />
-                                </CardContent>
-                            </Card>
+                    <div className={styles.addressWrapper}>
+                            <div className={styles.qrcode}>
+                                <Card>
+                                    <CardContent>
+                                        <QRCode
+                                            text={currency?.address}
+                                            size={180}
+                                        />
+                                    </CardContent>
+                                </Card>
+                            </div>
                             <div className={styles.address}>
                                 <Label>{t('Copy wallet address to fund your account')}</Label>
                                 <TextInput

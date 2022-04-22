@@ -25,9 +25,9 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
 
     return (
         <ScreenContainer title={t('Main')}>
+            <Balance className='d-md-none' />
             <div className="widgetTitle pt-3">{t('Wallet actions')}</div>
             <WalletActions />
-            <Balance className='d-md-none' />
             <CurrencyList className='d-md-none' />
             {!isEmpty(transactions) && (
                 <>
