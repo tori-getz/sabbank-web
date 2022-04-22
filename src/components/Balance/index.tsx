@@ -16,9 +16,13 @@ import { isEmpty } from 'lodash';
 import { Spinner } from '@components/ui';
 import { FiatSelect } from '@components';
 
-interface IBalance {};
+interface IBalance {
+    className?: string
+}
 
-export const Balance: React.FC<IBalance> = () => {
+export const Balance: React.FC<IBalance> = ({
+    className
+}) => {
     const { t } = useTranslation();
 
     const { settings } = useProfile();
@@ -28,14 +32,14 @@ export const Balance: React.FC<IBalance> = () => {
 
     if (isEmpty(totalBalance)) {
         return (
-            <div className={cn(styles.widget, "d-none d-md-block")}>
+            <div className={cn(styles.widget, className)}>
                 <Spinner variant='light' />
             </div>
         )
     }
 
     return (
-        <div className={cn(styles.widget, "d-none d-md-block")}>
+        <div className={cn(styles.widget, className)}>
             <div className='d-flex align-items-center justify-content-between'>
                 <div className={cn(styles.title)}>{t('Total balance')}</div>
                 <FiatSelect />

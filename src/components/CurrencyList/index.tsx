@@ -9,9 +9,13 @@ import type { IWalletCurrency } from '@typing';
 
 import { isEmpty } from 'lodash';
 
-interface IWalletCurrencyList {};
+interface IWalletCurrencyList {
+    className?: string
+}
 
-export const CurrencyList: React.FC<IWalletCurrencyList> = () => {
+export const CurrencyList: React.FC<IWalletCurrencyList> = ({
+    className
+}) => {
     const { t } = useTranslation();
 
     const { rateData } = useWallet();
@@ -34,7 +38,7 @@ export const CurrencyList: React.FC<IWalletCurrencyList> = () => {
     }
 
     return (
-        <div className="d-none d-md-block">
+        <div className={className}>
             <div className="widgetTitle">{t('Currencies')}</div>
             {renderCurrencies()}
         </div>

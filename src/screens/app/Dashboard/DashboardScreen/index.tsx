@@ -7,7 +7,12 @@ import {
 } from '@hooks';
 
 import { ScreenContainer } from '@containers';
-import { WalletActions, TransactionsHistory} from '@components';
+import {
+    WalletActions,
+    TransactionsHistory,
+    Balance,
+    CurrencyList
+} from '@components';
 
 import { isEmpty } from 'lodash';
 
@@ -22,6 +27,8 @@ export const DashboardScreen: React.FC<IDashboardScreen> = () => {
         <ScreenContainer title={t('Main')}>
             <div className="widgetTitle pt-3">{t('Wallet actions')}</div>
             <WalletActions />
+            <Balance className='d-md-none' />
+            <CurrencyList className='d-md-none' />
             {!isEmpty(transactions) && (
                 <>
                     <div className="widgetTitle pt-4 mb-3">{t('Transaction history')}</div>

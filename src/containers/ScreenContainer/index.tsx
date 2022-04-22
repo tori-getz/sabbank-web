@@ -71,9 +71,9 @@ export const ScreenContainer: React.FC<IScreenContainer> = ({
                     <Container className={cn(styles.containerLayout)}>
                         <div className="row">
                             <aside className={cn(styles.aside, "col-md-4")}>
-                                <Balance />
+                                <Balance className='d-none d-md-block' />
                                 <WalletList />
-                                <CurrencyList />
+                                <CurrencyList className='d-none d-md-block' />
                             </aside>
                             <main className={cn(styles.main, "col-md-8")}>
                                 {children} 
