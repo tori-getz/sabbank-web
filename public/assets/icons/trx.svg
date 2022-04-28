@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="17px" viewBox="0 0 15 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Shape</title>
+    <g id="Page_RUS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tron" transform="translate(0.224611, 0.799800)" fill="#EF0027" fill-rule="nonzero">
+            <g id="Group">
+                <path d="M11.54557,2.1248 L0,0 L6.07597,15.2896 L14.54237,4.9744 L11.54557,2.1248 Z M11.35997,3.0608 L13.12637,4.74 L8.29597,5.6144 L11.35997,3.0608 L11.35997,3.0608 Z M7.24637,5.4392 L2.15517,1.2168 L10.47677,2.748 L7.24637,5.4392 L7.24637,5.4392 Z M6.88397,6.1864 L6.05357,13.0504 L1.57757,1.784 L6.88397,6.1856 L6.88397,6.1864 Z M7.65197,6.5504 L13.00157,5.5824 L6.86557,13.0568 L7.65197,6.5504 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
