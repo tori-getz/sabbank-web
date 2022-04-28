@@ -42,7 +42,7 @@ export const AmountTableItem: React.FC<IAmountTableItem> = ({
                 <div className={styles.operation}>
                     <Icon name={`cash_${operation}`} />
                     <div className={cn(styles.amount, styles[`cash_${operation}`])}>
-                        {settings?.fiat_currency?.symbol}{moneyAmountFormatter(Number(amount) * crypto.price[settings?.fiat_currency?.iso_code], 2)}
+                        {settings?.fiat_currency?.symbol}{moneyAmountFormatter(Number(amount) * crypto?.price[settings?.fiat_currency?.iso_code], 2)}
                     </div>
                 </div>
             )}
