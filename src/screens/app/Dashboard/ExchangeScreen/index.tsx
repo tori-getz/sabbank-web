@@ -120,7 +120,7 @@ export const ExchangeScreen: React.FC<IExchangeScreen> = () => {
             <h3>{t('Exchange')}</h3>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4 px-2 py-3'>
                         <h4>{t('Cryptocurrency')}</h4>
                         <div className={styles.selects}>
                             <div className={styles.select}>
@@ -150,7 +150,7 @@ export const ExchangeScreen: React.FC<IExchangeScreen> = () => {
                         />
                         <Label>{`1 ${fromCrypto.asset.toUpperCase()} = ${rate} ${toCrypto.asset.toUpperCase()}`}</Label>
                         <Button
-                            className='mt-4'
+                            className={styles.button}
                             disabled={!amount || Number(amount) > Number(fromCrypto.balance) || loading}
                             label={t('Exchange')}
                             onClick={onSubmit}

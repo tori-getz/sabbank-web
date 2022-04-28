@@ -73,7 +73,7 @@ export const CashoutScreen: React.FC<ICashoutScreen> = () => {
             <h3>{t('Cash out')}</h3>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4 px-2 py-3'>
                         <h4>{t('Cryptocurrency')}</h4>
                         <Label>{t('Choose a wallet to withdraw funds')}</Label>
                         <TokenSelect
@@ -125,7 +125,7 @@ export const CashoutScreen: React.FC<ICashoutScreen> = () => {
                             </>
                         )}
                         <Button
-                            className='mt-4'
+                            className={styles.button}
                             label={t('Cash out')}
                         />
                     </div>

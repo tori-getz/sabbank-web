@@ -1,3 +1,15 @@
-.address
-    margin-left: 2em
-    flex: 1
+.addressWrapper
+    display: flex
+    gap: 2em
+    margin-top: 2em
+    
+    @media (max-width: 780px)
+        flex-direction: column
+
+    .qrcode
+        text-align: center
+
+        & > div
+            padding: 10px
+    .address
+        flex: 1

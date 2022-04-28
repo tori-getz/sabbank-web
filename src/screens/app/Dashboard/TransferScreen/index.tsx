@@ -43,6 +43,7 @@ import type {
 } from '@typing';
 
 import { isEmpty, debounce } from 'lodash';
+import styles from './TransferScreen.module.sass';
 
 interface ILocationState {
     walletId?: string
@@ -157,7 +158,7 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
             <h2>{t('Transfer')}</h2>
             <Card>
                 <CardContent>
-                    <div className='p-4'>
+                    <div className='p-md-4 px-2 py-3'>
                         <h4>{t('Cryptocurrency')}</h4>
                         <Label>{t('Choose a cryptocurrency for transfer')}</Label>
                         <TokenSelect
@@ -181,11 +182,12 @@ export const TransferScreen: React.FC<ITransferScreen> = () => {
                             <ErrorLabel>{t('Enter wallet address')}</ErrorLabel>
                         )}
                         <div className='mt-4 d-flex align-end'>
-                            <div className=''>
+                            <div className={styles.button}>
                                 <Button
                                     disabled={getButtonDisabledState()}
                                     label={getButtonLabel()}
                                     onClick={() => setOtpVisible(true)}
+                                    className=""
                                 />
                             </div>
                         </div>
