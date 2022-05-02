@@ -30,7 +30,7 @@ export const CurrencyListItem: React.FC<IWalletCurrency> = currency => {
                 </div>
                 <Chart data={currency.chart_data} />
                 <div className={styles.amountBlock}>
-                    <div className={styles.titleBlock}>{settings?.fiat_currency?.symbol}{moneyAmountFormatter(currency.price[settings?.fiat_currency?.iso_code], 4)}</div>
+                    <div className={styles.titleBlock}>{settings?.fiat_currency?.symbol}{moneyAmountFormatter(currency?.price[settings?.fiat_currency?.iso_code], 4)}</div>
                     <div
                         className={cn(
                             styles.percentage,
