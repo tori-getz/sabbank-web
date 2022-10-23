@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-
 import {
     Navigation,
     authroizedRoutes,
@@ -18,7 +17,6 @@ interface IAppContainer {};
 
 export const AppContainer: React.FC<IAppContainer> = () => {
     const {
-        accessToken,
         isAuth
     } = useAuth();
 
